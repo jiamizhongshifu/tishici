@@ -133,6 +133,7 @@ export default function PromptQuickAddForm({ categories, formDict, quickDict }: 
   return (
     <form ref={formRef} action={formAction} className="card col" style={{ gap: 12 }}>
       <input type="hidden" name="redirectTo" value="stay" />
+      <input type="hidden" name="lint_payload" value='{"issues":[]}' />
       <Fields categories={categories} formDict={formDict} quickDict={quickDict} />
       {errorMessage ? (
         <span className="muted" style={{ color: '#ef4444' }}>

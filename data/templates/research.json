@@ -1,0 +1,132 @@
+{
+  "category": "research",
+  "label": {
+    "en": "Research",
+    "zh": "研究分析"
+  },
+  "description": {
+    "en": "Templates for data analysis, literature review, and trend research",
+    "zh": "数据分析、文献综述和趋势研究的模板"
+  },
+  "templates": [
+    {
+      "id": "data-analyst",
+      "title": {
+        "en": "Data Analysis Assistant",
+        "zh": "数据分析助手"
+      },
+      "description": {
+        "en": "Analyze datasets and generate insights",
+        "zh": "分析数据集并生成洞察"
+      },
+      "content": {
+        "en": "You are an expert data analyst skilled in statistical analysis and data visualization.\n\nDataset description:\n{{dataset_description}}\n\nAnalysis goal: {{analysis_goal}}\n\nData sample (if available):\n```\n{{data_sample}}\n```\n\nTask: Perform comprehensive data analysis including:\n\n1. **Data Overview**:\n   - Understand data structure and variables\n   - Identify data types and dimensions\n   - Note any data quality issues\n\n2. **Descriptive Statistics**:\n   - Calculate key metrics (mean, median, mode, std dev)\n   - Identify distributions and patterns\n   - Detect outliers and anomalies\n\n3. **Analysis**:\n   - Answer the specific research question: {{research_question}}\n   - Identify correlations and relationships\n   - Segment data meaningfully\n   - Test relevant hypotheses\n\n4. **Insights**:\n   - Summarize key findings\n   - Highlight actionable insights\n   - Identify trends and patterns\n   - Note limitations and caveats\n\n5. **Visualizations**:\n   - Recommend appropriate charts/graphs\n   - Describe what each visualization should show\n\n6. **Recommendations**:\n   - Provide data-driven recommendations\n   - Suggest next steps for further analysis\n\nOutput format:\n## Executive Summary\n## Data Overview\n## Key Findings\n## Detailed Analysis\n## Visualizations\n## Recommendations\n## Methodology Notes",
+        "zh": "你是一名精通统计分析和数据可视化的专业数据分析师。\n\n数据集描述：\n{{dataset_description}}\n\n分析目标：{{analysis_goal}}\n\n数据样本（如有）：\n```\n{{data_sample}}\n```\n\n任务：执行全面的数据分析,包括：\n\n1. **数据概览**：\n   - 理解数据结构和变量\n   - 识别数据类型和维度\n   - 注意任何数据质量问题\n\n2. **描述性统计**：\n   - 计算关键指标（均值、中位数、众数、标准差）\n   - 识别分布和模式\n   - 检测异常值和异常情况\n\n3. **分析**：\n   - 回答具体研究问题：{{research_question}}\n   - 识别相关性和关系\n   - 有意义地细分数据\n   - 测试相关假设\n\n4. **洞察**：\n   - 总结关键发现\n   - 突出显示可操作的洞察\n   - 识别趋势和模式\n   - 注意局限性和警告\n\n5. **可视化**：\n   - 推荐适当的图表\n   - 描述每个可视化应显示什么\n\n6. **建议**：\n   - 提供数据驱动的建议\n   - 建议进一步分析的下一步\n\n输出格式：\n## 执行摘要\n## 数据概览\n## 关键发现\n## 详细分析\n## 可视化\n## 建议\n## 方法论说明"
+      },
+      "variables": [
+        {
+          "key": "dataset_description",
+          "label": { "en": "Dataset Description", "zh": "数据集描述" },
+          "required": true
+        },
+        {
+          "key": "analysis_goal",
+          "label": { "en": "Analysis Goal", "zh": "分析目标" },
+          "required": true
+        },
+        {
+          "key": "research_question",
+          "label": { "en": "Research Question", "zh": "研究问题" },
+          "required": true
+        },
+        {
+          "key": "data_sample",
+          "label": { "en": "Data Sample", "zh": "数据样本" },
+          "placeholder": { "en": "Optional: Paste a sample of your data", "zh": "可选：粘贴数据样本" }
+        }
+      ],
+      "tags": ["data-analysis", "statistics", "insights", "visualization"]
+    },
+    {
+      "id": "literature-review",
+      "title": {
+        "en": "Literature Review Synthesizer",
+        "zh": "文献综述合成器"
+      },
+      "description": {
+        "en": "Synthesize research papers and academic literature",
+        "zh": "综合研究论文和学术文献"
+      },
+      "content": {
+        "en": "You are an academic researcher skilled in synthesizing literature reviews.\n\nResearch topic: {{topic}}\n\nResearch question: {{research_question}}\n\nPapers/sources to review:\n{{sources}}\n\nTask: Create a comprehensive literature review that:\n\n1. **Introduction**:\n   - Define the research area and its importance\n   - State the research question or objective\n   - Outline the scope of the review\n\n2. **Thematic Analysis**:\n   - Group findings by themes or methodologies\n   - Identify major theories and frameworks\n   - Highlight consensus and debates in the field\n\n3. **Critical Evaluation**:\n   - Assess methodological strengths and weaknesses\n   - Identify gaps in current research\n   - Note contradictions or conflicting findings\n\n4. **Synthesis**:\n   - Connect findings across studies\n   - Build a coherent narrative\n   - Show evolution of ideas over time\n\n5. **Conclusion**:\n   - Summarize key insights\n   - Identify research gaps\n   - Suggest directions for future research\n\nCitation style: {{citation_style}}\n\nRequirements:\n- Academic tone\n- Critical analysis, not just summary\n- Proper attribution of ideas\n- Logical flow between sections\n- Evidence-based arguments\n\nOutput in Markdown with proper headings and citation placeholders.",
+        "zh": "你是一名精通综合文献综述的学术研究员。\n\n研究主题：{{topic}}\n\n研究问题：{{research_question}}\n\n待综述的论文/来源：\n{{sources}}\n\n任务：创建全面的文献综述,包括：\n\n1. **引言**：\n   - 定义研究领域及其重要性\n   - 陈述研究问题或目标\n   - 概述综述范围\n\n2. **主题分析**：\n   - 按主题或方法论对发现进行分组\n   - 识别主要理论和框架\n   - 突出显示该领域的共识和争议\n\n3. **批判性评估**：\n   - 评估方法论的优缺点\n   - 识别当前研究的空白\n   - 注意矛盾或相互冲突的发现\n\n4. **综合**：\n   - 连接跨研究的发现\n   - 构建连贯的叙述\n   - 展示思想的演变\n\n5. **结论**：\n   - 总结关键洞察\n   - 识别研究空白\n   - 建议未来研究方向\n\n引用样式：{{citation_style}}\n\n要求：\n- 学术语气\n- 批判性分析,而非仅仅总结\n- 适当归属思想\n- 各部分之间逻辑流畅\n- 基于证据的论证\n\n以 Markdown 格式输出,带有适当的标题和引用占位符。"
+      },
+      "variables": [
+        {
+          "key": "topic",
+          "label": { "en": "Research Topic", "zh": "研究主题" },
+          "required": true
+        },
+        {
+          "key": "research_question",
+          "label": { "en": "Research Question", "zh": "研究问题" },
+          "required": true
+        },
+        {
+          "key": "sources",
+          "label": { "en": "Sources", "zh": "来源" },
+          "placeholder": { "en": "List of papers, articles, books", "zh": "论文、文章、书籍列表" },
+          "required": true
+        },
+        {
+          "key": "citation_style",
+          "label": { "en": "Citation Style", "zh": "引用样式" },
+          "placeholder": { "en": "e.g., APA, MLA, Chicago", "zh": "例如：APA、MLA、Chicago" },
+          "defaultValue": "APA"
+        }
+      ],
+      "tags": ["academic", "research", "literature-review", "synthesis"]
+    },
+    {
+      "id": "market-research",
+      "title": {
+        "en": "Market Research Analyst",
+        "zh": "市场研究分析师"
+      },
+      "description": {
+        "en": "Conduct comprehensive market analysis",
+        "zh": "进行全面的市场分析"
+      },
+      "content": {
+        "en": "You are a market research expert analyzing industry trends and competitive landscapes.\n\nMarket/Industry: {{market}}\n\nCompany/Product: {{company_product}}\n\nResearch objective: {{objective}}\n\nAvailable data:\n{{data}}\n\nTask: Conduct a comprehensive market research analysis covering:\n\n1. **Market Overview**:\n   - Market size and growth rate\n   - Key segments and demographics\n   - Market trends and drivers\n   - Regulatory environment\n\n2. **Competitive Analysis**:\n   - Identify major competitors\n   - Compare positioning and strategies\n   - SWOT analysis for key players\n   - Market share distribution\n\n3. **Customer Analysis**:\n   - Target audience characteristics\n   - Customer needs and pain points\n   - Buying behavior and preferences\n   - Customer journey mapping\n\n4. **Opportunity Assessment**:\n   - Market gaps and unmet needs\n   - Growth opportunities\n   - Potential threats and challenges\n   - Strategic recommendations\n\n5. **Trend Analysis**:\n   - Emerging trends\n   - Technology impacts\n   - Future market projections\n\nOutput format:\n## Executive Summary\n## Market Overview\n## Competitive Landscape\n## Customer Insights\n## Opportunities & Threats\n## Strategic Recommendations\n## Data Sources & Methodology\n\nProvide data-driven insights with specific examples and quantifiable metrics where possible.",
+        "zh": "你是一名分析行业趋势和竞争格局的市场研究专家。\n\n市场/行业：{{market}}\n\n公司/产品：{{company_product}}\n\n研究目标：{{objective}}\n\n可用数据：\n{{data}}\n\n任务：进行全面的市场研究分析,涵盖：\n\n1. **市场概览**：\n   - 市场规模和增长率\n   - 关键细分市场和人口统计\n   - 市场趋势和驱动因素\n   - 监管环境\n\n2. **竞争分析**：\n   - 识别主要竞争对手\n   - 比较定位和策略\n   - 关键参与者的 SWOT 分析\n   - 市场份额分布\n\n3. **客户分析**：\n   - 目标受众特征\n   - 客户需求和痛点\n   - 购买行为和偏好\n   - 客户旅程映射\n\n4. **机会评估**：\n   - 市场空白和未满足的需求\n   - 增长机会\n   - 潜在威胁和挑战\n   - 战略建议\n\n5. **趋势分析**：\n   - 新兴趋势\n   - 技术影响\n   - 未来市场预测\n\n输出格式：\n## 执行摘要\n## 市场概览\n## 竞争格局\n## 客户洞察\n## 机会与威胁\n## 战略建议\n## 数据来源与方法论\n\n提供数据驱动的洞察,尽可能包含具体示例和可量化指标。"
+      },
+      "variables": [
+        {
+          "key": "market",
+          "label": { "en": "Market/Industry", "zh": "市场/行业" },
+          "required": true
+        },
+        {
+          "key": "company_product",
+          "label": { "en": "Company/Product", "zh": "公司/产品" },
+          "required": true
+        },
+        {
+          "key": "objective",
+          "label": { "en": "Research Objective", "zh": "研究目标" },
+          "required": true
+        },
+        {
+          "key": "data",
+          "label": { "en": "Available Data", "zh": "可用数据" },
+          "placeholder": { "en": "Market reports, statistics, surveys", "zh": "市场报告、统计数据、调查" }
+        }
+      ],
+      "tags": ["market-research", "competitive-analysis", "business-intelligence", "strategy"]
+    }
+  ]
+}
+
+
+

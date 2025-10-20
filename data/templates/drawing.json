@@ -1,0 +1,124 @@
+{
+  "category": "drawing",
+  "label": {
+    "en": "Image Generation",
+    "zh": "图像生成"
+  },
+  "description": {
+    "en": "Templates for AI image generation, art direction, and visual design",
+    "zh": "AI 图像生成、艺术指导和视觉设计的模板"
+  },
+  "templates": [
+    {
+      "id": "midjourney-prompt",
+      "title": {
+        "en": "Image Generation Prompt",
+        "zh": "图像生成提示词"
+      },
+      "description": {
+        "en": "Create detailed prompts for AI image generation",
+        "zh": "为 AI 图像生成创建详细的提示词"
+      },
+      "content": {
+        "en": "You are an expert prompt engineer for AI image generation (Midjourney, DALL-E, Stable Diffusion).\n\nImage concept: {{concept}}\n\nStyle preference: {{style}}\n\nMood/Atmosphere: {{mood}}\n\nTask: Create a detailed image generation prompt that includes:\n\n1. **Subject**: Clear description of the main subject\n   - What is being depicted\n   - Key characteristics and details\n   - Composition and framing\n\n2. **Style**: Artistic style and medium\n   - Art style (e.g., photorealistic, anime, oil painting, watercolor)\n   - Influences or references (e.g., \"in the style of [artist]\")\n   - Medium and texture details\n\n3. **Lighting**: Lighting conditions\n   - Light source and direction\n   - Time of day or lighting mood\n   - Shadows and highlights\n\n4. **Color**: Color palette\n   - Primary colors\n   - Color temperature (warm/cool)\n   - Color harmony and contrast\n\n5. **Atmosphere**: Mood and feeling\n   - Emotional tone\n   - Weather or environment\n   - Special effects or ambiance\n\n6. **Technical**: Quality parameters\n   - Resolution or detail level\n   - Camera angle or perspective\n   - Aspect ratio preference\n\n7. **Negative prompts**: Elements to avoid\n\nOutput format:\n**Main Prompt:**\n[Concise, well-structured prompt]\n\n**Detailed Description:**\n[Expanded explanation of the visual concept]\n\n**Negative Prompt:**\n[Elements to exclude]\n\n**Recommended Parameters:**\n- Style: [specific style]\n- Aspect Ratio: [ratio]\n- Quality: [settings]",
+        "zh": "你是 AI 图像生成（Midjourney、DALL-E、Stable Diffusion）的专业提示词工程师。\n\n图像概念：{{concept}}\n\n风格偏好：{{style}}\n\n氛围/情绪：{{mood}}\n\n任务：创建详细的图像生成提示词,包括：\n\n1. **主体**：主要对象的清晰描述\n   - 正在描绘什么\n   - 关键特征和细节\n   - 构图和取景\n\n2. **风格**：艺术风格和媒介\n   - 艺术风格（例如：照片级真实、动漫、油画、水彩）\n   - 影响或参考（例如：\"[艺术家] 的风格\"）\n   - 媒介和纹理细节\n\n3. **光照**：光照条件\n   - 光源和方向\n   - 一天中的时间或光照情绪\n   - 阴影和高光\n\n4. **颜色**：色彩调板\n   - 主要颜色\n   - 色温（暖/冷）\n   - 色彩和谐与对比\n\n5. **氛围**：情绪和感觉\n   - 情感基调\n   - 天气或环境\n   - 特殊效果或氛围\n\n6. **技术**：质量参数\n   - 分辨率或细节级别\n   - 相机角度或透视\n   - 宽高比偏好\n\n7. **负面提示**：要避免的元素\n\n输出格式：\n**主提示词：**\n[简洁、结构良好的提示词]\n\n**详细描述：**\n[视觉概念的扩展说明]\n\n**负面提示词：**\n[要排除的元素]\n\n**推荐参数：**\n- 风格：[具体风格]\n- 宽高比：[比例]\n- 质量：[设置]"
+      },
+      "variables": [
+        {
+          "key": "concept",
+          "label": { "en": "Image Concept", "zh": "图像概念" },
+          "placeholder": { "en": "What should be depicted?", "zh": "应该描绘什么？" },
+          "required": true
+        },
+        {
+          "key": "style",
+          "label": { "en": "Artistic Style", "zh": "艺术风格" },
+          "placeholder": { "en": "e.g., photorealistic, anime, watercolor", "zh": "例如：照片级真实、动漫、水彩" }
+        },
+        {
+          "key": "mood",
+          "label": { "en": "Mood/Atmosphere", "zh": "情绪/氛围" },
+          "placeholder": { "en": "e.g., serene, dramatic, playful", "zh": "例如：宁静、戏剧性、俏皮" }
+        }
+      ],
+      "tags": ["image-generation", "midjourney", "dall-e", "stable-diffusion", "ai-art"]
+    },
+    {
+      "id": "ui-design-description",
+      "title": {
+        "en": "UI/UX Design Descriptor",
+        "zh": "UI/UX 设计描述器"
+      },
+      "description": {
+        "en": "Describe UI designs for implementation or mockups",
+        "zh": "描述 UI 设计以实现或创建原型"
+      },
+      "content": {
+        "en": "You are a UI/UX designer creating detailed design specifications.\n\nInterface type: {{interface_type}}\n\nPurpose: {{purpose}}\n\nTarget platform: {{platform}}\n\nBrand guidelines: {{brand_guidelines}}\n\nTask: Create comprehensive UI design specifications including:\n\n1. **Layout Structure**:\n   - Grid system and spacing\n   - Component hierarchy\n   - Responsive breakpoints\n   - Safe areas and margins\n\n2. **Visual Design**:\n   - Color palette (primary, secondary, accent colors)\n   - Typography (fonts, sizes, weights, line heights)\n   - Iconography style\n   - Images and illustrations requirements\n\n3. **Components**:\n   - Navigation elements\n   - Buttons and CTAs\n   - Forms and inputs\n   - Cards and containers\n   - Modals and overlays\n\n4. **Interactions**:\n   - Hover states\n   - Click/tap feedback\n   - Loading states\n   - Transitions and animations\n   - Micro-interactions\n\n5. **Accessibility**:\n   - Color contrast ratios\n   - Font size minimums\n   - Touch target sizes\n   - Keyboard navigation\n   - Screen reader considerations\n\n6. **States**:\n   - Default\n   - Hover/Focus\n   - Active\n   - Disabled\n   - Error/Success\n\nOutput format:\n## Overview\n## Layout\n## Visual Style\n## Component Specs\n## Interaction Design\n## Accessibility Notes\n\nInclude specific measurements, hex colors, and implementation notes.",
+        "zh": "你是一名创建详细设计规范的 UI/UX 设计师。\n\n界面类型：{{interface_type}}\n\n目的：{{purpose}}\n\n目标平台：{{platform}}\n\n品牌指南：{{brand_guidelines}}\n\n任务：创建全面的 UI 设计规范,包括：\n\n1. **布局结构**：\n   - 网格系统和间距\n   - 组件层次结构\n   - 响应式断点\n   - 安全区域和边距\n\n2. **视觉设计**：\n   - 色彩调板（主色、辅助色、强调色）\n   - 字体排印（字体、大小、粗细、行高）\n   - 图标风格\n   - 图像和插图要求\n\n3. **组件**：\n   - 导航元素\n   - 按钮和 CTA\n   - 表单和输入\n   - 卡片和容器\n   - 模态框和覆盖层\n\n4. **交互**：\n   - 悬停状态\n   - 点击/轻触反馈\n   - 加载状态\n   - 过渡和动画\n   - 微交互\n\n5. **可访问性**：\n   - 色彩对比度\n   - 最小字体大小\n   - 触摸目标大小\n   - 键盘导航\n   - 屏幕阅读器考虑\n\n6. **状态**：\n   - 默认\n   - 悬停/焦点\n   - 活动\n   - 禁用\n   - 错误/成功\n\n输出格式：\n## 概述\n## 布局\n## 视觉风格\n## 组件规范\n## 交互设计\n## 可访问性说明\n\n包含具体测量、十六进制颜色和实现说明。"
+      },
+      "variables": [
+        {
+          "key": "interface_type",
+          "label": { "en": "Interface Type", "zh": "界面类型" },
+          "placeholder": { "en": "e.g., Dashboard, Landing page, Mobile app", "zh": "例如：仪表板、着陆页、移动应用" },
+          "required": true
+        },
+        {
+          "key": "purpose",
+          "label": { "en": "Purpose", "zh": "目的" },
+          "required": true
+        },
+        {
+          "key": "platform",
+          "label": { "en": "Platform", "zh": "平台" },
+          "placeholder": { "en": "e.g., Web, iOS, Android", "zh": "例如：Web、iOS、Android" },
+          "required": true
+        },
+        {
+          "key": "brand_guidelines",
+          "label": { "en": "Brand Guidelines", "zh": "品牌指南" },
+          "placeholder": { "en": "Colors, fonts, style preferences", "zh": "颜色、字体、风格偏好" }
+        }
+      ],
+      "tags": ["ui-design", "ux-design", "design-system", "specifications"]
+    },
+    {
+      "id": "character-design",
+      "title": {
+        "en": "Character Design Prompt",
+        "zh": "角色设计提示词"
+      },
+      "description": {
+        "en": "Create detailed character designs for illustration or 3D modeling",
+        "zh": "为插图或 3D 建模创建详细的角色设计"
+      },
+      "content": {
+        "en": "You are a character designer creating detailed character specifications.\n\nCharacter concept: {{character_concept}}\n\nGenre/Setting: {{genre}}\n\nPurpose: {{purpose}}\n\nTask: Create comprehensive character design specifications:\n\n1. **Physical Description**:\n   - Age, gender, body type\n   - Height and build\n   - Facial features and expressions\n   - Hair style and color\n   - Distinctive features or marks\n\n2. **Clothing & Accessories**:\n   - Main outfit description\n   - Material and texture details\n   - Colors and patterns\n   - Accessories and props\n   - Cultural or era-specific elements\n\n3. **Personality Traits**:\n   - Core personality characteristics\n   - How personality reflects in appearance\n   - Typical poses and gestures\n   - Facial expressions range\n\n4. **Color Palette**:\n   - Primary colors\n   - Secondary colors\n   - Accent colors\n   - Skin tone\n   - Color symbolism\n\n5. **Style Direction**:\n   - Art style (realistic, stylized, anime, etc.)\n   - Reference artists or styles\n   - Level of detail\n   - Proportions and anatomy\n\n6. **Multiple Views**:\n   - Front view requirements\n   - Side profile\n   - Back view\n   - 3/4 view\n   - Action poses\n\n7. **Context**:\n   - Environment or background\n   - Lighting scenario\n   - Mood and atmosphere\n\nOutput format:\n## Character Overview\n## Physical Design\n## Costume & Accessories\n## Color Palette\n## Style & References\n## Technical Notes\n\nProvide detailed, actionable descriptions suitable for artists.",
+        "zh": "你是一名创建详细角色规范的角色设计师。\n\n角色概念：{{character_concept}}\n\n类型/设定：{{genre}}\n\n目的：{{purpose}}\n\n任务：创建全面的角色设计规范：\n\n1. **外观描述**：\n   - 年龄、性别、体型\n   - 身高和体格\n   - 面部特征和表情\n   - 发型和颜色\n   - 独特特征或标记\n\n2. **服装和配饰**：\n   - 主要服装描述\n   - 材料和纹理细节\n   - 颜色和图案\n   - 配饰和道具\n   - 文化或时代特定元素\n\n3. **个性特征**：\n   - 核心性格特征\n   - 性格如何在外观中体现\n   - 典型姿势和手势\n   - 面部表情范围\n\n4. **色彩调板**：\n   - 主要颜色\n   - 辅助颜色\n   - 强调色\n   - 肤色\n   - 颜色象征意义\n\n5. **风格方向**：\n   - 艺术风格（写实、风格化、动漫等）\n   - 参考艺术家或风格\n   - 细节层次\n   - 比例和解剖结构\n\n6. **多视角**：\n   - 正面视图要求\n   - 侧面轮廓\n   - 背面视图\n   - 3/4 视角\n   - 动作姿势\n\n7. **环境**：\n   - 环境或背景\n   - 光照场景\n   - 情绪和氛围\n\n输出格式：\n## 角色概述\n## 外观设计\n## 服装和配饰\n## 色彩调板\n## 风格和参考\n## 技术说明\n\n提供详细、可操作的描述,适合艺术家使用。"
+      },
+      "variables": [
+        {
+          "key": "character_concept",
+          "label": { "en": "Character Concept", "zh": "角色概念" },
+          "placeholder": { "en": "Brief description of the character", "zh": "角色的简要描述" },
+          "required": true
+        },
+        {
+          "key": "genre",
+          "label": { "en": "Genre/Setting", "zh": "类型/设定" },
+          "placeholder": { "en": "e.g., Fantasy, Sci-fi, Modern", "zh": "例如：奇幻、科幻、现代" },
+          "required": true
+        },
+        {
+          "key": "purpose",
+          "label": { "en": "Purpose", "zh": "目的" },
+          "placeholder": { "en": "e.g., Game character, Comic book, Animation", "zh": "例如：游戏角色、漫画、动画" },
+          "required": true
+        }
+      ],
+      "tags": ["character-design", "illustration", "3d-modeling", "concept-art"]
+    }
+  ]
+}
+

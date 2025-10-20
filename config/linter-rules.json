@@ -1,0 +1,362 @@
+{
+  "version": "2025-10-20",
+  "metadata": {
+    "localeFallback": "zh-CN",
+    "severityOrder": ["error", "warning", "info", "success"],
+    "ruleCategories": {
+      "structure": { "label": { "zh-CN": "结构完整性", "en-US": "Structure" } },
+      "context": { "label": { "zh-CN": "上下文变量", "en-US": "Context Variables" } },
+      "constraints": { "label": { "zh-CN": "约束与安全", "en-US": "Constraints & Safety" } },
+      "format": { "label": { "zh-CN": "输出格式", "en-US": "Output Format" } },
+      "consistency": { "label": { "zh-CN": "一致性", "en-US": "Consistency" } }
+    }
+  },
+  "rules": [
+    {
+      "code": "PROMPT_ROLE_MISSING",
+      "category": "structure",
+      "severity": "error",
+      "target": "prompt.content",
+      "title": {
+        "zh-CN": "缺少角色设定",
+        "en-US": "Missing role definition"
+      },
+      "description": {
+        "zh-CN": "提示词应声明助理的角色或身份，帮助模型理解所扮演的职责。",
+        "en-US": "Prompts should define the assistant persona or role to scope responsibilities."
+      },
+      "checks": [
+        {
+          "type": "must_include_any",
+          "patterns": [
+            "(?i)角色",
+            "(?i)You are",
+            "(?i)作为",
+            "(?i)Role:",
+            "(?i)Act as",
+            "(?i)扮演",
+            "(?i)模仿.*风格",
+            "(?i)请.*扮演",
+            "(?i)你是.*大师",
+            "(?i)你是.*专家",
+            "(?i)请.*以.*身份",
+            "(?i)请.*站在.*角度"
+          ]
+        }
+      ],
+      "fixHint": {
+        "zh-CN": "在开头加入一句描述 AI 身份或职责，例如 \"你是一名资深的市场分析师\"。",
+        "en-US": "Add an opening sentence that states the assistant persona, e.g., \"You are a senior market analyst.\""
+      },
+      "tags": ["persona", "role"],
+      "examples": {
+        "bad": {
+          "zh-CN": "请帮我写一份市场调研报告。",
+          "en-US": "Help me write a market research report."
+        },
+        "good": {
+          "zh-CN": "你是一名资深的市场分析师，需要为产品 A 撰写调研报告。",
+          "en-US": "You are a senior market analyst tasked with drafting a report for Product A."
+        }
+      }
+    },
+    {
+      "code": "PROMPT_TASK_UNCLEAR",
+      "category": "structure",
+      "severity": "error",
+      "target": "prompt.content",
+      "title": {
+        "zh-CN": "任务目标不明确",
+        "en-US": "Task objective is ambiguous"
+      },
+      "description": {
+        "zh-CN": "提示词需要清晰描述任务目标或交付物，避免模型输出泛化内容。",
+        "en-US": "Prompts must clearly describe the task objective or deliverable to avoid generic outputs."
+      },
+      "checks": [
+        {
+          "type": "must_include_any",
+          "patterns": [
+            "(?i)任务",
+            "(?i)目标",
+            "(?i)请生成",
+            "(?i)Your task",
+            "(?i)Deliver",
+            "(?i)请.*转换",
+            "(?i)请.*写成",
+            "(?i)请.*制作",
+            "(?i)请.*创作",
+            "(?i)请.*编写",
+            "(?i)请.*输出",
+            "(?i)请.*提供",
+            "(?i)请.*给出",
+            "(?i)将.*转换",
+            "(?i)把.*变成",
+            "(?i)根据.*生成",
+            "(?i)基于.*创建",
+            "(?i)帮我.*写",
+            "(?i)帮我.*做",
+            "(?i)帮我.*生成"
+          ],
+          "minLength": 10
+        }
+      ],
+      "fixHint": {
+        "zh-CN": "明确写出希望模型完成的任务与产出，例如 \"请提供包含调研方法的报告大纲\"。",
+        "en-US": "State the expected task and output, e.g., \"Provide an outline covering research methods.\""
+      },
+      "tags": ["task", "objective"]
+    },
+    {
+      "code": "PROMPT_CONSTRAINTS_MISSING",
+      "category": "constraints",
+      "severity": "warning",
+      "target": "prompt.content",
+      "title": {
+        "zh-CN": "缺少执行约束或质量标准",
+        "en-US": "Missing execution constraints or quality guardrails"
+      },
+      "description": {
+        "zh-CN": "约束条件（步骤、禁止项、字数限制、风格要求等）有助于模型稳定输出。",
+        "en-US": "Constraints such as steps, exclusions, length, or tone improve output stability."
+      },
+      "checks": [
+        {
+          "type": "must_include_any",
+          "patterns": [
+            "(?i)步骤",
+            "(?i)请遵循",
+            "(?i)不得",
+            "(?i)不要",
+            "(?i)必须",
+            "(?i)Step",
+            "(?i)Guideline",
+            "(?i)Do not",
+            "(?i)Must",
+            "(?i)严格遵循",
+            "(?i)请严格",
+            "(?i)要求",
+            "(?i)规则",
+            "(?i)约束",
+            "(?i)限制",
+            "(?i)禁止",
+            "(?i)避免",
+            "(?i)确保",
+            "(?i)请确保"
+          ],
+          "minMatches": 1
+        }
+      ],
+      "fixHint": {
+        "zh-CN": "补充执行步骤、限制条件或验收标准，如 \"按照编号列出 3 个步骤并避免包含个人隐私\"。",
+        "en-US": "Add steps, constraints, or acceptance criteria such as \"List 3 numbered steps and avoid personal data.\""
+      },
+      "tags": ["constraint", "guardrail"]
+    },
+    {
+      "code": "PROMPT_OUTPUT_FORMAT_MISSING",
+      "category": "format",
+      "severity": "warning",
+      "target": "prompt.content",
+      "title": {
+        "zh-CN": "未指定输出格式",
+        "en-US": "Output format undefined"
+      },
+      "description": {
+        "zh-CN": "明确的输出格式（JSON、表格、列表）有助于自动处理和对齐预期结果。",
+        "en-US": "Explicit format expectations (JSON, table, list) support automation and alignment."
+      },
+      "checks": [
+        {
+          "type": "must_include_any",
+          "patterns": [
+            "(?i)JSON",
+            "(?i)表格",
+            "(?i)列表",
+            "(?i)格式",
+            "(?i)Output format",
+            "(?i)Return .* in"
+          ],
+          "minMatches": 1
+        }
+      ],
+      "fixHint": {
+        "zh-CN": "说明输出结构，例如 \"请返回 JSON，包含 title、insights、action_items 字段\"。",
+        "en-US": "Specify the output structure, e.g., \"Return JSON with title, insights, action_items fields.\""
+      },
+      "tags": ["format", "structure"]
+    },
+    {
+      "code": "PROMPT_VARIABLE_PLACEHOLDER_MISMATCH",
+      "category": "context",
+      "severity": "error",
+      "target": "prompt.content",
+      "title": {
+        "zh-CN": "上下文变量占位符不一致",
+        "en-US": "Context variable placeholders inconsistent"
+      },
+      "description": {
+        "zh-CN": "占位符需命名一致并在输入说明与正文内匹配，否则会导致集成出错。",
+        "en-US": "Placeholders must use consistent naming across instructions and sample usage."
+      },
+      "checks": [
+        {
+          "type": "placeholder_consistency",
+          "patterns": ["\\{\\{[^}]+\\}\\}", "<<[^>]+>>", "\\[[A-Z_]+\\]"]
+        }
+      ],
+      "fixHint": {
+        "zh-CN": "统一命名格式（例如 {{industry}}）并检查正文、示例、输出段落中的引用一致。",
+        "en-US": "Normalize placeholders (for example {{industry}}) and ensure references match across sections."
+      },
+      "tags": ["variables", "context"],
+      "autoFix": {
+        "strategy": "rename_placeholders",
+        "options": {
+          "normalizeCase": "camel"
+        }
+      }
+    },
+    {
+      "code": "PROMPT_SAFETY_GUARDRAIL_MISSING",
+      "category": "constraints",
+      "severity": "error",
+      "target": "prompt.content",
+      "title": {
+        "zh-CN": "缺少安全或合规提示",
+        "en-US": "Safety or compliance guardrail missing"
+      },
+      "description": {
+        "zh-CN": "安全提示（如避免违法、隐私、偏见）可降低违规风险，应在敏感任务中声明。",
+        "en-US": "Safety reminders (avoid illegal activity, personal data, bias) reduce compliance risk."
+      },
+      "checks": [
+        {
+          "type": "must_include_any",
+          "patterns": [
+            "(?i)不得违反",
+            "(?i)遵守",
+            "(?i)请确保合法",
+            "(?i)Avoid (?:illegal|sensitive)",
+            "(?i)Comply with",
+            "(?i)Do not include personal data"
+          ],
+          "minMatches": 1,
+          "contextHint": {
+            "keywords": ["信用", "医疗", "财务", "法律", "compliance", "policy", "sensitive"]
+          }
+        }
+      ],
+      "fixHint": {
+        "zh-CN": "添加安全提醒，如 \"请勿输出任何个人隐私信息，并遵守当地法律法规\"。",
+        "en-US": "Add safety guidance, e.g., \"Do not output personal data and ensure compliance with local laws.\""
+      },
+      "tags": ["safety", "policy"]
+    },
+    {
+      "code": "PROMPT_EXAMPLE_MISSING",
+      "category": "consistency",
+      "severity": "info",
+      "target": "prompt.content",
+      "title": {
+        "zh-CN": "缺少示例或参考答案",
+        "en-US": "Missing example response"
+      },
+      "description": {
+        "zh-CN": "提供示例输入或输出能帮助模型快速对齐预期，尤其在复杂任务中。",
+        "en-US": "Including sample input or output helps the model align to expectations, especially for complex tasks."
+      },
+      "checks": [
+        {
+          "type": "must_include_any",
+          "patterns": [
+            "(?i)示例输出",
+            "(?i)示例输入",
+            "(?i)Example response",
+            "(?i)Sample output",
+            "(?i)参考答案"
+          ],
+          "minMatches": 1
+        }
+      ],
+      "fixHint": {
+        "zh-CN": "追加一个 \"示例输入\" 或 \"示例输出\" 段落，展示理想答案格式。",
+        "en-US": "Add a \"Sample Input\" or \"Sample Output\" section that illustrates the ideal response."
+      },
+      "tags": ["example", "few-shot"]
+    },
+    {
+      "code": "PROMPT_COMPLEX_GUIDANCE_DETECTED",
+      "category": "structure",
+      "severity": "success",
+      "target": "prompt.content",
+      "title": {
+        "zh-CN": "检测到复杂指导内容",
+        "en-US": "Complex guidance content detected"
+      },
+      "description": {
+        "zh-CN": "提示词包含详细的风格指导、结构要求或创作规范，通常具有较高的完整性和专业性。",
+        "en-US": "Prompt contains detailed style guidance, structural requirements, or creative specifications, typically indicating high completeness and professionalism."
+      },
+      "checks": [
+        {
+          "type": "must_include_any",
+          "patterns": [
+            "(?i)风格",
+            "(?i)结构",
+            "(?i)要素",
+            "(?i)要求",
+            "(?i)规范",
+            "(?i)指导",
+            "(?i)原则",
+            "(?i)特点",
+            "(?i)核心",
+            "(?i)标志性",
+            "(?i)经典",
+            "(?i)三段式",
+            "(?i)口头禅",
+            "(?i)句式",
+            "(?i)命名",
+            "(?i)设计",
+            "(?i)细节",
+            "(?i)附加",
+            "(?i)福利",
+            "(?i)超值"
+          ],
+          "minMatches": 3
+        }
+      ],
+      "fixHint": {
+        "zh-CN": "复杂指导型提示词通常已经具备良好的结构，建议检查是否还需要补充示例或输出格式说明。",
+        "en-US": "Complex guidance prompts typically have good structure; consider adding examples or output format specifications if needed."
+      },
+      "tags": ["complex", "guidance", "professional"],
+      "suppressOtherRules": ["PROMPT_ROLE_MISSING", "PROMPT_TASK_UNCLEAR", "PROMPT_CONSTRAINTS_MISSING"]
+    },
+    {
+      "code": "PROMPT_LENGTH_EXCESSIVE",
+      "category": "consistency",
+      "severity": "info",
+      "target": "prompt.content",
+      "title": {
+        "zh-CN": "提示词过长",
+        "en-US": "Prompt exceeds recommended length"
+      },
+      "description": {
+        "zh-CN": "过长的提示词可能导致 token 浪费与模型分心，应考虑精简或拆分。",
+        "en-US": "Very long prompts may waste tokens and dilute focus; consider tightening or splitting."
+      },
+      "checks": [
+        {
+          "type": "max_length",
+          "limit": 1800
+        }
+      ],
+      "fixHint": {
+        "zh-CN": "检查是否存在冗余说明，将背景信息移至变量或附录。",
+        "en-US": "Review for redundant sections and move background context into variables or appendices."
+      },
+      "tags": ["length", "cost"]
+    }
+  ]
+}

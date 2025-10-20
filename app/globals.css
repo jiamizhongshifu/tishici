@@ -27,8 +27,8 @@ button { cursor: pointer; }
 .btn { background: var(--brand); color: white; border: 0; padding: 8px 12px; border-radius: 8px; }
 .btn:hover { background: var(--brand-600); }
 .btn-danger { background: var(--danger); }
-.input, .textarea, .select { background: #0e1016; color: var(--text); border: 1px solid #232938; border-radius: 8px; padding: 8px 10px; }
-.textarea { min-height: 160px; }
+.input, .textarea, .select { background: #0e1016; color: var(--text); border: 1px solid #232938; border-radius: 8px; padding: 8px 10px; user-select: text; }
+.textarea { min-height: 160px; user-select: text; }
 .list { display: grid; grid-template-columns: 1fr; gap: 12px; }
 .tag { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #1f2430; color: var(--muted);
   border: 1px solid #2a3142; font-size: 12px; }

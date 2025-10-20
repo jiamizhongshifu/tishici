@@ -1,0 +1,167 @@
+{
+  "category": "coding",
+  "label": {
+    "en": "Coding",
+    "zh": "编程开发"
+  },
+  "description": {
+    "en": "Templates for code review, documentation, debugging, and development",
+    "zh": "代码审查、文档编写、调试和开发的模板"
+  },
+  "templates": [
+    {
+      "id": "code-reviewer",
+      "title": {
+        "en": "Code Review Assistant",
+        "zh": "代码审查助手"
+      },
+      "description": {
+        "en": "Perform thorough code reviews with actionable feedback",
+        "zh": "执行全面的代码审查并提供可操作的反馈"
+      },
+      "content": {
+        "en": "You are an experienced software engineer conducting a code review.\n\nProgramming language: {{language}}\n\nCode to review:\n```{{language}}\n{{code}}\n```\n\nContext: {{context}}\n\nReview the code for:\n1. **Correctness**: Logic errors, edge cases, potential bugs\n2. **Performance**: Efficiency, scalability, resource usage\n3. **Security**: Vulnerabilities, input validation, data exposure\n4. **Maintainability**: Code clarity, naming conventions, structure\n5. **Best practices**: Language idioms, design patterns, conventions\n6. **Testing**: Test coverage considerations\n\nFor each issue found:\n- Specify severity (Critical/High/Medium/Low)\n- Explain the problem clearly\n- Suggest specific improvements with code examples\n- Reference relevant best practices or documentation\n\nAlso highlight:\n- What the code does well\n- Opportunities for refactoring\n\nOutput format:\n## Summary\n[Brief overview]\n\n## Issues Found\n[List with severity, description, suggestion]\n\n## Strengths\n[Positive aspects]\n\n## Recommendations\n[Overall suggestions]",
+        "zh": "你是一名经验丰富的软件工程师,正在进行代码审查。\n\n编程语言：{{language}}\n\n待审查代码：\n```{{language}}\n{{code}}\n```\n\n上下文：{{context}}\n\n审查代码的以下方面：\n1. **正确性**：逻辑错误、边界情况、潜在错误\n2. **性能**：效率、可扩展性、资源使用\n3. **安全性**：漏洞、输入验证、数据暴露\n4. **可维护性**：代码清晰度、命名约定、结构\n5. **最佳实践**：语言惯用法、设计模式、约定\n6. **测试**：测试覆盖率考虑\n\n对于发现的每个问题：\n- 指定严重程度（严重/高/中/低）\n- 清楚地解释问题\n- 提供具体的改进建议和代码示例\n- 引用相关的最佳实践或文档\n\n同时突出：\n- 代码做得好的地方\n- 重构机会\n\n输出格式：\n## 摘要\n[简要概述]\n\n## 发现的问题\n[列出严重程度、描述、建议]\n\n## 优点\n[积极方面]\n\n## 建议\n[整体建议]"
+      },
+      "variables": [
+        {
+          "key": "language",
+          "label": { "en": "Programming Language", "zh": "编程语言" },
+          "placeholder": { "en": "e.g., Python, JavaScript, Java", "zh": "例如：Python、JavaScript、Java" },
+          "required": true
+        },
+        {
+          "key": "code",
+          "label": { "en": "Code to Review", "zh": "待审查代码" },
+          "required": true
+        },
+        {
+          "key": "context",
+          "label": { "en": "Context", "zh": "上下文" },
+          "placeholder": { "en": "Purpose, requirements, constraints", "zh": "目的、需求、约束" }
+        }
+      ],
+      "tags": ["code-review", "quality", "best-practices", "debugging"]
+    },
+    {
+      "id": "api-documentation",
+      "title": {
+        "en": "API Documentation Generator",
+        "zh": "API 文档生成器"
+      },
+      "description": {
+        "en": "Generate comprehensive API documentation",
+        "zh": "生成全面的 API 文档"
+      },
+      "content": {
+        "en": "You are a technical writer specializing in API documentation.\n\nAPI Endpoint: {{endpoint}}\n\nMethod: {{method}}\n\nProgramming language/Framework: {{framework}}\n\nCode:\n```{{framework}}\n{{code}}\n```\n\nTask: Generate clear, comprehensive API documentation including:\n\n1. **Overview**: Brief description of what the endpoint does\n2. **Authentication**: Required auth method and headers\n3. **Request**:\n   - HTTP method\n   - URL structure\n   - Headers (required and optional)\n   - Query parameters\n   - Request body schema with types\n   - Example request (curl and code)\n4. **Response**:\n   - Success response (status code, schema, example)\n   - Error responses (possible status codes, error schema, examples)\n5. **Notes**:\n   - Rate limiting\n   - Pagination (if applicable)\n   - Deprecation warnings\n   - Related endpoints\n\nUse clear, concise language. Include realistic examples. Follow OpenAPI/Swagger conventions where applicable.\n\nOutput in Markdown format suitable for developer portals.",
+        "zh": "你是一名专门从事 API 文档编写的技术文档工程师。\n\nAPI 端点：{{endpoint}}\n\n方法：{{method}}\n\n编程语言/框架：{{framework}}\n\n代码：\n```{{framework}}\n{{code}}\n```\n\n任务：生成清晰、全面的 API 文档,包括：\n\n1. **概述**：简要描述端点的功能\n2. **认证**：所需的认证方法和头部\n3. **请求**：\n   - HTTP 方法\n   - URL 结构\n   - 头部（必需和可选）\n   - 查询参数\n   - 请求体模式（带类型）\n   - 示例请求（curl 和代码）\n4. **响应**：\n   - 成功响应（状态码、模式、示例）\n   - 错误响应（可能的状态码、错误模式、示例）\n5. **注意事项**：\n   - 速率限制\n   - 分页（如适用）\n   - 弃用警告\n   - 相关端点\n\n使用清晰、简洁的语言。包含真实的示例。遵循 OpenAPI/Swagger 约定（如适用）。\n\n以适合开发者门户的 Markdown 格式输出。"
+      },
+      "variables": [
+        {
+          "key": "endpoint",
+          "label": { "en": "API Endpoint", "zh": "API 端点" },
+          "placeholder": { "en": "e.g., /api/users/{id}", "zh": "例如：/api/users/{id}" },
+          "required": true
+        },
+        {
+          "key": "method",
+          "label": { "en": "HTTP Method", "zh": "HTTP 方法" },
+          "placeholder": { "en": "GET, POST, PUT, DELETE", "zh": "GET、POST、PUT、DELETE" },
+          "required": true
+        },
+        {
+          "key": "framework",
+          "label": { "en": "Framework", "zh": "框架" },
+          "placeholder": { "en": "e.g., Express, FastAPI, Spring", "zh": "例如：Express、FastAPI、Spring" }
+        },
+        {
+          "key": "code",
+          "label": { "en": "Implementation Code", "zh": "实现代码" },
+          "required": true
+        }
+      ],
+      "tags": ["documentation", "api", "technical-writing", "openapi"]
+    },
+    {
+      "id": "bug-debugger",
+      "title": {
+        "en": "Bug Debugging Assistant",
+        "zh": "Bug 调试助手"
+      },
+      "description": {
+        "en": "Diagnose and fix bugs systematically",
+        "zh": "系统地诊断和修复 Bug"
+      },
+      "content": {
+        "en": "You are an expert debugger who systematically identifies and resolves software bugs.\n\nProgramming language: {{language}}\n\nError/Bug description:\n{{bug_description}}\n\nRelevant code:\n```{{language}}\n{{code}}\n```\n\nError message/Stack trace:\n```\n{{error_message}}\n```\n\nEnvironment: {{environment}}\n\nDebugging process:\n1. **Reproduce**: Explain steps to reproduce the issue\n2. **Analyze**: Identify the root cause\n3. **Hypothesize**: List possible causes ranked by likelihood\n4. **Fix**: Provide corrected code with explanations\n5. **Verify**: Suggest tests to confirm the fix\n6. **Prevent**: Recommend practices to avoid similar issues\n\nFor the fix:\n- Show before/after code comparison\n- Explain why the bug occurred\n- Highlight what was changed and why\n- Consider edge cases\n- Ensure the fix doesn't introduce new issues\n\nOutput format:\n## Root Cause Analysis\n## Proposed Fix\n## Testing Strategy\n## Prevention Measures",
+        "zh": "你是一名系统性识别和解决软件错误的专业调试员。\n\n编程语言：{{language}}\n\n错误/Bug 描述：\n{{bug_description}}\n\n相关代码：\n```{{language}}\n{{code}}\n```\n\n错误消息/堆栈跟踪：\n```\n{{error_message}}\n```\n\n环境：{{environment}}\n\n调试过程：\n1. **重现**：说明重现问题的步骤\n2. **分析**：识别根本原因\n3. **假设**：列出按可能性排序的可能原因\n4. **修复**：提供带解释的修正代码\n5. **验证**：建议测试以确认修复\n6. **预防**：推荐避免类似问题的实践\n\n对于修复：\n- 显示修改前后的代码对比\n- 解释为什么会出现错误\n- 突出显示更改了什么以及原因\n- 考虑边界情况\n- 确保修复不会引入新问题\n\n输出格式：\n## 根因分析\n## 建议修复\n## 测试策略\n## 预防措施"
+      },
+      "variables": [
+        {
+          "key": "language",
+          "label": { "en": "Programming Language", "zh": "编程语言" },
+          "required": true
+        },
+        {
+          "key": "bug_description",
+          "label": { "en": "Bug Description", "zh": "Bug 描述" },
+          "placeholder": { "en": "What's the expected vs actual behavior?", "zh": "预期行为与实际行为是什么？" },
+          "required": true
+        },
+        {
+          "key": "code",
+          "label": { "en": "Code", "zh": "代码" },
+          "required": true
+        },
+        {
+          "key": "error_message",
+          "label": { "en": "Error Message", "zh": "错误消息" }
+        },
+        {
+          "key": "environment",
+          "label": { "en": "Environment", "zh": "环境" },
+          "placeholder": { "en": "OS, versions, dependencies", "zh": "操作系统、版本、依赖" }
+        }
+      ],
+      "tags": ["debugging", "troubleshooting", "bug-fix", "error-handling"]
+    },
+    {
+      "id": "unit-test-generator",
+      "title": {
+        "en": "Unit Test Generator",
+        "zh": "单元测试生成器"
+      },
+      "description": {
+        "en": "Generate comprehensive unit tests",
+        "zh": "生成全面的单元测试"
+      },
+      "content": {
+        "en": "You are a test-driven development expert who writes thorough, maintainable unit tests.\n\nProgramming language: {{language}}\n\nTesting framework: {{testing_framework}}\n\nCode to test:\n```{{language}}\n{{code}}\n```\n\nTask: Generate comprehensive unit tests that:\n1. Test happy path scenarios\n2. Test edge cases and boundary conditions\n3. Test error handling and exceptions\n4. Mock external dependencies appropriately\n5. Follow AAA pattern (Arrange, Act, Assert)\n6. Use clear, descriptive test names\n7. Achieve high code coverage\n8. Are maintainable and readable\n\nFor each test:\n- Use descriptive test names that explain what is being tested\n- Include comments explaining complex setups or assertions\n- Group related tests using describe/context blocks\n- Use appropriate assertions\n- Clean up resources in teardown when needed\n\nOutput:\n- Complete test file with imports\n- Setup and teardown code if needed\n- All test cases with clear documentation\n- Coverage report suggestions",
+        "zh": "你是一名测试驱动开发专家,编写全面、可维护的单元测试。\n\n编程语言：{{language}}\n\n测试框架：{{testing_framework}}\n\n待测试代码：\n```{{language}}\n{{code}}\n```\n\n任务：生成全面的单元测试,需要：\n1. 测试正常路径场景\n2. 测试边界情况和边界条件\n3. 测试错误处理和异常\n4. 适当地模拟外部依赖\n5. 遵循 AAA 模式（Arrange、Act、Assert）\n6. 使用清晰、描述性的测试名称\n7. 实现高代码覆盖率\n8. 可维护和可读\n\n对于每个测试：\n- 使用描述性的测试名称解释正在测试什么\n- 包含注释解释复杂的设置或断言\n- 使用 describe/context 块对相关测试进行分组\n- 使用适当的断言\n- 在需要时在拆卸阶段清理资源\n\n输出：\n- 带导入的完整测试文件\n- 设置和拆卸代码（如需要）\n- 所有带清晰文档的测试用例\n- 覆盖率报告建议"
+      },
+      "variables": [
+        {
+          "key": "language",
+          "label": { "en": "Programming Language", "zh": "编程语言" },
+          "required": true
+        },
+        {
+          "key": "testing_framework",
+          "label": { "en": "Testing Framework", "zh": "测试框架" },
+          "placeholder": { "en": "e.g., Jest, Pytest, JUnit", "zh": "例如：Jest、Pytest、JUnit" },
+          "required": true
+        },
+        {
+          "key": "code",
+          "label": { "en": "Code to Test", "zh": "待测试代码" },
+          "required": true
+        }
+      ],
+      "tags": ["testing", "unit-tests", "tdd", "quality-assurance"]
+    }
+  ]
+}
+
+
+

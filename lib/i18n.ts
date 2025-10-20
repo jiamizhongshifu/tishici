@@ -37,6 +37,8 @@ export type Dictionary = {
     generatorTitle: string;
     modeToggleManual: string;
     modeToggleGenerator: string;
+    modeToggleBootstrap: string;
+    modeToggleTemplate: string;
     goalLabel: string;
     goalPlaceholder: string;
     audienceLabel: string;
@@ -65,6 +67,51 @@ export type Dictionary = {
     customCategoryLabel: string;
     customCategoryPlaceholder: string;
     customCategoryHint?: string;
+    lintPanelTitle: string;
+    lintLoading: string;
+    lintUpdatedAt: string;
+    lintRetryButton: string;
+    lintEmptyState: string;
+    lintErrorState: string;
+    lintSummaryLabel: string;
+    lintIssueListLabel: string;
+    lintSeverityLabels: { error: string; warning: string; info: string; success: string };
+    lintCountsLabel: { total: string; error: string; warning: string; info: string; success: string };
+    lintFocusButton: string;
+    lintFixHintLabel: string;
+    lintFixGenerateButton: string;
+    lintFixGeneratingButton: string;
+    lintFixApplyButton: string;
+    lintFixUndoButton: string;
+    lintFixSummaryTitle: string;
+    lintFixDiffTitle: string;
+    lintFixSuggestionsTitle: string;
+    lintFixRequiredIssues: string;
+    lintFixError: string;
+    lintFixAppliedNotice: string;
+    bootstrapTitle: string;
+    bootstrapDescription: string;
+    bootstrapGoalLabel: string;
+    bootstrapGoalPlaceholder: string;
+    bootstrapDomainLabel: string;
+    bootstrapDomainPlaceholder: string;
+    bootstrapAudienceLabel: string;
+    bootstrapAudiencePlaceholder: string;
+    bootstrapConstraintsLabel: string;
+    bootstrapConstraintsPlaceholder: string;
+    bootstrapGenerateButton: string;
+    bootstrapGeneratingButton: string;
+    bootstrapError: string;
+    templateTitle: string;
+    templateDescription: string;
+    templateSearchPlaceholder: string;
+    templateSelectCategory: string;
+    templateSelectTemplate: string;
+    templateNoResults: string;
+    templateFillVariables: string;
+    templateFillVariablesHint: string;
+    templateUseButton: string;
+    templateCancelButton: string;
   };
   quickAdd: {
     title: string;
@@ -116,6 +163,30 @@ export type Dictionary = {
   promptActions: {
     edit: string;
   };
+  eval: {
+    title: string;
+    runButton: string;
+    runningButton: string;
+    lastRunLabel: string;
+    errorLabel: string;
+    emptyState: string;
+    overallLabel: string;
+    clarityLabel: string;
+    constraintsLabel: string;
+    reproducibilityLabel: string;
+    costLabel: string;
+    tokensLabel: string;
+    usdLabel: string;
+    strengthsLabel: string;
+    improvementsLabel: string;
+    notesLabel: string;
+    improveButton: string;
+    improveGeneratingButton: string;
+    improveSummaryTitle: string;
+    improvePromptTitle: string;
+    improveDiffTitle: string;
+    improveError: string;
+  };
 };
 
 const toneOptionsZh: ToneOption[] = [
@@ -123,6 +194,10 @@ const toneOptionsZh: ToneOption[] = [
   { value: 'friendly', label: '友好' },
   { value: 'professional', label: '专业' },
   { value: 'concise', label: '简洁' },
+  { value: 'casual', label: '随意' },
+  { value: 'authoritative', label: '权威' },
+  { value: 'persuasive', label: '有说服力' },
+  { value: 'creative', label: '创意' },
 ];
 
 const toneOptionsEn: ToneOption[] = [
@@ -130,6 +205,10 @@ const toneOptionsEn: ToneOption[] = [
   { value: 'friendly', label: 'Friendly' },
   { value: 'professional', label: 'Professional' },
   { value: 'concise', label: 'Concise' },
+  { value: 'casual', label: 'Casual' },
+  { value: 'authoritative', label: 'Authoritative' },
+  { value: 'persuasive', label: 'Persuasive' },
+  { value: 'creative', label: 'Creative' },
 ];
 
 const languageOptionsZh: LanguageOption[] = [
@@ -177,6 +256,8 @@ const dictionaries: Record<Locale, Dictionary> = {
       generatorTitle: '我需要一个新的提示词',
       modeToggleManual: '手动输入',
       modeToggleGenerator: 'AI 生成',
+      modeToggleBootstrap: '快速启动',
+      modeToggleTemplate: '模板',
       goalLabel: '目标 / 场景',
       goalPlaceholder: '例如：写一封 B2B SaaS 产品的冷启邮件',
       audienceLabel: '目标用户',
@@ -216,6 +297,51 @@ const dictionaries: Record<Locale, Dictionary> = {
       customCategoryLabel: '自定义分类（选填）',
       customCategoryPlaceholder: '输入新的分类名称',
       customCategoryHint: '填写后将创建新的分类并保存到列表中。',
+      lintPanelTitle: '提示体检',
+      lintLoading: '正在检查...',
+      lintUpdatedAt: '上次检查：{time}',
+      lintRetryButton: '重新检查',
+      lintEmptyState: '暂未发现问题，继续保持！',
+      lintErrorState: '检查失败，请稍后重试。',
+      lintSummaryLabel: '问题概览',
+      lintIssueListLabel: '问题列表',
+      lintSeverityLabels: { error: '错误', warning: '警告', info: '提示', success: '成功' },
+      lintCountsLabel: { total: '总计', error: '错误', warning: '警告', info: '提示', success: '成功' },
+      lintFocusButton: '定位到内容',
+      lintFixHintLabel: '修复建议',
+      lintFixGenerateButton: '生成修正建议',
+      lintFixGeneratingButton: '生成中…',
+      lintFixApplyButton: '应用修正',
+      lintFixUndoButton: '撤销修正',
+      lintFixSummaryTitle: '修正摘要',
+      lintFixDiffTitle: '变更对比',
+      lintFixSuggestionsTitle: '针对问题的处理',
+      lintFixRequiredIssues: '请先运行检查并确保至少存在一个问题。',
+      lintFixError: '生成修正失败，请稍后重试。',
+      lintFixAppliedNotice: '已应用修正，可随时撤销恢复原始内容。',
+      bootstrapTitle: '快速启动提示词模板',
+      bootstrapDescription: '基于您的目标生成符合最佳实践的生产就绪提示词模板。',
+      bootstrapGoalLabel: '目标 *',
+      bootstrapGoalPlaceholder: '您希望提示词实现什么目标？',
+      bootstrapDomainLabel: '领域（可选）',
+      bootstrapDomainPlaceholder: '例如：营销、代码审查、数据分析',
+      bootstrapAudienceLabel: '受众（可选）',
+      bootstrapAudiencePlaceholder: '例如：开发者、营销团队、学生',
+      bootstrapConstraintsLabel: '约束条件（可选）',
+      bootstrapConstraintsPlaceholder: '任何特定的规则、限制或要求',
+      bootstrapGenerateButton: '生成模板',
+      bootstrapGeneratingButton: '生成中...',
+      bootstrapError: '生成模板失败，请稍后重试。',
+      templateTitle: '选择模板',
+      templateDescription: '浏览我们精心策划的专业提示词模板集合',
+      templateSearchPlaceholder: '搜索模板...',
+      templateSelectCategory: '选择类别',
+      templateSelectTemplate: '选择模板',
+      templateNoResults: '未找到模板',
+      templateFillVariables: '填写模板变量',
+      templateFillVariablesHint: '通过填写下面的变量来自定义模板',
+      templateUseButton: '使用此模板',
+      templateCancelButton: '返回',
     },
     quickAdd: {
       title: '快速保存',
@@ -274,6 +400,30 @@ const dictionaries: Record<Locale, Dictionary> = {
     promptActions: {
       edit: '编辑',
     },
+    eval: {
+      title: '提示评测',
+      runButton: '开始评测',
+      runningButton: '评测中…',
+      lastRunLabel: '上次评测：{time}',
+      errorLabel: '评测失败，请稍后再试。',
+      emptyState: '暂无评测结果，点击“开始评测”生成评分。',
+      overallLabel: '综合评分',
+      clarityLabel: '清晰度',
+      constraintsLabel: '约束完备',
+      reproducibilityLabel: '可复现性',
+      costLabel: '成本估计',
+      tokensLabel: 'Tokens',
+      usdLabel: '美元',
+      strengthsLabel: '亮点',
+      improvementsLabel: '改进建议',
+      notesLabel: '备注',
+      improveButton: '根据改进建议生成新提示词',
+      improveGeneratingButton: '生成中…',
+      improveSummaryTitle: '改进摘要',
+      improvePromptTitle: '改进后提示词',
+      improveDiffTitle: '变更对比',
+      improveError: '生成改进版提示词失败，请稍后再试。',
+    },
   },
   en: {
     locale: 'en',
@@ -307,6 +457,8 @@ const dictionaries: Record<Locale, Dictionary> = {
       generatorTitle: 'Help me craft a new prompt',
       modeToggleManual: 'Manual input',
       modeToggleGenerator: 'AI assistant',
+      modeToggleBootstrap: 'Bootstrap',
+      modeToggleTemplate: 'Templates',
       goalLabel: 'Goal / scenario',
       goalPlaceholder: 'e.g. Write a cold email for a B2B SaaS product',
       audienceLabel: 'Target audience',
@@ -346,6 +498,51 @@ const dictionaries: Record<Locale, Dictionary> = {
       customCategoryLabel: 'Custom category (optional)',
       customCategoryPlaceholder: 'Enter a new category name',
       customCategoryHint: 'We will create this category and add it to your list.',
+      lintPanelTitle: 'Prompt health check',
+      lintLoading: 'Running lint...',
+      lintUpdatedAt: 'Last checked: {time}',
+      lintRetryButton: 'Retry lint',
+      lintEmptyState: 'Looks great! No issues detected.',
+      lintErrorState: 'Lint failed. Please try again.',
+      lintSummaryLabel: 'Issue overview',
+      lintIssueListLabel: 'Issue details',
+      lintSeverityLabels: { error: 'Error', warning: 'Warning', info: 'Info', success: 'Success' },
+      lintCountsLabel: { total: 'Total', error: 'Errors', warning: 'Warnings', info: 'Infos', success: 'Successes' },
+      lintFocusButton: 'Focus prompt',
+      lintFixHintLabel: 'Suggested fix',
+      lintFixGenerateButton: 'Generate fix suggestions',
+      lintFixGeneratingButton: 'Generating…',
+      lintFixApplyButton: 'Apply fix',
+      lintFixUndoButton: 'Undo',
+      lintFixSummaryTitle: 'Fix summary',
+      lintFixDiffTitle: 'Changes',
+      lintFixSuggestionsTitle: 'How issues were addressed',
+      lintFixRequiredIssues: 'Run lint and ensure there is at least one issue before requesting fixes.',
+      lintFixError: 'Failed to generate fix suggestions. Please try again.',
+      lintFixAppliedNotice: 'Fix applied. You can undo to restore the previous prompt.',
+      bootstrapTitle: 'Bootstrap Prompt Template',
+      bootstrapDescription: 'Generate a production-ready prompt template following best practices based on your goal.',
+      bootstrapGoalLabel: 'Goal *',
+      bootstrapGoalPlaceholder: 'What do you want the prompt to accomplish?',
+      bootstrapDomainLabel: 'Domain (optional)',
+      bootstrapDomainPlaceholder: 'e.g., Marketing, Code Review, Data Analysis',
+      bootstrapAudienceLabel: 'Audience (optional)',
+      bootstrapAudiencePlaceholder: 'e.g., Developers, Marketing team, Students',
+      bootstrapConstraintsLabel: 'Constraints (optional)',
+      bootstrapConstraintsPlaceholder: 'Any specific rules, limitations, or requirements',
+      bootstrapGenerateButton: 'Generate Template',
+      bootstrapGeneratingButton: 'Generating...',
+      bootstrapError: 'Failed to generate template. Please try again.',
+      templateTitle: 'Choose a Template',
+      templateDescription: 'Browse our curated collection of professional prompt templates',
+      templateSearchPlaceholder: 'Search templates...',
+      templateSelectCategory: 'Select a category',
+      templateSelectTemplate: 'Choose a template',
+      templateNoResults: 'No templates found',
+      templateFillVariables: 'Fill in template variables',
+      templateFillVariablesHint: 'Customize the template by filling in the variables below',
+      templateUseButton: 'Use This Template',
+      templateCancelButton: 'Back',
     },
     quickAdd: {
       title: 'Quick save',
@@ -403,6 +600,30 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     promptActions: {
       edit: 'Edit',
+    },
+    eval: {
+      title: 'Prompt evaluation',
+      runButton: 'Run evaluation',
+      runningButton: 'Evaluating…',
+      lastRunLabel: 'Last run: {time}',
+      errorLabel: 'Evaluation failed. Please try again.',
+      emptyState: 'No evaluation yet. Click “Run evaluation” to generate scores.',
+      overallLabel: 'Overall',
+      clarityLabel: 'Clarity',
+      constraintsLabel: 'Constraints',
+      reproducibilityLabel: 'Reproducibility',
+      costLabel: 'Cost estimate',
+      tokensLabel: 'Tokens',
+      usdLabel: 'USD',
+      strengthsLabel: 'Strengths',
+      improvementsLabel: 'Improvements',
+      notesLabel: 'Notes',
+      improveButton: 'Generate improved prompt',
+      improveGeneratingButton: 'Generating…',
+      improveSummaryTitle: 'Improvement summary',
+      improvePromptTitle: 'Improved prompt',
+      improveDiffTitle: 'Changes',
+      improveError: 'Failed to generate improved prompt. Please try again.',
     },
   },
 };

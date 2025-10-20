@@ -1,13 +1,43 @@
-﻿import Link from 'next/link';
+import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import CopyButton from '../../../components/CopyButton';
 import DeletePromptButton from '../../../components/DeletePromptButton';
+import EvalRunner from '../../../components/EvalRunner';
 import OpenInChatGPTButton from '../../../components/OpenInChatGPTButton';
 import { createRSCClient } from '../../../lib/supabase/server';
 import { getDictionary } from '../../../lib/i18n';
+import type { PromptLintSnapshot, PromptEvalScore } from '../../../lib/types/prompt';
 
 type PageProps = {
   params: { id: string };
+};
+
+const severityColors: Record<'error' | 'warning' | 'info' | 'success', string> = {
+  error: '#ef4444',
+  warning: '#f97316',
+  info: '#38bdf8',
+  success: '#10b981',
+};
+
+const severityOrder: Array<{ key: 'errors' | 'warnings' | 'infos' | 'successes'; severity: 'error' | 'warning' | 'info' | 'success' }> = [
+  { key: 'errors', severity: 'error' },
+  { key: 'warnings', severity: 'warning' },
+  { key: 'infos', severity: 'info' },
+  { key: 'successes', severity: 'success' },
+];
+
+type PromptWithRelations = {
+  id: string;
+  user_id: string;
+  title: string;
+  content: string;
+  category_id: string | null;
+  created_at: string;
+  lint_issues: PromptLintSnapshot | null;
+  eval_score: PromptEvalScore | null;
+  categories: {
+    name: string | null;
+  } | null | Array<{ name: string | null }>;
 };
 
 export default async function PromptDetailPage({ params }: PageProps) {
@@ -21,19 +51,21 @@ export default async function PromptDetailPage({ params }: PageProps) {
     redirect('/');
   }
 
+  const baseSelect = `
+    id,
+    user_id,
+    title,
+    content,
+    category_id,
+    created_at,
+    lint_issues,
+    eval_score,
+    categories:category_id (name)
+  `;
+
   const { data: prompt, error } = await supabase
     .from('prompts')
-    .select(
-      `
-        id,
-        user_id,
-        title,
-        content,
-        category_id,
-        created_at,
-        categories:category_id (name)
-      `
-    )
+    .select(baseSelect)
     .eq('id', params.id)
     .maybeSingle();
 
@@ -45,10 +77,47 @@ export default async function PromptDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const rawCategory = (prompt as any)?.categories?.name as string | null;
+  const promptRow = prompt as PromptWithRelations;
+
+  const rawCategory = Array.isArray(promptRow.categories)
+    ? promptRow.categories[0]?.name ?? null
+    : promptRow.categories?.name ?? null;
   const categoryName = rawCategory
     ? dict.promptForm.categoryLabels?.[rawCategory] ?? rawCategory
     : dict.promptForm.uncategorized;
+
+  const lintSnapshot = promptRow.lint_issues;
+  const evalScore = promptRow.eval_score;
+  const lintIssues = lintSnapshot?.issues ?? [];
+  const issueCounts = lintIssues.reduce(
+    (acc, issue) => {
+      if (issue.severity === 'error') acc.errors += 1;
+      else if (issue.severity === 'warning') acc.warnings += 1;
+      else acc.infos += 1;
+      return acc;
+    },
+    { errors: 0, warnings: 0, infos: 0 }
+  );
+  const lintSummary = lintSnapshot
+    ? {
+        totalIssues:
+          typeof lintSnapshot.summary?.totalIssues === 'number'
+            ? lintSnapshot.summary.totalIssues
+            : lintIssues.length,
+        errors:
+          typeof lintSnapshot.summary?.errors === 'number' ? lintSnapshot.summary.errors : issueCounts.errors,
+        warnings:
+          typeof lintSnapshot.summary?.warnings === 'number' ? lintSnapshot.summary.warnings : issueCounts.warnings,
+        infos: typeof lintSnapshot.summary?.infos === 'number' ? lintSnapshot.summary.infos : issueCounts.infos,
+        successes: typeof lintSnapshot.summary?.successes === 'number' ? lintSnapshot.summary.successes : (issueCounts as any).successes || 0,
+      }
+    : null;
+
+  const lintGeneratedAt = lintSnapshot?.generated_at ?? null;
+  const lintGeneratedAtText =
+    lintGeneratedAt && !Number.isNaN(new Date(lintGeneratedAt).getTime())
+      ? new Date(lintGeneratedAt).toLocaleString()
+      : null;
 
   return (
     <div className="col" style={{ gap: 16 }}>
@@ -58,23 +127,23 @@ export default async function PromptDetailPage({ params }: PageProps) {
             {dict.dashboard.title}
           </Link>
           <span className="muted">/</span>
-          <Link href={`/prompts/${prompt.id}`} className="prompt-title-link">
-            <h1 className="prompt-title" style={{ fontSize: 20 }}>{prompt.title}</h1>
+          <Link href={`/prompts/${promptRow.id}`} className="prompt-title-link">
+            <h1 className="prompt-title" style={{ fontSize: 20 }}>{promptRow.title}</h1>
           </Link>
         </div>
         <div className="row" style={{ gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
           <CopyButton
-            text={prompt.content}
+            text={promptRow.content}
             label={dict.copy.copy}
             copiedLabel={dict.copy.copied}
             toastMessage={dict.copy.toast}
           />
-          <OpenInChatGPTButton prompt={prompt.content} label={dict.packs.openChatGPT} />
-          <Link href={`/prompts/${prompt.id}/edit`} className="btn-link">
+          <OpenInChatGPTButton prompt={promptRow.content} label={dict.packs.openChatGPT} />
+          <Link href={`/prompts/${promptRow.id}/edit`} className="btn-link">
             {dict.promptActions.edit}
           </Link>
           <DeletePromptButton
-            id={prompt.id}
+            id={promptRow.id}
             confirmMessage={dict.deletePrompt.confirm}
             deleteLabel={dict.deletePrompt.delete}
             deletingLabel={dict.deletePrompt.deleting}
@@ -85,14 +154,113 @@ export default async function PromptDetailPage({ params }: PageProps) {
 
       <div className="card col" style={{ gap: 12 }}>
         <div className="row" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-          <h2 className="prompt-title" style={{ fontSize: 20 }}>{prompt.title}</h2>
+          <h2 className="prompt-title" style={{ fontSize: 20 }}>{promptRow.title}</h2>
           <span className="tag">{categoryName}</span>
         </div>
         <span className="muted" style={{ fontSize: 12 }}>
-          {new Date(prompt.created_at as string).toLocaleString()}
+          {new Date(promptRow.created_at).toLocaleString()}
         </span>
-        <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{prompt.content}</pre>
+        <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{promptRow.content}</pre>
       </div>
+
+      {lintSnapshot ? (
+        <div className="card col" style={{ gap: 12 }}>
+          <div className="row" style={{ justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+            <h3 style={{ margin: 0 }}>{dict.promptForm.lintPanelTitle}</h3>
+            {lintGeneratedAtText ? (
+              <span className="muted" style={{ fontSize: 12 }}>
+                {dict.promptForm.lintUpdatedAt.replace('{time}', lintGeneratedAtText)}
+              </span>
+            ) : null}
+          </div>
+
+          <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
+            {severityOrder.map(({ key, severity }) => (
+              <div
+                key={severity}
+                className="row"
+                style={{
+                  gap: 6,
+                  alignItems: 'center',
+                  padding: '6px 10px',
+                  borderRadius: 6,
+                  border: `1px solid ${severityColors[severity]}33`,
+                  background: `${severityColors[severity]}20`,
+                  color: severityColors[severity],
+                  fontSize: 12,
+                  fontWeight: 600,
+                }}
+              >
+                <span>{dict.promptForm.lintSeverityLabels[severity]}</span>
+                <span>{lintSummary ? lintSummary[key] : 0}</span>
+              </div>
+            ))}
+          </div>
+
+          {lintIssues.length === 0 ? (
+            <span className="muted" style={{ fontSize: 13 }}>
+              {dict.promptForm.lintEmptyState}
+            </span>
+          ) : (
+            <div className="col" style={{ gap: 8 }}>
+              <strong style={{ fontSize: 13 }}>{dict.promptForm.lintIssueListLabel}</strong>
+              <div className="col" style={{ gap: 8 }}>
+                {lintIssues.map((issue, index) => {
+                  const severity = issue.severity;
+                  const color = severityColors[severity];
+                  return (
+                    <div
+                      key={`${issue.code}-${index}`}
+                      className="col"
+                      style={{
+                        gap: 6,
+                        border: `1px solid ${color}33`,
+                        borderRadius: 8,
+                        padding: 12,
+                        background: '#101629',
+                      }}
+                    >
+                      <div className="row" style={{ gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+                        <span
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 6,
+                            fontSize: 12,
+                          fontWeight: 600,
+                          color,
+                        }}
+                      >
+                          {dict.promptForm.lintSeverityLabels[severity]}
+                        </span>
+                        <span className="muted" style={{ fontSize: 12 }}>
+                          {issue.code}
+                        </span>
+                      </div>
+                      <span style={{ fontSize: 13 }}>{issue.message}</span>
+                      {issue.fix_hint ? (
+                        <span className="muted" style={{ fontSize: 12 }}>
+                          {dict.promptForm.lintFixHintLabel}：{issue.fix_hint}
+                        </span>
+                      ) : null}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+      ) : null}
+
+      <EvalRunner
+        promptId={promptRow.id}
+        title={promptRow.title}
+        content={promptRow.content}
+        locale={dict.locale}
+        dict={dict.eval}
+        copyDict={dict.copy}
+        initialScore={evalScore}
+      />
     </div>
   );
 }

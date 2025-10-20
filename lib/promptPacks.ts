@@ -459,3 +459,171 @@ export const promptPacks: PromptPack[] = [...basePacks, ...extraPacks];
 export function getPromptPack(slug: string): PromptPack | undefined {
   return promptPacks.find((pack) => pack.slug === slug);
 }
+
+export type PromptPackVersion = {
+  version: string;
+  label: string;
+  createdAt: string;
+  pack: PromptPack;
+};
+
+type PromptIndexEntry = {
+  section: string;
+  prompt: PromptRow;
+};
+
+const packVersionHistory: Record<string, PromptPackVersion[]> = (() => {
+  const history: Record<string, PromptPackVersion[]> = {};
+
+  const chatGptRolePack = getPromptPack('chatgpt-for-any-role');
+  if (chatGptRolePack) {
+    const historicalPack: PromptPack = {
+      ...chatGptRolePack,
+      sections: chatGptRolePack.sections.map((section, index) => {
+        const prompts =
+          index === 0
+            ? section.prompts.filter((_, idx) => idx <= 1)
+            : index === 1
+              ? section.prompts.slice(0, Math.max(0, section.prompts.length - 1))
+              : section.prompts;
+        return {
+          ...section,
+          prompts: prompts.map((prompt, idx) =>
+            index === 0 && idx === 0
+              ? {
+                  ...prompt,
+                  prompt:
+                    'Write a concise email to [recipient] about [topic]. Aim for fewer than 120 words, use a clear subject line, and end with a short call to action.',
+                }
+              : prompt
+          ),
+        };
+      }),
+    };
+    history['chatgpt-for-any-role'] = [
+      {
+        version: '2024-09',
+        label: 'September 2024',
+        createdAt: '2024-09-01',
+        pack: historicalPack,
+      },
+    ];
+  }
+
+  return history;
+})();
+
+export function listPackVersions(slug: string): PromptPackVersion[] {
+  return packVersionHistory[slug] ?? [];
+}
+
+export type PromptDiffStatus = 'added' | 'removed' | 'changed';
+
+export type PromptPackDiffEntry = {
+  status: PromptDiffStatus;
+  key: string;
+  fromSection?: string;
+  toSection?: string;
+  fromPrompt?: PromptRow;
+  toPrompt?: PromptRow;
+};
+
+export type PromptPackDiffSummary = {
+  totalAdded: number;
+  totalRemoved: number;
+  totalChanged: number;
+  addedSections: string[];
+  removedSections: string[];
+};
+
+export type PromptPackDiff = {
+  entries: PromptPackDiffEntry[];
+  summary: PromptPackDiffSummary;
+};
+
+function buildPromptIndex(pack: PromptPack): Record<string, PromptIndexEntry> {
+  const index: Record<string, PromptIndexEntry> = {};
+  for (const section of pack.sections) {
+    for (const prompt of section.prompts) {
+      const uniqueKey = `${section.heading}::${prompt.useCase}`.toLowerCase();
+      index[uniqueKey] = {
+        section: section.heading,
+        prompt,
+      };
+    }
+  }
+  return index;
+}
+
+export function diffPromptPacks(fromPack: PromptPack, toPack: PromptPack): PromptPackDiff {
+  const fromIndex = buildPromptIndex(fromPack);
+  const toIndex = buildPromptIndex(toPack);
+
+  const entries: PromptPackDiffEntry[] = [];
+
+  for (const [key, value] of Object.entries(fromIndex)) {
+    if (!toIndex[key]) {
+      entries.push({
+        status: 'removed',
+        key,
+        fromSection: value.section,
+        fromPrompt: value.prompt,
+      });
+    }
+  }
+
+  for (const [key, value] of Object.entries(toIndex)) {
+    if (!fromIndex[key]) {
+      entries.push({
+        status: 'added',
+        key,
+        toSection: value.section,
+        toPrompt: value.prompt,
+      });
+    } else {
+      const previous = fromIndex[key];
+      if (
+        previous.section !== value.section ||
+        previous.prompt.prompt !== value.prompt.prompt ||
+        (previous.prompt.url ?? '') !== (value.prompt.url ?? '')
+      ) {
+        entries.push({
+          status: 'changed',
+          key,
+          fromSection: previous.section,
+          toSection: value.section,
+          fromPrompt: previous.prompt,
+          toPrompt: value.prompt,
+        });
+      }
+    }
+  }
+
+  const fromSections = new Set(fromPack.sections.map((section) => section.heading));
+  const toSections = new Set(toPack.sections.map((section) => section.heading));
+
+  const summary: PromptPackDiffSummary = {
+    totalAdded: entries.filter((entry) => entry.status === 'added').length,
+    totalRemoved: entries.filter((entry) => entry.status === 'removed').length,
+    totalChanged: entries.filter((entry) => entry.status === 'changed').length,
+    addedSections: Array.from(toSections).filter((heading) => !fromSections.has(heading)),
+    removedSections: Array.from(fromSections).filter((heading) => !toSections.has(heading)),
+  };
+
+  entries.sort((a, b) => {
+    const order = { added: 0, changed: 1, removed: 2 } as const;
+    if (order[a.status] !== order[b.status]) {
+      return order[a.status] - order[b.status];
+    }
+    return (a.toSection || a.fromSection || '').localeCompare(b.toSection || b.fromSection || '');
+  });
+
+  return {
+    entries,
+    summary,
+  };
+}
+
+export function getPackVersion(slug: string, version: string): PromptPackVersion | undefined {
+  return (packVersionHistory[slug] ?? []).find((item) => item.version === version);
+}
