@@ -4,6 +4,24 @@ import { redirect } from 'next/navigation';
 import { createActionClient } from '../lib/supabase/server';
 import { ensureCategory } from '../lib/categories';
 
+function parseLintIssues(formData: FormData) {
+  const raw = formData.get('lint_issues');
+  if (typeof raw !== 'string') {
+    return undefined;
+  }
+
+  const trimmed = raw.trim();
+  if (!trimmed) {
+    return undefined;
+  }
+
+  try {
+    return JSON.parse(trimmed);
+  } catch {
+    return undefined;
+  }
+}
+
 export type CreatePromptState = {
   success: boolean;
   error?: string;
@@ -54,14 +72,22 @@ export async function createPrompt(
     }
   }
 
+  const lintIssues = parseLintIssues(formData);
+
+  const insertPayload: Record<string, any> = {
+    title,
+    content,
+    category_id: categoryId,
+    user_id: user.id,
+  };
+
+  if (lintIssues !== undefined) {
+    insertPayload.lint_issues = lintIssues;
+  }
+
   const { error: insertError } = await supabase
     .from('prompts')
-    .insert({
-      title,
-      content,
-      category_id: categoryId,
-      user_id: user.id,
-    })
+    .insert(insertPayload)
     .select('id')
     .single();
 
@@ -124,13 +150,21 @@ export async function updatePrompt(
     }
   }
 
+  const lintIssues = parseLintIssues(formData);
+
+  const updatePayload: Record<string, any> = {
+    title,
+    content,
+    category_id: categoryId,
+  };
+
+  if (lintIssues !== undefined) {
+    updatePayload.lint_issues = lintIssues;
+  }
+
   const { error: updateError } = await supabase
     .from('prompts')
-    .update({
-      title,
-      content,
-      category_id: categoryId,
-    })
+    .update(updatePayload)
     .eq('id', promptId)
     .eq('user_id', user.id);
 

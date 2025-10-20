@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { createPrompt, type CreatePromptState, type PromptActionHandler } from '../app/actions';
 import type { Dictionary, Locale } from '../lib/i18n';
+import type { LintIssue, LintResponse, LintSeverity, LintStats } from '../types/lint';
 
 type Category = { id: string; name: string };
 
@@ -17,11 +18,19 @@ type Props = {
     title?: string;
     content?: string;
     categoryId?: string | null;
+    lintIssues?: LintIssue[];
+    lintStats?: LintStats | null;
   };
   submitAction?: PromptActionHandler;
 };
 
 type Mode = 'manual' | 'generator';
+
+const SEVERITY_PALETTE: Record<LintSeverity, { background: string; border: string; text: string }> = {
+  error: { background: 'rgba(248, 113, 113, 0.12)', border: '#f87171', text: '#dc2626' },
+  warning: { background: 'rgba(251, 191, 36, 0.12)', border: '#fbbf24', text: '#d97706' },
+  info: { background: 'rgba(96, 165, 250, 0.12)', border: '#93c5fd', text: '#2563eb' },
+};
 
 const INITIAL_STATE: CreatePromptState = { success: false };
 
@@ -37,6 +46,12 @@ function FormFields({
   setContent,
   customCategory,
   setCustomCategory,
+  lintIssues,
+  linting,
+  lintError,
+  lintRan,
+  onIssueFocus,
+  contentRef,
 }: {
   dict: Dictionary['promptForm'];
   categories: Category[];
@@ -49,8 +64,15 @@ function FormFields({
   setContent: (value: string) => void;
   customCategory: string;
   setCustomCategory: (value: string) => void;
+  lintIssues: LintIssue[];
+  linting: boolean;
+  lintError: string | null;
+  lintRan: boolean;
+  onIssueFocus: (issue: LintIssue) => void;
+  contentRef: RefObject<HTMLTextAreaElement>;
 }) {
   const { pending } = useFormStatus();
+  const lintDict = dict.lint;
   return (
     <>
       <div className="col" style={{ gap: 4 }}>
@@ -122,7 +144,67 @@ function FormFields({
           onChange={(event) => setContent(event.target.value)}
           required
           disabled={pending}
+          ref={contentRef}
         />
+      </div>
+      <div className="col" style={{ gap: 8 }}>
+        <div className="row" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+          <strong>{lintDict.heading}</strong>
+          {linting ? <span className="muted" style={{ fontSize: 12 }}>{lintDict.loading}</span> : null}
+        </div>
+        {lintError ? (
+          <span className="muted" style={{ color: '#f87171', fontSize: 12 }}>{lintError}</span>
+        ) : null}
+        {!linting && !lintError && lintRan && lintIssues.length === 0 ? (
+          <span className="muted" style={{ fontSize: 12 }}>{lintDict.empty}</span>
+        ) : null}
+        <div className="col" style={{ gap: 8 }}>
+          {lintIssues.map((issue, index) => {
+            const palette = SEVERITY_PALETTE[issue.severity];
+            return (
+              <button
+                key={`${issue.code}-${index}`}
+                type="button"
+                onClick={() => onIssueFocus(issue)}
+                className="row"
+                style={{
+                  gap: 12,
+                  alignItems: 'flex-start',
+                  background: palette.background,
+                  border: `1px solid ${palette.border}`,
+                  borderRadius: 8,
+                  padding: '8px 12px',
+                  textAlign: 'left',
+                  color: 'inherit',
+                }}
+              >
+                <span
+                  className="tag"
+                  style={{
+                    background: palette.border,
+                    color: '#0f172a',
+                    fontWeight: 600,
+                    minWidth: 72,
+                    justifyContent: 'center',
+                  }}
+                >
+                  {lintDict.severityLabels[issue.severity] ?? issue.severity}
+                </span>
+                <div className="col" style={{ gap: 4, flex: 1 }}>
+                  <span style={{ fontWeight: 500 }}>{issue.message}</span>
+                  {issue.fix_hint ? (
+                    <span className="muted" style={{ fontSize: 12 }}>{issue.fix_hint}</span>
+                  ) : null}
+                  {issue.range ? (
+                    <span className="muted" style={{ fontSize: 10 }}>
+                      L{issue.range.start.line} · {lintDict.jumpToIssue}
+                    </span>
+                  ) : null}
+                </div>
+              </button>
+            );
+          })}
+        </div>
       </div>
     </>
   );
@@ -146,6 +228,8 @@ export default function PromptForm({
   submitAction,
 }: Props) {
   const formRef = useRef<HTMLFormElement>(null);
+  const contentRef = useRef<HTMLTextAreaElement>(null);
+  const lintAbortRef = useRef<AbortController | null>(null);
   const [mode, setMode] = useState<Mode>('manual');
   const [title, setTitle] = useState(initial?.title ?? '');
   const [content, setContent] = useState(initial?.content ?? '');
@@ -159,6 +243,11 @@ export default function PromptForm({
   const [style, setStyle] = useState('');
   const [generatorError, setGeneratorError] = useState<string | null>(null);
   const [generating, setGenerating] = useState(false);
+  const [lintIssues, setLintIssues] = useState<LintIssue[]>(initial?.lintIssues ?? []);
+  const [lintStats, setLintStats] = useState<LintStats | null>(initial?.lintStats ?? null);
+  const [linting, setLinting] = useState(false);
+  const [lintError, setLintError] = useState<string | null>(null);
+  const [lintRan, setLintRan] = useState<boolean>(Array.isArray(initial?.lintIssues));
 
   const action = submitAction ?? createPrompt;
   const [state, formAction] = useFormState(action, INITIAL_STATE);
@@ -217,6 +306,113 @@ export default function PromptForm({
     }
   };
 
+  useEffect(() => {
+    if (!content.trim()) {
+      lintAbortRef.current?.abort();
+      lintAbortRef.current = null;
+      setLintIssues([]);
+      setLintStats(null);
+      setLintRan(false);
+      setLintError(null);
+      setLinting(false);
+      return;
+    }
+
+    let active = true;
+    const handle = window.setTimeout(() => {
+      lintAbortRef.current?.abort();
+      const controller = new AbortController();
+      lintAbortRef.current = controller;
+      setLinting(true);
+      setLintError(null);
+
+      fetch('/api/linter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: content }),
+        signal: controller.signal,
+      })
+        .then(async (response) => {
+          if (!response.ok) {
+            const detail = await response.json().catch(() => ({}));
+            throw new Error(detail?.error === 'NOT_AUTHENTICATED' ? dict.saveErrorGeneric : dict.lint.error);
+          }
+          return (await response.json()) as LintResponse;
+        })
+        .then((json) => {
+          if (!active) return;
+          setLintIssues(Array.isArray(json.lint_issues) ? json.lint_issues : []);
+          setLintStats(json.stats ?? null);
+          setLintRan(true);
+        })
+        .catch((error: any) => {
+          if (error?.name === 'AbortError' || !active) {
+            return;
+          }
+          setLintError(error?.message || dict.lint.error);
+        })
+        .finally(() => {
+          if (!active) {
+            return;
+          }
+          if (lintAbortRef.current === controller) {
+            lintAbortRef.current = null;
+          }
+          setLinting(false);
+        });
+    }, 600);
+
+    return () => {
+      active = false;
+      window.clearTimeout(handle);
+      if (lintAbortRef.current) {
+        lintAbortRef.current.abort();
+        lintAbortRef.current = null;
+      }
+    };
+  }, [content, dict.lint.error, dict.saveErrorGeneric]);
+
+  const focusIssue = useCallback(
+    (issue: LintIssue) => {
+      const target = contentRef.current;
+      if (!target) return;
+      target.focus();
+      if (issue.range) {
+        const start = issue.range.start.offset;
+        const end = issue.range.end.offset;
+        try {
+          target.setSelectionRange(start, end);
+        } catch {
+          // Ignore selection errors
+        }
+      }
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    },
+    []
+  );
+
+  const lintIssuesFieldValue = useMemo(() => {
+    if (!lintRan) {
+      return '';
+    }
+    try {
+      return JSON.stringify(lintIssues);
+    } catch {
+      return '';
+    }
+  }, [lintIssues, lintRan]);
+
+  const severityBadges = useMemo(
+    () =>
+      (['error', 'warning', 'info'] as LintSeverity[]).map((severity) => ({
+        severity,
+        label: dict.lint.severityLabels[severity] ?? severity,
+        count: lintStats?.severityCount?.[severity] ?? 0,
+        palette: SEVERITY_PALETTE[severity],
+      })),
+    [dict.lint.severityLabels, lintStats]
+  );
+
   return (
     <div className="col" style={{ gap: 16 }}>
       <div className="row" style={{ gap: 12, flexWrap: 'wrap' }}>
@@ -247,6 +443,7 @@ export default function PromptForm({
       <form ref={formRef} action={formAction} className="card col" style={{ gap: 16 }}>
         <input type="hidden" name="redirectTo" value={redirectTo} />
         {initial?.id ? <input type="hidden" name="prompt_id" value={initial.id} /> : null}
+        <input type="hidden" name="lint_issues" value={lintIssuesFieldValue} readOnly />
         <FormFields
           dict={dict}
           categories={categories}
@@ -259,6 +456,12 @@ export default function PromptForm({
           setContent={setContent}
           customCategory={customCategory}
           setCustomCategory={setCustomCategory}
+          lintIssues={lintIssues}
+          linting={linting}
+          lintError={lintError}
+          lintRan={lintRan}
+          onIssueFocus={focusIssue}
+          contentRef={contentRef}
         />
         {saveError ? (
           <span className="muted" style={{ color: '#ef4444' }}>
@@ -269,6 +472,59 @@ export default function PromptForm({
           <SaveButton label={dict.saveButton} saving={dict.savingButton} />
         </div>
       </form>
+
+      {lintStats ? (
+        <div className="card col" style={{ gap: 12 }}>
+          <div className="row" style={{ justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
+            <h3 style={{ margin: 0 }}>{dict.lint.summaryHeading}</h3>
+            <div className="row" style={{ gap: 12, fontSize: 12, color: '#94a3b8' }}>
+              <span>
+                {dict.lint.wordCountLabel}: {lintStats.wordCount}
+              </span>
+              <span>
+                {dict.lint.lineCountLabel}: {lintStats.lineCount}
+              </span>
+              <span>
+                {dict.lint.charCountLabel}: {lintStats.charCount}
+              </span>
+            </div>
+          </div>
+          <div className="row" style={{ gap: 16, flexWrap: 'wrap' }}>
+            {(Object.keys(lintStats.sections) as Array<keyof typeof lintStats.sections>).map((section) => {
+              const covered = Boolean(lintStats.sections[section]);
+              return (
+                <div key={section} className="col" style={{ gap: 4, minWidth: 140 }}>
+                  <span className="muted" style={{ fontSize: 12 }}>
+                    {dict.lint.sectionLabels?.[section as keyof typeof dict.lint.sectionLabels] ?? section}
+                  </span>
+                  <span style={{
+                    color: covered ? '#34d399' : '#f87171',
+                    fontWeight: 600,
+                  }}>
+                    {covered ? dict.lint.coverageOk : dict.lint.coverageMissing}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
+            {severityBadges.map(({ severity, label, count, palette }) => (
+              <span
+                key={severity}
+                className="tag"
+                style={{
+                  background: palette.background,
+                  borderColor: palette.border,
+                  color: palette.text,
+                  fontWeight: 600,
+                }}
+              >
+                {label}: {count}
+              </span>
+            ))}
+          </div>
+        </div>
+      ) : null}
 
       {mode === 'generator' ? (
         <div className="card col" style={{ gap: 12 }}>

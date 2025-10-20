@@ -1,0 +1,54 @@
+{
+  "version": "2025-10-20",
+  "rules": [
+    {
+      "code": "ROLE_MISSING",
+      "title": "缺少角色设定",
+      "message": "补充角色设定，例如“你是……”或“Act as …”。",
+      "severity": "error",
+      "fix_hint": "在提示词开头添加明确的角色或身份描述。"
+    },
+    {
+      "code": "TASK_MISSING",
+      "title": "缺少任务目标",
+      "message": "补充具体任务说明，确保模型理解要做什么。",
+      "severity": "error",
+      "fix_hint": "使用“任务：”“Goal:”等语句描述目标和成功标准。"
+    },
+    {
+      "code": "CONSTRAINTS_MISSING",
+      "title": "缺少约束与要求",
+      "message": "提示词应包含执行步骤、限制条件或质量要求。",
+      "severity": "warning",
+      "fix_hint": "添加“约束/要求”段落，说明必须遵守的规则或评分标准。"
+    },
+    {
+      "code": "OUTPUT_FORMAT_MISSING",
+      "title": "缺少输出格式说明",
+      "message": "提示词没有说明输出格式或结果呈现方式。",
+      "severity": "warning",
+      "fix_hint": "明确期望输出，如“输出 JSON：{...}”或“以 Markdown 表格返回”。"
+    },
+    {
+      "code": "VARIABLE_PLACEHOLDER_MISSING",
+      "title": "缺少上下文变量",
+      "message": "提示词未提供需要用户补充的变量或输入占位符。",
+      "severity": "warning",
+      "fix_hint": "加入 {{variable}}、[input] 等占位符，提示用户提供关键信息。"
+    },
+    {
+      "code": "SAFETY_GUARDRAIL_MISSING",
+      "title": "缺少安全或边界提示",
+      "message": "补充安全词、禁止行为或容错边界，降低误用风险。",
+      "severity": "warning",
+      "fix_hint": "添加“不得…/Do not…”、“仅限…”等防滥用或质量守卫语句。"
+    },
+    {
+      "code": "PROMPT_TOO_SHORT",
+      "title": "提示词过短",
+      "message": "提示词长度不足，可能缺少必要的上下文。",
+      "severity": "info",
+      "fix_hint": "扩写提示词，补充背景、步骤或约束以获得稳定输出。"
+    }
+  ]
+}
