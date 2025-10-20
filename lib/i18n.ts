@@ -134,6 +134,58 @@ export type Dictionary = {
     importButton: string;
     tipsTitle: string;
     tips: string[];
+    packIO: {
+      title: string;
+      importTitle: string;
+      importDescription: string;
+      importFileLabel: string;
+      importButton: string;
+      importingButton: string;
+      importSuccess: string;
+      importError: string;
+      exportTitle: string;
+      exportDescription: string;
+      exportPackTitleLabel: string;
+      exportPackTitlePlaceholder: string;
+      exportPackSummaryLabel: string;
+      exportPackSummaryPlaceholder: string;
+      exportSelectPrompts: string;
+      exportButton: string;
+      exportingButton: string;
+      exportSuccess: string;
+      exportError: string;
+      downloadButton: string;
+      noPromptsSelected: string;
+      errorMessages: {
+        NOT_AUTHENTICATED: string;
+        PACK_JSON_REQUIRED: string;
+        PACK_JSON_INVALID: string;
+        NO_PROMPTS_FOUND: string;
+        NO_VALID_PROMPTS: string;
+        NO_PROMPTS_SELECTED: string;
+      };
+    };
+    packDiff: {
+      title: string;
+      fromVersion: string;
+      toVersion: string;
+      currentVersion: string;
+      compareButton: string;
+      summaryTitle: string;
+      addedPrompts: string;
+      changedPrompts: string;
+      removedPrompts: string;
+      newSections: string;
+      removedSections: string;
+      promptChangesTitle: string;
+      noDifferences: string;
+      added: string;
+      changed: string;
+      removed: string;
+      previous: string;
+      current: string;
+      openExample: string;
+    };
   };
   newPrompt: {
     title: string;
@@ -371,6 +423,60 @@ const dictionaries: Record<Locale, Dictionary> = {
         'E –举例或提供参考输出结构。',
         'L – 如果有 token / 成本限制，也可在此注明。',
       ],
+      // PackIO 模块翻译
+      packIO: {
+        title: 'Pack 导入/导出',
+        importTitle: '导入 Prompt Pack',
+        importDescription: '上传 JSON 格式的 Prompt Pack 文件，批量导入提示词到您的库中。',
+        importFileLabel: '选择 JSON 文件',
+        importButton: '导入',
+        importingButton: '导入中...',
+        importSuccess: '成功导入 {count} 个提示词',
+        importError: '导入失败，请检查文件格式',
+        exportTitle: '导出 Prompt Pack',
+        exportDescription: '选择您的提示词，导出为 JSON 格式的 Pack 文件，方便分享和备份。',
+        exportPackTitleLabel: 'Pack 标题',
+        exportPackTitlePlaceholder: '为您的 Pack 取一个标题',
+        exportPackSummaryLabel: 'Pack 描述',
+        exportPackSummaryPlaceholder: '简要描述这个 Pack 的内容和用途',
+        exportSelectPrompts: '选择要导出的提示词',
+        exportButton: '导出',
+        exportingButton: '导出中...',
+        exportSuccess: '成功导出 {count} 个提示词',
+        exportError: '导出失败，请稍后重试',
+        downloadButton: '下载 JSON 文件',
+        noPromptsSelected: '请至少选择一个提示词',
+        errorMessages: {
+          NOT_AUTHENTICATED: '请先登录',
+          PACK_JSON_REQUIRED: '请选择 JSON 文件',
+          PACK_JSON_INVALID: 'JSON 文件格式无效',
+          NO_PROMPTS_FOUND: '未找到提示词',
+          NO_VALID_PROMPTS: '没有有效的提示词',
+          NO_PROMPTS_SELECTED: '请选择要导出的提示词',
+        },
+      },
+      // Pack Diff 页面翻译
+      packDiff: {
+        title: 'Pack 版本对比',
+        fromVersion: '起始版本',
+        toVersion: '目标版本',
+        currentVersion: '当前版本',
+        compareButton: '对比',
+        summaryTitle: '对比摘要',
+        addedPrompts: '新增提示词',
+        changedPrompts: '修改提示词',
+        removedPrompts: '删除提示词',
+        newSections: '新增章节',
+        removedSections: '删除章节',
+        promptChangesTitle: '提示词变更',
+        noDifferences: '所选版本之间没有差异',
+        added: '新增',
+        changed: '修改',
+        removed: '删除',
+        previous: '之前',
+        current: '当前',
+        openExample: '打开示例',
+      },
     },
     newPrompt: {
       title: '创建提示词',
@@ -572,6 +678,60 @@ const dictionaries: Record<Locale, Dictionary> = {
         'E – Add examples or outline the expected structure.',
         'L – Mention limits like token budgets if relevant.',
       ],
+      // PackIO module translations
+      packIO: {
+        title: 'Pack Import/Export',
+        importTitle: 'Import Prompt Pack',
+        importDescription: 'Upload a JSON-formatted Prompt Pack file to batch import prompts into your library.',
+        importFileLabel: 'Select JSON file',
+        importButton: 'Import',
+        importingButton: 'Importing...',
+        importSuccess: 'Successfully imported {count} prompts',
+        importError: 'Import failed, please check file format',
+        exportTitle: 'Export Prompt Pack',
+        exportDescription: 'Select your prompts and export them as a JSON Pack file for sharing and backup.',
+        exportPackTitleLabel: 'Pack Title',
+        exportPackTitlePlaceholder: 'Give your pack a title',
+        exportPackSummaryLabel: 'Pack Summary',
+        exportPackSummaryPlaceholder: 'Briefly describe the content and purpose of this pack',
+        exportSelectPrompts: 'Select prompts to export',
+        exportButton: 'Export',
+        exportingButton: 'Exporting...',
+        exportSuccess: 'Successfully exported {count} prompts',
+        exportError: 'Export failed, please try again',
+        downloadButton: 'Download JSON file',
+        noPromptsSelected: 'Please select at least one prompt',
+        errorMessages: {
+          NOT_AUTHENTICATED: 'Please log in first',
+          PACK_JSON_REQUIRED: 'Please select a JSON file',
+          PACK_JSON_INVALID: 'Invalid JSON file format',
+          NO_PROMPTS_FOUND: 'No prompts found',
+          NO_VALID_PROMPTS: 'No valid prompts',
+          NO_PROMPTS_SELECTED: 'Please select prompts to export',
+        },
+      },
+      // Pack Diff page translations
+      packDiff: {
+        title: 'Pack Version Comparison',
+        fromVersion: 'From version',
+        toVersion: 'To version',
+        currentVersion: 'Current',
+        compareButton: 'Compare',
+        summaryTitle: 'Summary',
+        addedPrompts: 'Added prompts',
+        changedPrompts: 'Changed prompts',
+        removedPrompts: 'Removed prompts',
+        newSections: 'New sections',
+        removedSections: 'Removed sections',
+        promptChangesTitle: 'Prompt changes',
+        noDifferences: 'No differences detected between the selected versions.',
+        added: 'Added',
+        changed: 'Changed',
+        removed: 'Removed',
+        previous: 'Previous',
+        current: 'Current',
+        openExample: 'Open example',
+      },
     },
     newPrompt: {
       title: 'Create prompt',

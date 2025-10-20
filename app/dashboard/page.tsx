@@ -71,7 +71,12 @@ export default async function DashboardPage() {
       />
 
       <div className="col" style={{ gap: 12 }}>
-        <h3 style={{ margin: 0 }}>{dict.dashboard.listHeading}</h3>
+        <div className="row" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+          <h3 style={{ margin: 0 }}>{dict.dashboard.listHeading}</h3>
+          <Link href="/packs/io" className="btn-link">
+            {dict.packs.packIO.title}
+          </Link>
+        </div>
         {prompts.length === 0 ? (
           <p className="muted" style={{ margin: 0 }}>
             {dict.dashboard.emptyState}

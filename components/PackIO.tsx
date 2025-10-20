@@ -96,7 +96,7 @@ export default function PackIO({ dict, userPrompts = [] }: Props) {
     }
 
     if (!file.name.endsWith('.json')) {
-      setFileError('Please select a JSON file');
+      setFileError(dict.errorMessages.PACK_JSON_REQUIRED);
       setFileContent(null);
       setFileName(null);
       return;
@@ -113,12 +113,12 @@ export default function PackIO({ dict, userPrompts = [] }: Props) {
         setFileContent(text);
         setFileError(null);
       } catch {
-        setFileError('Invalid JSON format');
+        setFileError(dict.errorMessages.PACK_JSON_INVALID);
         setFileContent(null);
       }
     };
     reader.onerror = () => {
-      setFileError('Failed to read file');
+      setFileError(dict.importError);
       setFileContent(null);
     };
     reader.readAsText(file);

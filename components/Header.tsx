@@ -39,9 +39,6 @@ export default async function Header() {
           ) : (
             <Link href="/" className="btn">{dict.header.login}</Link>
           )}
-          <Link href="/packs/io" className="btn-link">
-            Packs
-          </Link>
         </div>
       </div>
     </header>

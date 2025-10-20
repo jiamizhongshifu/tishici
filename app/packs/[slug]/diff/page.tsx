@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { getDictionary } from '../../../../lib/i18n';
+import { getDictionary, type Dictionary } from '../../../../lib/i18n';
 import {
   diffPromptPacks,
   getPackVersion,
@@ -82,9 +82,9 @@ export default async function PackDiffPage({ params, searchParams }: PageProps) 
 
       <form className="card row" style={{ gap: 12, flexWrap: 'wrap', alignItems: 'flex-end' }}>
         <div className="col" style={{ gap: 4 }}>
-          <label htmlFor="from-version">From version</label>
+          <label htmlFor="from-version">{dict.packs.packDiff.fromVersion}</label>
           <select id="from-version" name="from" className="select" defaultValue={fromVersion}>
-            <option value={CURRENT_VERSION}>Current</option>
+            <option value={CURRENT_VERSION}>{dict.packs.packDiff.currentVersion}</option>
             {versionOptions.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -93,7 +93,7 @@ export default async function PackDiffPage({ params, searchParams }: PageProps) 
           </select>
         </div>
         <div className="col" style={{ gap: 4 }}>
-          <label htmlFor="to-version">To version</label>
+          <label htmlFor="to-version">{dict.packs.packDiff.toVersion}</label>
           <select id="to-version" name="to" className="select" defaultValue={toVersion}>
             {toOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -103,22 +103,22 @@ export default async function PackDiffPage({ params, searchParams }: PageProps) 
           </select>
         </div>
         <button type="submit" className="btn">
-          Compare
+          {dict.packs.packDiff.compareButton}
         </button>
       </form>
 
       <div className="card col" style={{ gap: 12 }}>
-        <h2 style={{ margin: 0 }}>Summary</h2>
+        <h2 style={{ margin: 0 }}>{dict.packs.packDiff.summaryTitle}</h2>
         <div className="row" style={{ gap: 12, flexWrap: 'wrap' }}>
-          <SummaryPill label="Added prompts" value={diff.summary.totalAdded} color="#22c55e" />
-          <SummaryPill label="Changed prompts" value={diff.summary.totalChanged} color="#facc15" />
-          <SummaryPill label="Removed prompts" value={diff.summary.totalRemoved} color="#ef4444" />
+          <SummaryPill label={dict.packs.packDiff.addedPrompts} value={diff.summary.totalAdded} color="#22c55e" />
+          <SummaryPill label={dict.packs.packDiff.changedPrompts} value={diff.summary.totalChanged} color="#facc15" />
+          <SummaryPill label={dict.packs.packDiff.removedPrompts} value={diff.summary.totalRemoved} color="#ef4444" />
         </div>
         {diff.summary.addedSections.length > 0 || diff.summary.removedSections.length > 0 ? (
           <div className="col" style={{ gap: 8 }}>
             {diff.summary.addedSections.length > 0 ? (
               <div>
-                <strong>New sections</strong>
+                <strong>{dict.packs.packDiff.newSections}</strong>
                 <ul style={{ margin: 0, paddingInlineStart: 18 }}>
                   {diff.summary.addedSections.map((heading) => (
                     <li key={heading}>{heading}</li>
@@ -128,7 +128,7 @@ export default async function PackDiffPage({ params, searchParams }: PageProps) 
             ) : null}
             {diff.summary.removedSections.length > 0 ? (
               <div>
-                <strong>Removed sections</strong>
+                <strong>{dict.packs.packDiff.removedSections}</strong>
                 <ul style={{ margin: 0, paddingInlineStart: 18 }}>
                   {diff.summary.removedSections.map((heading) => (
                     <li key={heading}>{heading}</li>
@@ -141,15 +141,15 @@ export default async function PackDiffPage({ params, searchParams }: PageProps) 
       </div>
 
       <div className="card col" style={{ gap: 12 }}>
-        <h2 style={{ margin: 0 }}>Prompt changes</h2>
+        <h2 style={{ margin: 0 }}>{dict.packs.packDiff.promptChangesTitle}</h2>
         {diff.entries.length === 0 ? (
           <span className="muted" style={{ fontSize: 13 }}>
-            No differences detected between the selected versions.
+            {dict.packs.packDiff.noDifferences}
           </span>
         ) : (
           <div className="col" style={{ gap: 12 }}>
             {diff.entries.map((entry) => (
-              <PromptDiffRow key={entry.key} entry={entry} />
+              <PromptDiffRow key={entry.key} entry={entry} dict={dict} />
             ))}
           </div>
         )}
@@ -179,10 +179,10 @@ function SummaryPill({ label, value, color }: { label: string; value: number; co
   );
 }
 
-function PromptDiffRow({ entry }: { entry: PromptPackDiffEntry }) {
+function PromptDiffRow({ entry, dict }: { entry: PromptPackDiffEntry; dict: Dictionary }) {
   const borderColor =
     entry.status === 'added' ? '#22c55e' : entry.status === 'changed' ? '#facc15' : '#ef4444';
-  const label = entry.status === 'added' ? 'Added' : entry.status === 'changed' ? 'Changed' : 'Removed';
+  const label = entry.status === 'added' ? dict.packs.packDiff.added : entry.status === 'changed' ? dict.packs.packDiff.changed : dict.packs.packDiff.removed;
 
   return (
     <div
@@ -220,14 +220,14 @@ function PromptDiffRow({ entry }: { entry: PromptPackDiffEntry }) {
       <div className="row" style={{ gap: 12, alignItems: 'flex-start', flexWrap: 'wrap' }}>
         {entry.fromPrompt ? (
           <div className="col" style={{ flex: 1, minWidth: 280, gap: 4 }}>
-            <strong style={{ fontSize: 12 }}>Previous</strong>
-            <PromptBlock prompt={entry.fromPrompt.prompt} url={entry.fromPrompt.url} />
+            <strong style={{ fontSize: 12 }}>{dict.packs.packDiff.previous}</strong>
+            <PromptBlock prompt={entry.fromPrompt.prompt} url={entry.fromPrompt.url} dict={dict} />
           </div>
         ) : null}
         {entry.toPrompt ? (
           <div className="col" style={{ flex: 1, minWidth: 280, gap: 4 }}>
-            <strong style={{ fontSize: 12 }}>Current</strong>
-            <PromptBlock prompt={entry.toPrompt.prompt} url={entry.toPrompt.url} />
+            <strong style={{ fontSize: 12 }}>{dict.packs.packDiff.current}</strong>
+            <PromptBlock prompt={entry.toPrompt.prompt} url={entry.toPrompt.url} dict={dict} />
           </div>
         ) : null}
       </div>
@@ -235,7 +235,7 @@ function PromptDiffRow({ entry }: { entry: PromptPackDiffEntry }) {
   );
 }
 
-function PromptBlock({ prompt, url }: { prompt: string; url?: string | null }) {
+function PromptBlock({ prompt, url, dict }: { prompt: string; url?: string | null; dict: Dictionary }) {
   return (
     <div className="col" style={{ gap: 6 }}>
       <pre
@@ -252,7 +252,7 @@ function PromptBlock({ prompt, url }: { prompt: string; url?: string | null }) {
       </pre>
       {url ? (
         <Link href={url} className="btn-link" target="_blank">
-          Open example
+          {dict.packs.packDiff.openExample}
         </Link>
       ) : null}
     </div>
