@@ -26,7 +26,7 @@ export function createOpenAIClient() {
 }
 
 export function resolveModel(model?: string) {
-  return model || process.env.OPENAI_DEFAULT_MODEL || 'gpt-4o-mini';
+  return model || process.env.OPENAI_DEFAULT_MODEL || 'gpt-5';
 }
 
 export function estimateCostUsd(model: string, inputTokens: number, outputTokens: number) {

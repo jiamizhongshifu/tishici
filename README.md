@@ -9,7 +9,7 @@
 
 - 前端：Next.js 14（App Router、Server Actions）
 - 后端：Supabase（Postgres + RLS + Auth）
-- AI：OpenAI API（默认 `gpt-4o-mini`）
+- AI：OpenAI API（默认 `gpt-5`）
 - 部署：Vercel
 
 ## 快速开始

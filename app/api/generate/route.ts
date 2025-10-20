@@ -75,7 +75,7 @@ export async function POST(req: Request) {
       apiKey,
       baseURL: process.env.OPENAI_BASE_URL || undefined,
     });
-    const resolvedModel = model || process.env.OPENAI_DEFAULT_MODEL || 'gpt-4o-mini';
+    const resolvedModel = model || process.env.OPENAI_DEFAULT_MODEL || 'gpt-5';
 
     const response = await client.chat.completions.create({
       model: resolvedModel,
