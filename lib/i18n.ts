@@ -65,6 +65,21 @@ export type Dictionary = {
     customCategoryLabel: string;
     customCategoryPlaceholder: string;
     customCategoryHint?: string;
+    lint: {
+      heading: string;
+      loading: string;
+      empty: string;
+      error: string;
+      jumpToIssue: string;
+      summaryHeading: string;
+      wordCountLabel: string;
+      lineCountLabel: string;
+      charCountLabel: string;
+      coverageOk: string;
+      coverageMissing: string;
+      severityLabels: { error: string; warning: string; info: string };
+      sectionLabels: Record<string, string>;
+    };
   };
   quickAdd: {
     title: string;
@@ -216,6 +231,28 @@ const dictionaries: Record<Locale, Dictionary> = {
       customCategoryLabel: '自定义分类（选填）',
       customCategoryPlaceholder: '输入新的分类名称',
       customCategoryHint: '填写后将创建新的分类并保存到列表中。',
+      lint: {
+        heading: '结构检查',
+        loading: '分析中…',
+        empty: '未发现结构性问题。',
+        error: '分析失败，请稍后再试。',
+        jumpToIssue: '定位',
+        summaryHeading: '提示结构概览',
+        wordCountLabel: '字数',
+        lineCountLabel: '行数',
+        charCountLabel: '字符数',
+        coverageOk: '已覆盖',
+        coverageMissing: '缺失',
+        severityLabels: { error: '错误', warning: '警告', info: '提示' },
+        sectionLabels: {
+          role: '角色设定',
+          task: '任务目标',
+          constraints: '约束 / 步骤',
+          output: '输出格式',
+          variables: '上下文变量',
+          guardrails: '安全边界',
+        },
+      },
     },
     quickAdd: {
       title: '快速保存',
@@ -346,6 +383,28 @@ const dictionaries: Record<Locale, Dictionary> = {
       customCategoryLabel: 'Custom category (optional)',
       customCategoryPlaceholder: 'Enter a new category name',
       customCategoryHint: 'We will create this category and add it to your list.',
+      lint: {
+        heading: 'Prompt check',
+        loading: 'Analyzing…',
+        empty: 'No structural issues detected.',
+        error: 'Lint analysis failed. Please try again later.',
+        jumpToIssue: 'Focus',
+        summaryHeading: 'Structure overview',
+        wordCountLabel: 'Words',
+        lineCountLabel: 'Lines',
+        charCountLabel: 'Characters',
+        coverageOk: 'Covered',
+        coverageMissing: 'Missing',
+        severityLabels: { error: 'Error', warning: 'Warning', info: 'Info' },
+        sectionLabels: {
+          role: 'Role',
+          task: 'Task',
+          constraints: 'Constraints',
+          output: 'Output format',
+          variables: 'Variables',
+          guardrails: 'Guardrails',
+        },
+      },
     },
     quickAdd: {
       title: 'Quick save',
