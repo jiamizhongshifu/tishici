@@ -1,8 +1,14 @@
 'use client';
+
 import { useState } from 'react';
 import { createClient } from '../lib/supabase/client';
+import type { Dictionary } from '../lib/i18n';
 
-export default function AuthForm() {
+type Props = {
+  dict: Dictionary['auth'];
+};
+
+export default function AuthForm({ dict }: Props) {
   const supabase = createClient();
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
@@ -19,7 +25,7 @@ export default function AuthForm() {
       if (error) throw error;
       setSent(true);
     } catch (err: any) {
-      setError(err?.message || '发送邮件失败');
+      setError(err?.message || dict.errorGeneric);
     } finally {
       setLoading(false);
     }
@@ -31,7 +37,7 @@ export default function AuthForm() {
   }
 
   if (sent) {
-    return <p className="muted">验证邮件已发送至 {email}，请查收。</p>;
+    return <p className="muted">{dict.emailSent.replace('{email}', email)}</p>;
   }
 
   return (
@@ -39,17 +45,25 @@ export default function AuthForm() {
       <input
         className="input"
         type="email"
-        placeholder="邮箱"
+        placeholder={dict.emailPlaceholder}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
       />
       <div className="row" style={{ gap: 8 }}>
-        <button type="submit" className="btn" disabled={loading}>{loading ? '发送中…' : '发送魔法链接'}</button>
-        <button type="button" onClick={signInWithGithub} className="btn" style={{ background: '#0f172a', border: '1px solid #2a3142' }}>GitHub 登录</button>
+        <button type="submit" className="btn" disabled={loading}>
+          {loading ? dict.sendingMagicLink : dict.sendMagicLink}
+        </button>
+        <button
+          type="button"
+          onClick={signInWithGithub}
+          className="btn"
+          style={{ background: '#0f172a', border: '1px solid #2a3142' }}
+        >
+          {dict.githubLogin}
+        </button>
       </div>
       {error ? <p className="muted" style={{ color: '#ef4444' }}>{error}</p> : null}
     </form>
   );
 }
-

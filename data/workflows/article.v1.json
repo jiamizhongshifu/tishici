@@ -1,0 +1,36 @@
+{
+  "workspace": "article",
+  "version": "1.0.0",
+  "stages": {
+    "A": {
+      "name": "新写(有Brief)",
+      "steps": [
+        { "action": "save_brief" },
+        { "action": "topic_select", "via": "linter" },
+        { "action": "generate", "via": "apply", "with": "draft_template" },
+        { "action": "review", "via": "linter" },
+        { "action": "optimize", "via": "bootstrap/rewrite" }
+      ]
+    },
+    "B": {
+      "name": "新写(无Brief)",
+      "steps": [
+        { "action": "brief_generate", "via": "apply", "with": "brief_generator" },
+        { "action": "topic_select", "via": "linter" },
+        { "action": "generate", "via": "apply", "with": "draft_template" },
+        { "action": "review", "via": "linter" }
+      ]
+    },
+    "D": {
+      "name": "审校优化",
+      "steps": [
+        { "action": "review", "via": "linter" },
+        { "action": "eval", "via": "eval/run" },
+        { "action": "optimize", "via": "bootstrap/rewrite" }
+      ]
+    }
+  },
+  "defaults": {
+    "start": "A"
+  }
+}

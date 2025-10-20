@@ -1,0 +1,160 @@
+# 阶段 0：准备 & 稳定（0.5 周）
+
+**目标**：梳理核心数据结构与接口，完成基础脚手架搭建。  
+**交付**：用户可在最小流程中生成 / 保存提示词。
+
+## 0.1 数据层与 RLS
+
+✅ 已完成：
+
+- Supabase 已上线 `categories`、`prompts` 两张核心表，并启用 RLS。  
+  - `prompts`：仅允许 `user_id = auth.uid()` 访问自己的数据。  
+  - `categories`：所有用户可读，满足预设分类展示需求。  
+- 行为验证：通过 UI / Server Actions 完成 `prompts` CRUD，未出现越权读写。
+
+⏳ 待完成：
+
+- [DB-001] 新增 `prompt_metadata(prompt_id PK, framework, success_criteria jsonb, constraints jsonb, variables jsonb, model_prefs jsonb, token_budget int, bootstrap_notes jsonb)`  
+- [DB-002] 新增 `eval_suites(id, owner, title)`、`eval_cases(id, suite_id FK, inputs jsonb, asserts jsonb)`  
+- [DB-003] 新增 `prompt_runs(id, owner, prompt_id FK, stats jsonb, result jsonb, created_at)`  
+- [DB-004] 为以上新表设置 RLS：`owner = auth.uid()`；种子数据 `owner IS NULL` 只读
+
+## 0.2 类型体系
+
+✅ 已完成：
+
+- 多语言词典 `lib/i18n.ts` 已覆盖现有界面，可在中 / 英之间切换；复制按钮、提示 Toast 等交互支持动态文案。
+
+⏳ 待完成：
+
+- [TS-001] 使用 Zod 定义 `PromptCardMeta`、`EvalCase`、`EvalRunOutput` 等核心类型  
+- [CFG-001] 在 `lib/i18n.ts` 中补充 `linter.*`、`eval.*`、`bootstrap.*`、`versions.*` 词条
+
+## 0.3 最小基线
+
+✅ 已完成：
+
+- 迁移脚本 `supabase/migrations/0001_init.sql` 可直接在 Supabase 执行并通过  
+- 核心页面 `/`、`/dashboard`、`/prompts/new`、`/packs/[slug]` 均正常渲染，无报错  
+  - `/prompts/new` 支持 “手动录入 / 定制生成” 两种模式，可保存提示词  
+  - `/dashboard` 提供复制、删除操作，删除按钮含确认提示  
+- `/api/generate`、`/api/prompts/[id]` API 运行正常，支持 OpenAI 兼容服务配置
+
+⏳ 待完成：
+
+- 将 Stage 0 新增表结构纳入迁移脚本，保持本地与云端结构一致
+
+## 阶段 0 当前进度表
+
+| 子任务 | 状态 | 说明 |
+| --- | --- | --- |
+| `categories` / `prompts` 表及 RLS | ✅ | 已上线并验证 |
+| 最小功能流程（首页 / 仪表盘 / 新建 / Packs） | ✅ | MVP 已可用 |
+| 多语言基础（中 / 英切换 + Toast） | ✅ | 语言切换按钮已生效 |
+| Metadata / Eval / Runs 表 & RLS | ⏳ | 计划中 |
+| Zod 类型体系 & i18n 扩展 | ⏳ | 计划中 |
+| 迁移脚本整合 Stage 0 新表 | ⏳ | 计划中 |
+
+> **阶段 0 结论**：MVP 已具备核心功能与多语言支持，可继续推进元数据、评测表结构与类型体系建设。
+
+---
+
+# 阶段 1：Linter + 结构元数据 + 小型评测（1.5 周）
+
+**目标**：搭建 “提示词结构 + 轻量评测” 的基础框架。  
+**交付**：用户可查看 Linter 结果、补齐结构字段，并运行小型评测。
+
+## 1.1 Linter 检查（覆写 & UI 提示）
+
+- [LN-101] 显示 “缺少核心目标” 提示  
+- [LN-102] 标记 “成功标准缺失” 并列出 2-3 条建议  
+- [LN-103] 标记 “时效 / 来源不足”，提示需补充更新日期或版本信息  
+- [LN-104] 提示 “格式缺失”，要求至少提供 JSON / Markdown / 表格之一  
+- [LN-105] 检测 “AI 语气 / 重复” 等风险  
+- [LN-106] 指出 “复杂度过高”（token 估算 + 建议拆分）  
+- [LN-107] 在 `PromptForm` 右侧展示 Linter 列表，并支持一键定位修改
+
+## 1.2 结构化元数据
+
+- [PM-101] `PromptForm` 新增 “结构化字段” 区域：目的、约束、成功标准、输入格式、变量、模型偏好等  
+- [PM-102] 保存提示词时同步写入 `prompt_metadata`（与 `prompts` 1:1）
+
+## 1.3 轻量评测模块
+
+- [EV-101] 新增 API：`POST /api/eval/run`，支持一次运行多条用例并返回通过率  
+- [EV-102] `/dashboard` 提供 “评测” 入口，展示通过 / 失败 / tokens / latency  
+- [EV-103] 支持多种断言：`json_schema` / `regex` / `contains`
+
+## 阶段 1 验收标准
+
+- 结构化字段填写覆盖率 ≥ 60%  
+- 评测断言命中率 ≥ 70%  
+- Linter 自动修复建议（或一键跳转）使用率 ≥ 40%  
+- 评测报告格式通过率 ≥ 90%
+
+---
+
+# 阶段 2：Prompt Packs 模板 + 版本对比（1 周）
+
+**目标**：提供模板化 Packs 选择、版本 Diff 与可视化。  
+**交付**：用户可选模板创建 Prompt Pack，并对比不同版本的差异。
+
+## 2.1 Packs 模板
+
+- [PK-201] 录入 “DanKoe Amplifier” 5 类模板：Idea Test / Source Distill / Structure Mine / Draft Mixer / Publish Cutter  
+- [PK-202] 录入 “WX 研究要点” 3 类模板：信息采集 / 选题拆解 / 框架校验  
+- [PK-203] `/packs/[slug]` 展示模板 Prompt 瓦片，提供 “一键导入 / 打开 ChatGPT”
+
+## 2.2 版本管理
+
+- [VR-201] 新增版本 API：`POST /api/prompts/:id/version`（SemVer，默认 +1 PATCH）  
+- [VR-202] 版本 Diff：对结构化字段进行差异对比，支持侧栏展开
+
+## 阶段 2 验收标准
+
+- Packs 模板覆盖率 ≥ 35%  
+- 版本 Diff 使用率 ≥ 20%  
+- 模板导入功能在 48 小时内稳定运行（含导入 / 回滚）
+
+---
+
+# 阶段 3：展示评测结果 + 能力标签（2 周）
+
+**目标**：强化 “评测 - 标签 - 能力” 之间的联动，提升提示词可理解性。  
+*（原计划内容保持，阶段 0 已交付部分不再赘述）*
+
+---
+
+# 阶段 4：成熟模型 + 进阶 Linter（1.5 周）
+
+*（保持原计划，待阶段 1-2 完成后再细化）*
+
+---
+
+# 阶段 5：精细化观察（1 周）
+
+*（保持原计划，关注指标与体验细节）*
+
+---
+
+## 未来 backlog（供 Issue 拆分参考）
+
+- 数据层：DB-001 ~ DB-004  
+- 类型 / 配置：TS-001、CFG-001  
+- Linter：LN-101 ~ LN-107  
+- 评测：EV-101 ~ EV-103  
+- Packs：PK-201 ~ PK-203  
+- 版本管理：VR-201、VR-202  
+- 行为指标：BS-301 ~ BS-306、MM-401 ~ MM-403、CL-401 ~ CL-402  
+- i18n：I18N-401  
+- 观察 & UX：UX-501、UX-502、AN-501 ~ AN-503、DOC-501
+
+---
+
+## 30 日整体目标（保持原规划）
+
+- 结构化字段填写率 ≥ 70%  
+- Linter 修复建议采纳率 ≥ 40%  
+- 评测用例覆盖率 ≥ 35%  
+- 平均 Prompt token 下降 ≥ 25%  
+- 模板化 Packs 使用率 ≥ 35%

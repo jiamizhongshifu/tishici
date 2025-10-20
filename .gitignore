@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+tsconfig.tsbuildinfo
 
 # Next.js build outputs
 .next/
@@ -21,4 +22,3 @@ pnpm-debug.log*
 Thumbs.db
 .idea/
 .vscode/
-
