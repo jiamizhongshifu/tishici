@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { createOpenAIClient, resolveModel, runChatCompletionWithUsage } from 'lib/openai';
 
 const systemPrompt = {
   zh: '你是一名专业的 Prompt 工程师，只返回 JSON，包含 title 与 content 字段。',
@@ -71,13 +72,11 @@ export async function POST(req: Request) {
 
     const locale = language === 'en' ? 'en' : 'zh';
 
-    const client = new OpenAI({
-      apiKey,
-      baseURL: process.env.OPENAI_BASE_URL || undefined,
-    });
-    const resolvedModel = model || process.env.OPENAI_DEFAULT_MODEL || 'gpt-4o-mini';
+    const client = createOpenAIClient();
+    const resolvedModel = resolveModel(model);
 
-    const response = await client.chat.completions.create({
+    const { output } = await runChatCompletionWithUsage({
+      client,
       model: resolvedModel,
       messages: [
         { role: 'system', content: systemPrompt[locale] },
@@ -89,7 +88,7 @@ export async function POST(req: Request) {
       temperature: 0.7,
     });
 
-    const text = response.choices?.[0]?.message?.content?.trim() || '';
+    const text = output.trim();
     let json: any = {};
     try {
       json = JSON.parse(text);

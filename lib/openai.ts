@@ -1,4 +1,5 @@
 import OpenAI from 'openai';
+import type { ResponseInput } from 'openai/resources/responses/responses';
 
 const PRICE_TABLE: Record<
   string,
@@ -14,14 +15,25 @@ const PRICE_TABLE: Record<
   'gpt-4o-realtime-preview': { input: 5 / 1_000_000, output: 15 / 1_000_000 },
 };
 
+const RESPONSES_MODEL_PREFIXES = ['gpt-4.1', 'gpt-5'];
+
+function shouldUseResponses(model: string) {
+  return RESPONSES_MODEL_PREFIXES.some((prefix) => model.startsWith(prefix));
+}
+
 export function createOpenAIClient() {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
     throw new Error('Missing OPENAI_API_KEY');
   }
+  const organization =
+    process.env.OPENAI_ORGANIZATION || process.env.OPENAI_ORG_ID || undefined;
+  const project = process.env.OPENAI_PROJECT || process.env.OPENAI_PROJECT_ID || undefined;
   return new OpenAI({
     apiKey,
     baseURL: process.env.OPENAI_BASE_URL || undefined,
+    organization,
+    project,
   });
 }
 
@@ -38,7 +50,7 @@ export function estimateCostUsd(model: string, inputTokens: number, outputTokens
 
 export type OpenAIClient = ReturnType<typeof createOpenAIClient>;
 
-type ChatMessage = {
+export type ChatMessage = {
   role: 'system' | 'user' | 'assistant';
   content: string;
 };
@@ -132,33 +144,77 @@ export async function runChatCompletionWithUsage({
   while (attempt < Math.max(1, maxRetries)) {
     try {
       const startedAt = Date.now();
-      const completion = await openai.chat.completions.create({
-        model,
-        messages,
-        temperature,
-        top_p: topP,
-      });
-      const latencyMs = Date.now() - startedAt;
-      const {
-        prompt_tokens: promptTokens = 0,
-        completion_tokens: completionTokens = 0,
-        total_tokens: totalTokensRaw,
-      } = completion.usage ?? {};
-      const inputTokens = promptTokens;
-      const outputTokens = completionTokens;
-      const totalTokens =
-        typeof totalTokensRaw === 'number' && Number.isFinite(totalTokensRaw)
-          ? totalTokensRaw
-          : inputTokens + outputTokens;
-      const output = completion.choices?.[0]?.message?.content ?? '';
-      const usage: ChatCompletionUsage = {
-        inputTokens,
-        outputTokens,
-        totalTokens,
-        latencyMs,
-        costUsd: estimateCostUsd(model, inputTokens, outputTokens),
-        model,
-      };
+      let output = '';
+      let usage: ChatCompletionUsage;
+
+      if (shouldUseResponses(model)) {
+        const responseInput = messages.map((message) => ({
+          role: message.role,
+          type: 'message' as const,
+          content: [{ type: 'text' as const, text: message.content }],
+        })) as unknown as ResponseInput;
+        const response = await openai.responses.create({
+          model,
+          input: responseInput,
+          temperature,
+          top_p: topP,
+        });
+        const latencyMs = Date.now() - startedAt;
+        const inputTokens = response.usage?.input_tokens ?? 0;
+        const outputTokens = response.usage?.output_tokens ?? 0;
+        const totalTokensRaw = response.usage?.total_tokens;
+        const totalTokens =
+          typeof totalTokensRaw === 'number' && Number.isFinite(totalTokensRaw)
+            ? totalTokensRaw
+            : inputTokens + outputTokens;
+        output = response.output_text ?? '';
+        if (!output && Array.isArray(response.output) && response.output.length > 0) {
+          const first = response.output[0] as any;
+          const contentItems = Array.isArray(first?.content) ? first.content : [];
+          const textPart = contentItems.find(
+            (item: any) => item && item.type === 'text' && typeof item.text === 'string'
+          );
+          if (textPart) {
+            output = textPart.text as string;
+          }
+        }
+        usage = {
+          inputTokens,
+          outputTokens,
+          totalTokens,
+          latencyMs,
+          costUsd: estimateCostUsd(model, inputTokens, outputTokens),
+          model,
+        };
+      } else {
+        const completion = await openai.chat.completions.create({
+          model,
+          messages,
+          temperature,
+          top_p: topP,
+        });
+        const latencyMs = Date.now() - startedAt;
+        const {
+          prompt_tokens: promptTokens = 0,
+          completion_tokens: completionTokens = 0,
+          total_tokens: totalTokensRaw,
+        } = completion.usage ?? {};
+        const inputTokens = promptTokens;
+        const outputTokens = completionTokens;
+        const totalTokens =
+          typeof totalTokensRaw === 'number' && Number.isFinite(totalTokensRaw)
+            ? totalTokensRaw
+            : inputTokens + outputTokens;
+        output = completion.choices?.[0]?.message?.content ?? '';
+        usage = {
+          inputTokens,
+          outputTokens,
+          totalTokens,
+          latencyMs,
+          costUsd: estimateCostUsd(model, inputTokens, outputTokens),
+          model,
+        };
+      }
 
       if (onUsage) {
         await onUsage(usage);
