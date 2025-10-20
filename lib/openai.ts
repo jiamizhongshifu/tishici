@@ -26,9 +26,14 @@ export function createOpenAIClient() {
   if (!apiKey) {
     throw new Error('Missing OPENAI_API_KEY');
   }
+  const organization =
+    process.env.OPENAI_ORGANIZATION || process.env.OPENAI_ORG_ID || undefined;
+  const project = process.env.OPENAI_PROJECT || process.env.OPENAI_PROJECT_ID || undefined;
   return new OpenAI({
     apiKey,
     baseURL: process.env.OPENAI_BASE_URL || undefined,
+    organization,
+    project,
   });
 }
 
