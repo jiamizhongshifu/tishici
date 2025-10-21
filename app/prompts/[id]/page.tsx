@@ -211,7 +211,16 @@ export default async function PromptDetailPage({ params }: PageProps) {
               </span>
             ) : (
               <div className="col" style={{ gap: 8 }}>
-                <strong style={{ fontSize: 13 }}>{dict.promptForm.lintIssueListLabel}</strong>
+                <div className="row" style={{ justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
+                  <strong style={{ fontSize: 13 }}>{dict.promptForm.lintIssueListLabel}</strong>
+                  <Link
+                    href={`/prompts/${promptRow.id}/edit?autoFix=true`}
+                    className="btn-link"
+                    style={{ fontSize: 12, padding: '4px 10px' }}
+                  >
+                    {dict.promptForm.lintFixGenerateButton}
+                  </Link>
+                </div>
                 <div className="col" style={{ gap: 8 }}>
                   {lintIssues.map((issue, index) => {
                     const severity = issue.severity;

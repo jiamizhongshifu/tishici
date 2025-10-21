@@ -3,6 +3,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
+import { useSearchParams } from 'next/navigation';
 import { createPrompt, type CreatePromptState, type PromptActionHandler } from '../app/actions';
 import type { Dictionary, Locale } from '../lib/i18n';
 import type { PromptLintIssueRecord } from '../lib/types/prompt';
@@ -196,6 +197,7 @@ export default function PromptForm({
   initial,
   submitAction,
 }: Props) {
+  const searchParams = useSearchParams();
   const formRef = useRef<HTMLFormElement>(null);
   const [mode, setMode] = useState<Mode>('manual');
   const [title, setTitle] = useState(initial?.title ?? '');
@@ -236,6 +238,7 @@ export default function PromptForm({
   const [fixApplied, setFixApplied] = useState(false);
   const contentBeforeFixRef = useRef<string | null>(null);
   const skipContentEffectRef = useRef(false);
+  const autoFixTriggeredRef = useRef(false);
   const hasPromptContent = content.trim().length > 0;
 
   const action = submitAction ?? createPrompt;
@@ -526,6 +529,15 @@ export default function PromptForm({
     contentBeforeFixRef.current = null;
     setFixApplied(false);
   };
+
+  // 自动触发修正建议（从详情页点击"生成修正建议"按钮跳转过来时）
+  useEffect(() => {
+    const autoFix = searchParams?.get('autoFix');
+    if (autoFix === 'true' && !autoFixTriggeredRef.current && !linting && lintIssues.length > 0 && hasPromptContent && !fixPending && !fixSuggestion) {
+      autoFixTriggeredRef.current = true;
+      handleRequestFix();
+    }
+  }, [searchParams, linting, lintIssues.length, hasPromptContent, fixPending, fixSuggestion]);
 
   const handleGenerate = async () => {
     if (generating) return;
@@ -835,7 +847,7 @@ export default function PromptForm({
                 )}
           </div>
 
-          <div className="row" style={{ gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div className="row" style={{ gap: 8, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'flex-end' }}>
             <button
               type="button"
               className="btn"
