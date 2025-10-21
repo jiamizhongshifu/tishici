@@ -15,6 +15,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang={dict.locale}>
       <body>
+        <ExtensionErrorSuppressor />
         <Header />
         <main className="container">{children}</main>
         <ToastContainer fallbackMessage={dict.toast.default} />
