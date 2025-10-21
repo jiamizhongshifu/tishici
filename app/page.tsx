@@ -4,7 +4,7 @@ import CopyButton from '../components/CopyButton';
 import DeletePromptButton from '../components/DeletePromptButton';
 import OpenInChatGPTButton from '../components/OpenInChatGPTButton';
 import PromptQuickAddForm from '../components/PromptQuickAddForm';
-import { promptPacks } from '../lib/promptPacks';
+import { getPromptPacks } from '../lib/promptPacks';
 import { createRSCClient } from '../lib/supabase/server';
 import { getDictionary } from '../lib/i18n';
 
@@ -15,6 +15,7 @@ function formatPreview(content: string) {
 
 export default async function HomePage() {
   const dict = await getDictionary();
+  const promptPacks = getPromptPacks(dict.locale);
   const supabase = createRSCClient();
   const {
     data: { user },

@@ -18,9 +18,9 @@ type PageProps = {
 
 const CURRENT_VERSION = 'current';
 
-function resolveTargetPack(slug: string, version: string | undefined) {
+function resolveTargetPack(slug: string, version: string | undefined, locale: 'en' | 'zh') {
   if (!version || version === CURRENT_VERSION) {
-    const pack = getPromptPack(slug);
+    const pack = getPromptPack(slug, locale);
     if (!pack) return null;
     return {
       version: CURRENT_VERSION,
@@ -41,15 +41,15 @@ export default async function PackDiffPage({ params, searchParams }: PageProps) 
   const slug = params.slug;
   const versions = listPackVersions(slug);
 
-  if (versions.length === 0 && !getPromptPack(slug)) {
+  if (versions.length === 0 && !getPromptPack(slug, dict.locale)) {
     notFound();
   }
 
   const fromVersion = searchParams.from ?? versions.at(-1)?.version ?? CURRENT_VERSION;
   const toVersion = searchParams.to ?? CURRENT_VERSION;
 
-  const fromPack = resolveTargetPack(slug, fromVersion);
-  const toPack = resolveTargetPack(slug, toVersion);
+  const fromPack = resolveTargetPack(slug, fromVersion, dict.locale);
+  const toPack = resolveTargetPack(slug, toVersion, dict.locale);
 
   if (!fromPack || !toPack) {
     notFound();

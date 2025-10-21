@@ -1,0 +1,1562 @@
+[
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Communication & writing",
+    "useCase": "Write a professional email",
+    "prompt": "Write a professional email to [recipient]. The email is about [topic] and should be polite, clear, and concise. Provide a subject line and a short closing."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Communication & writing",
+    "useCase": "Rewrite for clarity",
+    "prompt": "Rewrite the following text so it is easier to understand. The text will be used in a professional setting. Ensure the tone is clear, respectful, and concise. Text: [paste text]."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Communication & writing",
+    "useCase": "Adapt message for audience",
+    "prompt": "Reframe this message for [audience type: executives, peers, or customers]. The message was originally written for [context]. Adjust tone, word choice, and style to fit the intended audience. Text: [paste text]."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Communication & writing",
+    "useCase": "Draft meeting invite",
+    "prompt": "Draft a meeting invitation for a session about [topic]. The meeting will include [attendees/roles] and should outline agenda items, goals, and preparation required. Provide the text in calendar-invite format."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Communication & writing",
+    "useCase": "Summarize long email",
+    "prompt": "Summarize this email thread into a short recap. The thread includes several back-and-forth messages. Highlight key decisions, action items, and open questions. Email: [paste text]."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Meetings & collaboration",
+    "useCase": "Create a meeting agenda",
+    "prompt": "Create a structured agenda for a meeting about [topic]. The meeting will last [time] and include [attendees]. Break the agenda into sections with time estimates and goals for each section."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Meetings & collaboration",
+    "useCase": "Summarize meeting notes",
+    "prompt": "Summarize these meeting notes into a structured recap. The notes are rough and informal. Organize them into categories: key decisions, next steps, and responsibilities. Notes: [paste text]."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Meetings & collaboration",
+    "useCase": "Create an action items list",
+    "prompt": "Turn the following meeting notes into a clean task list. The tasks should be grouped by owner and include deadlines if mentioned. Notes: [paste text]."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Meetings & collaboration",
+    "useCase": "Prep questions for a meeting",
+    "prompt": "Suggest thoughtful questions to ask in a meeting about [topic]. The purpose of the meeting is [purpose]. Provide a list of at least 5 questions that show preparation and insight."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Meetings & collaboration",
+    "useCase": "Draft follow-up email",
+    "prompt": "Write a professional follow-up email after a meeting about [topic]. Include a recap of key points, assigned responsibilities, and next steps with deadlines. Use a clear and polite tone."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "",
+    "useCase": "Identify root cause",
+    "prompt": "Analyze the following workplace issue: [describe issue]. The context is that the problem has occurred multiple times. Identify possible root causes and suggest questions to confirm them."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "",
+    "useCase": "Compare options",
+    "prompt": "Compare the following two or more possible solutions: [list options]. The decision needs to be made in [timeframe]. Evaluate pros, cons, and potential risks for each option."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "",
+    "useCase": "Decision criteria",
+    "prompt": "Help define clear decision-making criteria for [describe decision]. The context is that multiple stakeholders are involved. Provide a short list of weighted criteria to guide the choice."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "",
+    "useCase": "Risk assessment",
+    "prompt": "Assess the potential risks of the following plan: [describe plan]. The plan is set to start on [date]. List risks by likelihood and impact, and suggest mitigation strategies."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "",
+    "useCase": "Recommend best option",
+    "prompt": "Based on the following background: [describe situation and options], recommend the most suitable option. Explain your reasoning clearly and suggest first steps for implementation."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Organization & productivity",
+    "useCase": "Document daily priorities",
+    "prompt": "Create a prioritized to-do list from the following tasks: [paste tasks]. The context is a typical workday with limited time. Suggest which tasks should be done first and why."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Organization & productivity",
+    "useCase": "Create a weekly plan",
+    "prompt": "Build a weekly work plan for [describe role or situation]. The week includes deadlines, meetings, and individual focus time. Provide a balanced schedule with recommended priorities."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Organization & productivity",
+    "useCase": "Summarize a long document",
+    "prompt": "Summarize the following document into 5 key points and 3 recommended actions. The document is [type: report, plan, or notes]. Keep the summary concise and professional. Text: [paste document]."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Organization & productivity",
+    "useCase": "Brainstorm solutions",
+    "prompt": "Brainstorm potential solutions to the following workplace challenge: [describe challenge]. Provide at least 5 varied ideas, noting pros and cons for each."
+  },
+  {
+    "pack": "ChatGPT for any role",
+    "heading": "Organization & productivity",
+    "useCase": "Write a project update",
+    "prompt": "Draft a short project update for stakeholders. The project is [describe project]. Include progress made, current blockers, and next steps. Write in a professional, concise style."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Outreach & communication",
+    "useCase": "Draft a personalized cold outreach email",
+    "prompt": "Write a short, compelling cold email to a [job title] at [company name] introducing our product. Use the background below to customize it. Background: [insert value props or ICP info]. Format it in email-ready text."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Outreach & communication",
+    "useCase": "Rework demo follow-up email",
+    "prompt": "Rewrite this follow-up email after a demo to sound more consultative. Original email: [paste here]. Include recap, next steps, and call scheduling CTA. Output as email text."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Outreach & communication",
+    "useCase": "Draft renewal pitch for key customer",
+    "prompt": "Draft a renewal pitch for [customer name] based on this renewal history and value data: [paste data]. Include key ROI proof points and renewal recommendation. Output as a short pitch and optional follow-up email."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Outreach & communication",
+    "useCase": "Create summary of rep activity",
+    "prompt": "Write a daily update summarizing key rep activities. Inputs: [paste call summaries or CRM exports]. Make it upbeat and concise. Output as 3–5 bullet message."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Outreach & communication",
+    "useCase": "Draft exec update on pipeline status",
+    "prompt": "Summarize our pipeline health this month for execs. Inputs: [paste data]. Include total pipeline, top risks, biggest wins, and forecast confidence. Write it like a short exec update."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Sales strategy & planning",
+    "useCase": "Generate strategic account plan",
+    "prompt": "Create an account plan for [customer name]. Use these inputs: company profile, known priorities, current product usage, stakeholders, and renewal date. Output a structured plan with goals, risks, opportunities, and next steps."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Sales strategy & planning",
+    "useCase": "Design territory planning framework",
+    "prompt": "Create a territory planning guide for our next fiscal year. Inputs: team headcount, target industries, regions, and historical revenue. Recommend allocation method and sample coverage plan."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Sales strategy & planning",
+    "useCase": "Prioritize accounts using firmographic data",
+    "prompt": "I have this list of accounts: [paste sample]. Prioritize them based on [criteria: industry, size, funding, tech stack]. Output a ranked list with reasons why."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Sales strategy & planning",
+    "useCase": "Spot high-potential accounts using weighted scoring",
+    "prompt": "Score accounts based on [insert rules—e.g., company size, engagement score, intent signals]. Data: [Upload account list]. Output top 10 ranked accounts with their score and a note explaining why."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Sales strategy & planning",
+    "useCase": "Regional market entry planning",
+    "prompt": "I’m evaluating market entry into [region/country] for our [SaaS solution]. Research local buying behaviors, competitive landscape, economic conditions, and regulatory concerns. Format as a go/no-go market readiness summary with citations and action steps."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Competitive intelligence & enablement",
+    "useCase": "Create battlecard for competitor",
+    "prompt": "Create a battlecard for [competitor name]. Use these notes: [insert positioning data]. Include strengths, weaknesses, how we win, and quick talk track. Output as table format."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Competitive intelligence & enablement",
+    "useCase": "Competitive positioning analysis",
+    "prompt": "I’m preparing a competitive battlecard for [competitor name]. Research their pricing model, product positioning, recent customer wins/losses, and sales motion. Compare it to ours based on these strengths: [insert]. Output a 1-page summary with citations."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Competitive intelligence & enablement",
+    "useCase": "Create a sales enablement one-pager",
+    "prompt": "Create a one-pager to help reps pitch [product name] to [persona]. Include key benefits, features, common use cases, and competitor differentiators. Format as copy-ready enablement doc."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Competitive intelligence & enablement",
+    "useCase": "Prepare sales objection rebuttals",
+    "prompt": "Create rebuttals to these common objections: [insert 2–3 objections]. Make them sound natural and confident, and include a backup stat or story where useful. Output as list."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Competitive intelligence & enablement",
+    "useCase": "Find customer proof points in the public domain",
+    "prompt": "Research recent online reviews, social mentions, and testimonials about [our product OR competitor product]. Focus on what customers are praising or criticizing. Summarize top 5 quotes, what persona each came from, and where it was posted. Include links."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Data analysis & performance insights",
+    "useCase": "Analyze pipeline conversion rates by stage",
+    "prompt": "Analyze this sales pipeline export. Calculate conversion rates between each stage and identify the biggest drop-off point. Data: [Upload pipeline CSV]. Output a short summary and a table of conversion % by stage."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Data analysis & performance insights",
+    "useCase": "Identify top-performing reps by close rate",
+    "prompt": "From this dataset of rep activities and closed deals, calculate the close rate for each rep and rank them. Data: [Upload rep performance CSV]. Output a ranked list and a sentence for each rep’s strength."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Data analysis & performance insights",
+    "useCase": "Visualize deal velocity across quarters",
+    "prompt": "Use this CRM export to calculate average deal velocity per quarter (days from lead to close). Data: [Upload with open/close dates]. Show velocity trend in a simple chart and summarize the trendline."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Data analysis & performance insights",
+    "useCase": "Summarize campaign attribution to closed deals",
+    "prompt": "Match campaign sources to closed-won deals from this data. Identify which campaign drove the most closed revenue. Data: [Upload campaign + deal export]. Output a ranked list and a short campaign summary."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Data analysis & performance insights",
+    "useCase": "Generate performance comparison chart",
+    "prompt": "Here’s a table of rep performance by quarter: [paste data]. Compare top vs bottom performers. Show chart with trends and call out key differences. Output as table + insights."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Visuals & Sales Collateral",
+    "useCase": "Visualize sales process in funnel view",
+    "prompt": "Create a funnel graphic showing our sales stages: [insert stages]. Make it clean and easy to read for onboarding docs. Output as simple image."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Visuals & Sales Collateral",
+    "useCase": "Visualize the B2B sales funnel",
+    "prompt": "Create an image of a standard B2B SaaS sales funnel with these stages: Prospecting, Discovery, Demo, Proposal, Closed Won/Lost. Use clean, modern icons and text labels. Output should be clear enough for use in a slide or enablement doc."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Visuals & Sales Collateral",
+    "useCase": "Illustrate key sales personas",
+    "prompt": "Create professional illustrations for 3 personas: (1) CFO of a mid-market company, (2) VP of IT at a global enterprise, and (3) Operations Manager at a logistics firm. Style should be flat and modern, ideal for use in a one-pager or training slide."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Visuals & Sales Collateral",
+    "useCase": "Create a territory coverage map",
+    "prompt": "Create a simplified U.S. map showing sales territories split by region: West, Central, East. Use distinctive color zones and label key states. Output should look clean and suitable for a sales kickoff deck."
+  },
+  {
+    "pack": "ChatGPT for sales",
+    "heading": "Visuals & Sales Collateral",
+    "useCase": "Draft a team celebration graphic",
+    "prompt": "Design a fun, modern graphic to celebrate “Top Rep of the Month.” Include a placeholder for name/photo and stylized trophy or badge. Style should match internal brand or newsletter vibe."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Onboarding & lifecycle strategy",
+    "useCase": "Create onboarding plan template",
+    "prompt": "Create a reusable onboarding plan template for [type of customer]. Reference typical timelines, milestones, and stakeholder alignment needs. Format as a week-by-week table with task owners and goals."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Onboarding & lifecycle strategy",
+    "useCase": "Summarize onboarding feedback",
+    "prompt": "Summarize onboarding feedback from our last 10 customers in [segment]. Use these shared notes and survey answers. Output a short paragraph per theme: wins, blockers, suggestions."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Onboarding & lifecycle strategy",
+    "useCase": "Identify best practices for high-touch onboarding",
+    "prompt": "Research how leading B2B companies structure high-touch onboarding journeys. Focus on companies with $1M+ ACV and hybrid onboarding models. Include sources and structure the output as a bulleted summary of key tactics with references."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Onboarding & lifecycle strategy",
+    "useCase": "Suggest proactive playbooks",
+    "prompt": "Recommend 3 proactive outreach playbooks for at-risk customers in [industry/segment]. Use trends from recent churn, feature inactivity, and low engagement. Output should include: goal, trigger, CTA, and timing."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Onboarding & lifecycle strategy",
+    "useCase": "Brainstorm retention incentives",
+    "prompt": "Suggest creative retention strategies for accounts likely to downgrade in [industry]. Use trends in usage and renewal hesitations we’ve seen. Output 5 tested and 5 novel ideas with pros/cons."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Competitive & benchmark research",
+    "useCase": "Benchmark CS org structure",
+    "prompt": "Benchmark the CS org structure for companies like ours in [industry, size]. Focus on roles per customer segment and ratio to revenue. Output as a comparison table with notes on headcount ratios."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Competitive & benchmark research",
+    "useCase": "Benchmark success metrics by industry",
+    "prompt": "Research top 3 success metrics used for customer health scoring in the [industry] sector. Include CSAT, NRR, usage frequency, or other emerging benchmarks. Output as a table comparing metric, source, and benchmark value with citations."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Competitive & benchmark research",
+    "useCase": "Evaluate CS tooling stacks",
+    "prompt": "Research typical Customer Success tech stacks for companies in early-stage, growth-stage, and enterprise. Include categories (e.g., CRM, Success Platform, Analytics). Output a comparison chart with examples and usage notes."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Competitive & benchmark research",
+    "useCase": "Competitive enablement summary",
+    "prompt": "Research how competitors are supporting enterprise customers post-sale in [industry]. Include examples of success resources, team structure, and onboarding formats. Output as a table comparing 3 competitors with pros/cons per tactic."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Competitive & benchmark research",
+    "useCase": "Create competitive comparison of CS programs",
+    "prompt": "Research what customer success programs look like at our top 3 competitors. Focus on onboarding, health tracking, and expansion strategies. Output a comparison matrix."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Account planning & renewal prep",
+    "useCase": "Draft executive email update",
+    "prompt": "Write a weekly update email for [executive stakeholder at customer]. Use these internal notes from this week’s call and usage metrics: [paste here]. Output should be a short, polished email with 3 bullets."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Account planning & renewal prep",
+    "useCase": "Draft QBR talking points",
+    "prompt": "Summarize the top wins, risks, and product usage highlights for [Customer Name] ahead of our QBR. Use their latest health score, usage trends, and support ticket history. Format as a bulleted prep doc for internal review."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Account planning & renewal prep",
+    "useCase": "Prep for renewal call",
+    "prompt": "Create a renewal call prep checklist for [Customer Name]. Include contract terms, current usage, known risks, and upsell potential. Output as a bulleted checklist."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Account planning & renewal prep",
+    "useCase": "Create account plan summary",
+    "prompt": "Draft a 1-pager account plan for [Customer Name]. Use notes from our last 2 calls + contract info + goals: [paste here]. Output should be formatted as goals, blockers, actions, and renewals."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Account planning & renewal prep",
+    "useCase": "Outline renewal risk summary",
+    "prompt": "Draft a renewal risk summary for [Customer Name] ahead of our internal forecast call. Include their renewal date, usage trend, sentiment, and contract notes. Output should be a paragraph summary + 1-line recommendation."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Data & health analysis",
+    "useCase": "Outline success metrics by segment",
+    "prompt": "Outline a draft list of success metrics for [segment] customers. Include adoption goals, engagement targets, and renewal benchmarks. Format as a 2-column table: Metric | Definition."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Data & health analysis",
+    "useCase": "Evaluate CSAT score distribution",
+    "prompt": "Review this CSAT survey data from Q2. Calculate overall average, identify outlier scores, and summarize feedback themes if available. Output as a short summary with key stats and top positive/negative feedback examples."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Data & health analysis",
+    "useCase": "Analyze support ticket trends",
+    "prompt": "Examine this export of support tickets from the last quarter. Identify the top 5 recurring issues and provide a short summary of root causes. Output should include a ranked list with issue, frequency, and potential CS actions."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Data & health analysis",
+    "useCase": "Spot early signs of churn",
+    "prompt": "Review this customer usage data from the past 90 days. Identify any customers who may be at risk of churning based on usage drop, login frequency, or support interactions. Summarize the findings in a table with columns: Customer Name | Risk Factor | Notes."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Data & health analysis",
+    "useCase": "Standardize customer health scoring",
+    "prompt": "Build a draft health scoring rubric for [segment or region]. Use inputs like usage %, NPS, renewal status, and ticket volume. Output as a table with scoring ranges, weights, and color indicators."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Visual & diagram design",
+    "useCase": "Design customer health score mock-up",
+    "prompt": "Design a visual mock-up of a color-coded health score gauge for customers. Include Low, Medium, High ranges with suggested numerical ranges and icons. Style: dashboard-style, clean lines, professional."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Visual & diagram design",
+    "useCase": "Visualize customer journey map",
+    "prompt": "Turn this outline of customer lifecycle stages into a visual journey map. Use the stages and pain points listed here: [paste text]. Output as a labeled diagram with 5 lifecycle stages."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Visual & diagram design",
+    "useCase": "Illustrate escalation process flow",
+    "prompt": "Create a diagram that illustrates the internal escalation process from CSM to Support to Engineering. Include 3 levels of severity and labeled handoff points. Style: flowchart format, minimal colors, ready for internal wiki."
+  },
+  {
+    "pack": "ChatGPT for customer success",
+    "heading": "Visual & diagram design",
+    "useCase": "Build a visual customer maturity model",
+    "prompt": "Create an image that visualizes a 4-stage customer maturity model for a SaaS platform. Each stage should have a title, key behavior pattern, and suggested CS touchpoint. Style: professional, clean, slide-ready."
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Competitive & market research",
+    "useCase": "Compare competitors’ onboarding UX",
+    "prompt": "Research how 3 key competitors structure their onboarding flow for new users. Include screenshots, key steps, and points of friction or delight. Synthesize a comparison table and recommendations for improvement. Target product: [Insert product]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Competitive & market research",
+    "useCase": "Benchmark competitor pricing strategies",
+    "prompt": "I’m a product manager launching a new SaaS product. Research how top 5 competitors in this space structure their pricing tiers, freemium vs. paid, feature gating, and upsell triggers. Use public sources and include URLs. Output: A comparison table with insights and risks."
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Competitive & market research",
+    "useCase": "Compare tech stack options",
+    "prompt": "Compare the pros and cons of integrating [technology/tool A] vs. [technology/tool B] into our product. Focus on scalability, cost, support, and developer experience. Include citations."
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Competitive & market research",
+    "useCase": "Identify regulatory risks for new features",
+    "prompt": "I’m a PM scoping a [feature] for financial services. Research recent regulatory guidance in the US, UK, and EU around the use of [feature] in customer-facing products. Summarize by region with citations. Output: A table of legal considerations to flag for our legal team and product design implications."
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Competitive & market research",
+    "useCase": "Research top product-led growth tactics",
+    "prompt": "Research the top 7 product-led growth strategies used by fast-scaling SaaS companies in the last 2 years. Prioritize those with measurable impact. Include 1–2 examples per tactic and source links. Output: Ranked list with strategy, example, and success metric."
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Product strategy & roadmapping",
+    "useCase": "Prioritize product roadmap items based on impact",
+    "prompt": "Review this list of upcoming product initiatives. Use the data provided (impact scores, effort estimates, and strategic alignment notes) to suggest priority order. Present the reordered list with justification for each recommendation. [Insert initiative list]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Product strategy & roadmapping",
+    "useCase": "Explore monetization models",
+    "prompt": "We’re considering pricing changes. Based on this product value and audience, suggest 3 monetization strategies. Include pros, cons, and examples of companies using each. [Insert product and audience details]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Product strategy & roadmapping",
+    "useCase": "Draft a vision statement for the product",
+    "prompt": "Based on this long-term goal and user need, write a concise product vision statement. Keep it inspiring and grounded in real outcomes. [Insert product goal]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Product strategy & roadmapping",
+    "useCase": "Brainstorm feature ideas from customer feedback",
+    "prompt": "Review this batch of customer feedback from the past quarter. Identify pain points and generate a list of 5 feature ideas to address recurring themes. [Insert feedback or summary]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Product strategy & roadmapping",
+    "useCase": "Plan A/B testing experiments",
+    "prompt": "Review this list of product UI changes and propose 2 A/B test setups. Include hypothesis, success metrics, and potential outcomes. [Insert UI changes or user goals]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Product content & communication",
+    "useCase": "Draft PRD for a new feature",
+    "prompt": "Based on this feature idea and customer need, write a first-draft PRD. Include user story, problem statement, solution overview, acceptance criteria, and success metrics. [Insert context or problem]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Product content & communication",
+    "useCase": "Draft changelog and release notes",
+    "prompt": "Using this release summary, draft user-facing changelog notes for our next version release. Use a friendly, clear tone and group by category (e.g., new, improved, fixed). [Insert release notes or ticket list]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Product content & communication",
+    "useCase": "Create a go-to-market FAQ",
+    "prompt": "Draft an internal FAQ for our sales and support teams about our upcoming feature launch. Use this background and anticipated questions. Write in a confident, informative tone. [Insert feature and launch details]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Product content & communication",
+    "useCase": "Generate a one-sentence value proposition",
+    "prompt": "Based on this feature description, write 3 versions of a clear, compelling one-sentence value proposition. Tailor each one to a different target audience. [Insert feature description]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Product content & communication",
+    "useCase": "Draft pitch deck for new product",
+    "prompt": "Create a 5-slide outline for a pitch deck introducing our new product to internal stakeholders. Include problem, solution, market, product overview, and timeline. [Insert product idea]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "UX & visual design",
+    "useCase": "Visualize a user journey map",
+    "prompt": "Create a user journey map for our [insert user persona] going through [insert experience]. Include emotional highs/lows, touchpoints, and moments of friction. Output as a visual flow."
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "UX & visual design",
+    "useCase": "Design onboarding flow wireframe",
+    "prompt": "Generate a wireframe-style image of a 3-step onboarding flow for a finance app. Steps include: linking an account, setting financial goals, and reviewing suggestions. Style: greyscale wireframe with labels."
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "UX & visual design",
+    "useCase": "Illustrate product comparison visuals",
+    "prompt": "Create a side-by-side visual comparison of two app dashboards: one cluttered with too many metrics, and one simplified with actionable insights. Style: dashboard UI, minimalistic, neutral branding."
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "UX & visual design",
+    "useCase": "Design user journey infographics",
+    "prompt": "Generate a user journey infographic showing the onboarding experience for a mobile health-tracking app. Include key milestones, emotions, and friction points. Style: infographic, vertical layout, soft colors."
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Data analysis & insights",
+    "useCase": "Analyze product feedback themes",
+    "prompt": "Analyze this set of user feedback and identify the 4 most frequent themes. Summarize each with example quotes and suggested product implications. [Insert feedback or data dump]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Data analysis & insights",
+    "useCase": "Synthesize insights from usage data",
+    "prompt": "Based on the following product usage data, summarize 3 key behavioral trends and what they suggest about user needs. Recommend 2 follow-up investigations. [Insert data or summary]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Data analysis & insights",
+    "useCase": "Identify product adoption risks",
+    "prompt": "Review our product rollout plan and highlight 5 risks to successful adoption. Include likelihood, impact, and mitigation recommendations. [Insert rollout plan or summary]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Data analysis & insights",
+    "useCase": "Analyze A/B test results",
+    "prompt": "Review the results of our recent A/B test (test vs. control). Identify statistical significance, key metrics that changed, and recommend next steps. Present insights clearly with graphs if needed. [Upload test data]"
+  },
+  {
+    "pack": "ChatGPT for product",
+    "heading": "Data analysis & insights",
+    "useCase": "Compare feature adoption across customer segments",
+    "prompt": "Use this data to compare how small business vs. enterprise customers adopt our key features. Highlight major differences, usage frequencies, and retention impact. Format output as a table with insights. [Upload CSV or describe dataset]"
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Research & benchmarking",
+    "useCase": "Evaluate cloud providers for migration",
+    "prompt": "I’m an infrastructure engineer evaluating cloud migration options. Context: We’re moving from on-prem to the cloud for a fintech backend. Output: Compare AWS, GCP, and Azure for scalability, pricing, compliance, and developer tooling. Include citations."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Research & benchmarking",
+    "useCase": "Research frameworks for real-time apps",
+    "prompt": "I’m building a real-time collaboration tool. Context: We need low-latency and scalability. Output: Compare top frameworks (e.g., SignalR, Socket.io, WebRTC) with use cases, pros/cons, and current usage by other SaaS companies. Include sources."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Research & benchmarking",
+    "useCase": "Benchmark observability tools",
+    "prompt": "Benchmark the top observability tools. Context: We want to move from basic logging to full-stack monitoring. Output: Create a comparison table of features, pricing, integrations for Datadog, New Relic, Prometheus, and OpenTelemetry. Include sources."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Research & benchmarking",
+    "useCase": "Analyze AI/ML trends in logistics",
+    "prompt": "I’m researching AI/ML adoption in logistics systems. Context: Our company is considering integrating predictive routing. Output: A 5-paragraph summary on current trends, vendors, and implementation patterns. Include citations and links."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Research & benchmarking",
+    "useCase": "Investigate compliance best practices",
+    "prompt": "Research best practices for GDPR/CCPA compliance so we can help kick off discussions with our legal team. Context: Our app stores sensitive user data in the EU and US. Output: A compliance checklist with citations, sorted by regulation. Include links to documentation and regulations."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Technical reviews & documentation",
+    "useCase": "Review system design doc",
+    "prompt": "I’ve drafted a technical design document for [insert project or feature]. Review it for clarity, architectural soundness, and completeness. Highlight any missing considerations or questions reviewers may raise."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Technical reviews & documentation",
+    "useCase": "Document internal API behavior",
+    "prompt": "I need to document how this internal API works for other developers. Here’s the relevant code, schema, and usage examples: [insert materials]. Create clear documentation including endpoints, input/output formats, and expected behavior."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Technical reviews & documentation",
+    "useCase": "Draft runbook for on-call engineers",
+    "prompt": "I need to create a runbook for on-call engineers supporting [insert system]. Draft one that includes sections for system overview, common alerts, diagnostic steps, and escalation procedures."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Technical reviews & documentation",
+    "useCase": "Draft onboarding guide for new hires",
+    "prompt": "I need to write an onboarding guide for new engineers joining [insert team]. Create a draft with sections for required tools, access setup, codebase overview, and first tasks. Make it suitable for self-service onboarding."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Technical reviews & documentation",
+    "useCase": "Write JIRA ticket from spec",
+    "prompt": "Based on this engineering spec for [insert task or feature], write a JIRA ticket that includes the problem statement, context, goals, acceptance criteria, and technical notes for implementation."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Debugging & optimization",
+    "useCase": "Debug failing system in production",
+    "prompt": "A system in production is intermittently failing, and we’re struggling to isolate the root cause. Based on the following logs, metrics, and recent changes: [insert context], help identify the most likely causes and suggest next steps for mitigation."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Debugging & optimization",
+    "useCase": "Analyze performance bottlenecks",
+    "prompt": "Our service is experiencing latency and degraded performance during peak usage. Here are metrics, logs, and relevant traces: [insert context]. Help identify the bottlenecks and recommend specific optimizations."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Debugging & optimization",
+    "useCase": "Analyze a data pipeline failure",
+    "prompt": "A critical data pipeline failed in yesterday’s run. Here are the logs, data volume trends, and error outputs: [insert context]. Analyze what likely went wrong and provide recommendations to prevent recurrence."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Debugging & optimization",
+    "useCase": "Suggest observability improvements",
+    "prompt": "We currently use [insert tools] for monitoring [insert service]. Review our observability setup and suggest improvements across metrics, logging, alerting, and dashboards to improve issue detection and debugging."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Debugging & optimization",
+    "useCase": "Brainstorm edge cases for testing",
+    "prompt": "We’re preparing test cases for [insert feature/system]. Brainstorm potential edge cases and failure scenarios that may not be covered by standard testing, including unusual user inputs, system state changes, and concurrency issues."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Data analysis & reporting",
+    "useCase": "Identify trends in product usage logs",
+    "prompt": "Analyze this CSV of product usage logs. Context: We want to identify usage trends over time and across user segments. Output: Summary stats + line or bar charts highlighting key trends."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Data analysis & reporting",
+    "useCase": "Visualize system error rates over time",
+    "prompt": "Plot error rates over time from this dataset. Context: It contains application logs from the last month. Output: A time-series chart with callouts for error spikes and a short interpretation."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Data analysis & reporting",
+    "useCase": "Analyze performance test results",
+    "prompt": "Analyze this set of performance test results. Context: It compares two versions of our backend service. Output: Side-by-side comparison charts + text summary of improvements or regressions."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Data analysis & reporting",
+    "useCase": "Prioritize bugs based on impact",
+    "prompt": "Analyze this bug report dataset. Context: Each row includes severity, frequency, and affected users. Output: A prioritized list of top bugs with charts showing frequency vs. severity."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "Data analysis & reporting",
+    "useCase": "Summarize feedback from user surveys",
+    "prompt": "Summarize this user feedback CSV. Context: It includes ratings and open text responses from a recent survey. Output: Key themes, sentiment scores, and charts showing distribution of ratings."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "System architecture & visualization",
+    "useCase": "Create a component diagram",
+    "prompt": "I need to visualize the architecture of [insert system or service]. Generate a component diagram showing key services, data flows, and third-party integrations. Use clear labels and group components logically."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "System architecture & visualization",
+    "useCase": "Visualize system architecture",
+    "prompt": "Create an image of the system architecture. Context: It’s a microservices-based e-commerce platform with services for payments, catalog, and user profiles. Output: Diagram with labeled services and data flow arrows."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "System architecture & visualization",
+    "useCase": "Explain CI/CD pipeline to stakeholders",
+    "prompt": "Create an image that explains our CI/CD process. Context: This is for a presentation to business stakeholders. Output: Diagram showing dev → build → test → deploy steps with basic icons and short descriptions."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "System architecture & visualization",
+    "useCase": "Model data flow in ML pipeline",
+    "prompt": "Create an image showing data flow in a machine learning pipeline. Context: We collect raw user data, clean it, train models, and serve predictions. Output: A labeled flowchart from raw data to inference."
+  },
+  {
+    "pack": "ChatGPT for engineers",
+    "heading": "System architecture & visualization",
+    "useCase": "Diagram customer journey through app",
+    "prompt": "Create a customer journey map through our mobile banking app. Context: Steps include onboarding, account linking, transactions, and support. Output: A visual flowchart with steps, screens, and decision points."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Workspace experience and feedback",
+    "useCase": "Draft employee survey questions",
+    "prompt": "Write 6–8 employee survey questions designed to measure [e.g. belonging, manager trust, workload balance]. Ensure the questions are neutral and easy to understand. Format them as one question per line with rating scale suggestions."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Workspace experience and feedback",
+    "useCase": "Generate performance review prompts",
+    "prompt": "Develop a set of five questions for performance reviews that encourage reflection, future goal setting, and actionable feedback. Tailor to [function/team], and keep the tone constructive and growth-oriented. Present the questions as a list for a review form."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Workspace experience and feedback",
+    "useCase": "Analyze exit survey themes",
+    "prompt": "Review the following employee exit survey responses and identify the top recurring themes, concerns, and sentiment trends. These responses are from [department/timeframe]. Provide a thematic summary with bullet points and representative quotes. [Insert responses here]"
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Workspace experience and feedback",
+    "useCase": "Analyze trends in employee attrition",
+    "prompt": "Analyze this employee attrition dataset from the last 12 months. Focus on patterns by department, tenure, and exit reasons. Summarize key insights and suggest 2–3 actions HR should consider. Present findings as bullet points followed by a short paragraph. [Upload your CSV or paste table here]"
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Workspace experience and feedback",
+    "useCase": "Generate a compensation benchmarking report",
+    "prompt": "Based on this internal salary data and industry benchmarks, highlight pay discrepancies by role, gender, and level. Include averages, standard deviation, and a visual if possible. Provide a short summary for leadership review. [Upload benchmark and internal files]"
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "HR research & compliance",
+    "useCase": "Research global HR compliance updates",
+    "prompt": "Research the latest 2024–2025 HR compliance changes in the EU, US, and APAC (focus on remote work laws, employee classification, and data privacy). Provide links to official sources and summarize in plain language. Present findings in a 3-region comparison table with a 1-paragraph summary per region."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "HR research & compliance",
+    "useCase": "Benchmark average DEI budgets",
+    "prompt": "Research typical DEI program budgets and team sizes for companies with 500–5,000 employees in the US. Include industry benchmarks if available. Present key insights with 3 cited data points and include a simple bullet summary for leadership."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "HR research & compliance",
+    "useCase": "Explore top HR tech trends for 2025",
+    "prompt": "[You’re briefing HR leadership on tech trends.] Research and summarize the top 5 HR technology trends expected to shape 2025. Include use cases, vendor examples, and implications for mid-sized companies. Synthesize insights into a short executive briefing with citations and actionable recommendations."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "HR research & compliance",
+    "useCase": "Compare employee retention strategies across industries",
+    "prompt": "[You are building a retention initiative for a mid-sized tech firm.] Research 3 innovative, high-impact employee retention strategies used in tech, healthcare, and financial services. Focus on post-pandemic engagement challenges. Include cited examples and summarize key elements in a side-by-side comparison chart."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "HR research & compliance",
+    "useCase": "Research tools for recruiting",
+    "prompt": "Research 4 top-rated candidate screening or sourcing tools used by mid-market companies. Summarize features, pricing, compliance status (EEOC), and known limitations. Provide links to primary sources and present findings in a comparison table."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Talent acquisition & employee engagement",
+    "useCase": "Create interview questions",
+    "prompt": "Develop behavioral interview questions aligned to our company values for a [role title] opening in [team/department]. We want to assess both technical skills and culture fit. Provide 6–8 questions grouped by competency."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Talent acquisition & employee engagement",
+    "useCase": "Write a job description draft",
+    "prompt": "Based on this information [insert job responsibilities, skills, team context], write a professional job description for a [job title]. Include a short intro, responsibilities, required qualifications, and what makes the role appealing."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Talent acquisition & employee engagement",
+    "useCase": "Brainstorm engagement initiatives",
+    "prompt": "Generate five practical ideas for improving employee engagement across [company/team/region]. Consider our hybrid work model, current engagement scores, and time/resource constraints. Present each idea with a short description, expected impact, and implementation effort level."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Talent acquisition & employee engagement",
+    "useCase": "Write internal recognition blurb",
+    "prompt": "Draft a short recognition message to celebrate [employee/team] for their recent accomplishment: [describe what they did]. Write it in a warm, appreciative tone suitable for Slack or email. Keep it under 100 words."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Talent acquisition & employee engagement",
+    "useCase": "Create a DEI workshop outline",
+    "prompt": "Design a one-hour DEI workshop for employees at [company/team]. The goal is to foster inclusive communication and awareness. Include an agenda, key learning objectives, interactive activities, and 2–3 discussion questions."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Policy & program development",
+    "useCase": "Draft an internal policy summary",
+    "prompt": "Summarize the key points of this [internal policy or handbook section] so HR business partners can understand and communicate it effectively. This policy relates to [brief description or context]. Present the summary in clear, professional language under 200 words."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Policy & program development",
+    "useCase": "Draft a return-to-office FAQ",
+    "prompt": "Write an employee-facing FAQ to support our return-to-office transition. Use this background information [insert key RTO plan details]. Cover top employee concerns (e.g. hybrid schedules, health protocols, expectations) in a warm and clear tone. Include 5–7 questions with answers."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Policy & program development",
+    "useCase": "Plan onboarding week",
+    "prompt": "Build a 5-day onboarding schedule for new hires in [department or region]. Include orientation goals, topics to cover, people to meet, and relevant tools or resources. Present it in a simple day-by-day table with time blocks if helpful."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Policy & program development",
+    "useCase": "Brainstorm wellbeing initiatives",
+    "prompt": "Suggest three tailored wellbeing programs for employees at [company/team], considering recent feedback and budget constraints. Include rationale, estimated costs, and potential success metrics. Present ideas as a short proposal summary."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Policy & program development",
+    "useCase": "Plan compliance training rollout",
+    "prompt": "Create a phased plan to roll out a new compliance training across [team/region]. Include timing, communications strategy, target audiences, and support materials. Present the plan in bullet points or as a 4-week calendar."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Internal brand visuals & communication",
+    "useCase": "Create a welcome banner for onboarding",
+    "prompt": "Create an image for a new employee onboarding welcome banner. Style: clean and modern. Mood: warm and inclusive. Format: horizontal banner with space for overlay text. Include visual cues like a diverse team, coffee cups, or digital collaboration tools."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Internal brand visuals & communication",
+    "useCase": "Design an internal DEI poster",
+    "prompt": "Create a poster-style image for an internal DEI campaign. Style: bold, minimal. Include abstract representations of diversity (hands, overlapping shapes, color blocks). Mood: optimistic and forward-looking. Include placeholder space for a slogan or quote."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Internal brand visuals & communication",
+    "useCase": "Illustrate a hybrid work policy",
+    "prompt": "Generate an illustration showing a hybrid work scenario: a person working from home, a coworking space, and a modern office. Style: flat illustration or soft 3D. Intended for use in HR documentation."
+  },
+  {
+    "pack": "ChatGPT for HR",
+    "heading": "Internal brand visuals & communication",
+    "useCase": "Visualize the employee lifecycle",
+    "prompt": "Create a simple visual diagram of the employee lifecycle: attract, onboard, develop, retain, offboard. Use icons or abstract figures to represent each phase. Style: corporate presentation-ready."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "Cloud & vendor evaluations",
+    "useCase": "Compare cloud providers",
+    "prompt": "Compare AWS, Azure, and GCP for our use case: [insert workload or environment]. Consider cost, uptime, global availability, and ease of integration. Research using 2025 data, and present a table comparing each provider with a recommendation at the end."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "Cloud & vendor evaluations",
+    "useCase": "Generate vendor comparison chart",
+    "prompt": "Research and compare remote access vendors for enterprise use. Focus on features, pricing, integrations, and support quality. Use 2025 data, and summarize the findings in a comparison table with notes."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "Cloud & vendor evaluations",
+    "useCase": "Compare AI observability tools",
+    "prompt": "I'm an IT Manager at [insert company]. I’m evaluating observability platforms. Research current offerings, pricing, supported environments, and key differentiators in 2025. Include citations and summarize insights in a comparison table with a recommendation for a mid-size engineering org."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "Cloud & vendor evaluations",
+    "useCase": "Investigate zero trust frameworks",
+    "prompt": "I'm a Security Architect working on adopting a zero trust model. Research leading frameworks (e.g., NIST 800-207) and recent updates to best practices in 2024–2025. Include real-world implementation case studies where possible. Provide a summarized comparison and an executive-ready briefing."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT compliance & security",
+    "useCase": "Assess global data residency laws",
+    "prompt": "I’m an IT Compliance Lead planning a global data storage architecture. Research 2025 data residency requirements across the EU, US, APAC, and LATAM. Include regulatory restrictions and preferred cloud regions. Cite official documentation and summarize findings in a table grouped by region."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT compliance & security",
+    "useCase": "Analyze remote access tools",
+    "prompt": "As an IT Service Delivery Lead, I need a secure, scalable remote access tool for our hybrid team. Compare current vendors (e.g., BeyondTrust, TeamViewer Tensor, Chrome Remote Desktop) for enterprise use in 2025. Focus on SSO support, encryption, session logging, and pricing. Provide a security-focused executive summary with links to primary sources."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT compliance & security",
+    "useCase": "Generate compliance checklist",
+    "prompt": "Based on SOC 2 guidelines, create a checklist of IT-specific controls to review for an upcoming internal audit. Use this existing audit prep document as background. Organize the checklist by domain (e.g., access, change management, incident response)."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT compliance & security",
+    "useCase": "Validate access controls",
+    "prompt": "Review this access matrix of users, roles, and systems. Check whether each user’s access level follows our least-privilege policy. Identify any potential overprovisioning, and provide a table listing users with permissions that may need to be scaled back."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT compliance & security",
+    "useCase": "Review API security posture",
+    "prompt": "Review this API schema and a sample set of traffic logs. Identify common API security issues such as poor input validation or lack of authentication. Provide a bullet-point list of findings with suggested fixes."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT operations & asset management",
+    "useCase": "Draft IT onboarding checklist",
+    "prompt": "Create a checklist for onboarding new hires from an IT perspective. Include key steps for account provisioning, security training, and hardware setup. Use this outline of our current process, and present the checklist organized by day or week."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT operations & asset management",
+    "useCase": "Generate hardware lifecycle policy",
+    "prompt": "Create a draft policy for managing the lifecycle of company laptops and desktops. Reference this spreadsheet of device ages and current replacement costs. Write a formal document with guidance on replacement timelines, support windows, and environmental considerations."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT operations & asset management",
+    "useCase": "Draft asset inventory policy",
+    "prompt": "Write a formal policy for maintaining and auditing IT asset inventory. Use this list of tools, departments, and stakeholders as a starting point. Include purpose, responsibilities, and process for inventory reconciliation."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT operations & asset management",
+    "useCase": "Help prioritize IT tickets",
+    "prompt": "Review this queue of open IT support tickets. Use this prioritization rubric based on impact, urgency, and SLA. Reorder the tickets accordingly and present the list as a prioritized backlog with a short reason for each ranking."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT operations & asset management",
+    "useCase": "Track hardware lifecycle risk",
+    "prompt": "Use this device inventory file containing purchase dates, models, and OS versions. Highlight which assets are past end-of-life or nearing refresh thresholds. Create a table of at-risk devices and include a narrative summary for IT leadership."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT communication & incident management",
+    "useCase": "Draft an incident postmortem",
+    "prompt": "Summarize the recent [insert system or service] outage. Include the root cause, timeline of events, user impact, and actions taken. Use information from the incident ticket or war room notes, and format the summary as a shareable internal postmortem report."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT communication & incident management",
+    "useCase": "Create a DR playbook draft",
+    "prompt": "Create a draft disaster recovery playbook for a critical production service. Use this system diagram and our recovery objectives (RTO, RPO). Organize the playbook into steps to take before, during, and after a service outage."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT communication & incident management",
+    "useCase": "Write internal comms for downtime",
+    "prompt": "Write a professional internal communication announcing planned downtime for [insert system or tool]. Include timing, affected users, impact on work, and who to contact for questions. Write the message in the tone of an IT team update."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT communication & incident management",
+    "useCase": "Translate error logs to plain language",
+    "prompt": "Help translate these system error logs into language that can be understood by a non-technical executive. Use definitions where needed, and summarize what each log entry means in a few clear sentences. Present the explanation as an email draft."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT communication & incident management",
+    "useCase": "Evaluate SaaS tool redundancy",
+    "prompt": "Review our current list of SaaS tools used by IT, engineering, and ops. Use the attached spreadsheet with cost, team usage, and tool functions. Identify overlapping tools and recommend 3–5 candidates for consolidation, explaining why each was chosen in a short summary report."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT monitoring & optimization",
+    "useCase": "Summarize system health trends",
+    "prompt": "Analyze the system health logs from the last 30 days. Focus on spikes in CPU/memory, service outages, and recurring error codes. Provide a concise summary of the key issues and add brief commentary on possible causes or needed follow-ups."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT monitoring & optimization",
+    "useCase": "Suggest system monitoring improvements",
+    "prompt": "Review our monitoring setup for [insert system] based on the current configuration and recent alert history. Identify 2–3 areas for improvement, such as gaps in alert coverage, noise reduction, or metrics tuning. Present the suggestions in a short internal memo."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT monitoring & optimization",
+    "useCase": "Analyze service uptime and incident frequency",
+    "prompt": "Review this CSV with daily uptime % and incident logs for [insert service] over the past quarter. Identify patterns in outages, frequency of issues by severity, and calculate overall uptime. Summarize findings and suggest actions for improvement in a brief report."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT monitoring & optimization",
+    "useCase": "Audit user access logs for anomalies",
+    "prompt": "Analyze this user access log export. Identify users or IP addresses with unusual access frequency, after-hours logins, or failed attempts. Flag suspicious patterns and summarize results in a security review format."
+  },
+  {
+    "pack": "ChatGPT for IT",
+    "heading": "IT monitoring & optimization",
+    "useCase": "Forecast IT support ticket volume",
+    "prompt": "Analyze this export of support ticket volume by week for the past 12 months. Identify seasonality trends and forecast volume for the next quarter. Visualize the trend and provide commentary for capacity planning."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Strategic planning & alignment",
+    "useCase": "Draft quarterly goals",
+    "prompt": "Draft clear and measurable quarterly goals for my team. Here is the business context, company objectives, and recent performance: [insert context]. Return 3 Objectives with 3-4 Key Results each, in a simple bullet format."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Strategic planning & alignment",
+    "useCase": "Exec update talking points",
+    "prompt": "I need to brief my VP on team progress. Based on this weekly summary: [insert notes], generate concise talking points grouped into achievements, blockers, and asks."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Strategic planning & alignment",
+    "useCase": "Run a skills gap analysis",
+    "prompt": "I’m trying to assess skill gaps on my team. Here’s our current skill matrix and desired future state: [insert info]. Identify key gaps and suggest training or hiring solutions. Return findings in a short table."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Strategic planning & alignment",
+    "useCase": "Plan a hiring roadmap",
+    "prompt": "I need to plan hiring needs for the next two quarters. Here’s our current team structure and projected growth: [insert info]. Suggest a phased hiring plan with rationale for each role and proposed timing."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Strategic planning & alignment",
+    "useCase": "Reframe goals after a pivot",
+    "prompt": "We just experienced a strategic pivot. Here’s what changed: [insert details]. Help me reframe our team’s goals and narrative to align with the new direction. Provide 2-3 talking points and a revised team goal statement."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Managerial coaching & performance enablement",
+    "useCase": "Create a 1:1 template",
+    "prompt": "Draft a 1:1 meeting template for my direct reports. I want it to include check-ins on progress, roadblocks, career growth, and feedback. Format it as a bulleted agenda with guiding questions."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Managerial coaching & performance enablement",
+    "useCase": "Improve feedback delivery",
+    "prompt": "I want to give constructive feedback to a report who is underperforming. The issue is [insert behavior]. Suggest 2-3 ways to phrase it constructively, with pros and cons of each approach."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Managerial coaching & performance enablement",
+    "useCase": "Prepare for a difficult conversation",
+    "prompt": "I have a difficult conversation coming up with a team member about [insert issue]. Help me think through what to say, how to open, and what questions to ask. Return a 3-part conversation guide."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Managerial coaching & performance enablement",
+    "useCase": "Resolve a cross-team conflict",
+    "prompt": "I’m dealing with a conflict between my team and another function. Here’s a summary of the tension and recent incidents: [insert info]. Suggest root causes and a 3-step mediation approach I can try."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Team analytics & health diagnostics",
+    "useCase": "Identify burnout risk from hours",
+    "prompt": "Based on this timesheet data (weekly hours logged per person), flag any early signs of burnout risk. Use a threshold of >45 hours for 2+ weeks. Return a summary of flagged employees and trends in average hours."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Team analytics & health diagnostics",
+    "useCase": "Analyze workload distribution",
+    "prompt": "I have a CSV that shows task assignments and completion times per team member for the last 4 weeks. Analyze workload distribution across the team—identify who may be overburdened or underutilized, and summarize in a short paragraph with a chart."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Team analytics & health diagnostics",
+    "useCase": "Diagnose team health issues",
+    "prompt": "I’m noticing signs of disengagement or dysfunction on my team. Based on this description of recent behavior and team dynamics: [insert description], what are the likely causes and what should I do next? Provide a 3-part action plan."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "People & talent research & benchmarking",
+    "useCase": "Hybrid engagement best practices",
+    "prompt": "I lead a hybrid team in [insert industry]. Research effective engagement and collaboration practices from the last 2 years. Focus on techniques proven to improve team trust, reduce burnout, and sustain productivity. Provide a top 5 list with supporting evidence and links."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "People & talent research & benchmarking",
+    "useCase": "Benchmark manager-to-IC ratios",
+    "prompt": "I’m a [insert role, e.g. Senior Engineering Manager] at a [insert company type, e.g., 500-person SaaS company]. I want to benchmark manager-to-IC ratios across similar tech firms. Focus on industry norms, variations by team type (engineering, product, etc.), and recommendations for scaling. Provide citations and a comparison table."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "People & talent research & benchmarking",
+    "useCase": "Research effective upskilling programs",
+    "prompt": "I’m designing an upskilling program for a [insert team type, e.g., customer support team]. Find case studies or frameworks from companies that have implemented successful internal training programs. Include how they measured success, duration, and tools used. Summarize in 3–4 paragraphs with links."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "People & talent research & benchmarking",
+    "useCase": "Compare DEI strategy examples",
+    "prompt": "I’m helping shape our team’s DEI goals. Research how leading companies in [insert industry] structure their DEI initiatives at the team level. Include examples of KPIs, training, and rituals. Return a comparison table with links."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "People & talent research & benchmarking",
+    "useCase": "Understand burnout risks and mitigation",
+    "prompt": "I’m seeing signs of burnout on my team. Research recent studies or expert guidance on recognizing burnout in knowledge workers and preventing escalation. Summarize key risk factors and recommend a 3-part action plan with citations."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Team culture & visual communication",
+    "useCase": "Depict a team growth journey",
+    "prompt": "Design a visual metaphor for a team’s growth journey over a year. Include representations of challenges, milestones, and collaboration. Style should be inspiring, like a timeline or path through a landscape."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Team culture & visual communication",
+    "useCase": "Summarize team culture visually",
+    "prompt": "Design an image that represents our team culture. Our values are [insert 3–5 values, e.g. curiosity, impact, accountability]. Use icons or illustrations to match each value, and organize in a clean layout suitable for a wiki or mural board."
+  },
+  {
+    "pack": "ChatGPT for managers",
+    "heading": "Team culture & visual communication",
+    "useCase": "Show quarterly focus areas",
+    "prompt": "Create a visual dashboard or poster that shows our team’s three strategic priorities this quarter: [insert priorities]. Make it visually engaging and easy to present in an all-hands slide."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Investor & market intelligence",
+    "useCase": "Summarize investor trends",
+    "prompt": "I’m preparing for our investor update. Research the latest funding and market trends in [industry]. Focus on valuation benchmarks, risk sentiment, and notable exits. Present in a concise brief with sources."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Investor & market intelligence",
+    "useCase": "Survey investor sentiment",
+    "prompt": "Research current investor sentiment for companies in the [industry] space. Pull insights from earnings calls, investor letters, and analyst notes. Focus on risk appetite, funding trends, and growth expectations. Provide a 1-page briefing with source links."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Investor & market intelligence",
+    "useCase": "Benchmark executive compensation",
+    "prompt": "Conduct research on executive compensation benchmarks for [title, e.g. CFO] at [company size and industry]. Include total compensation breakdowns, geographic variations, and trends across public/private companies. Summarize in a 1-page brief with data tables and citations."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Investor & market intelligence",
+    "useCase": "Evaluate M&A opportunities in a sector",
+    "prompt": "I’m evaluating M&A options in the [sector/vertical]. Research recent acquisitions (past 24 months), typical deal sizes, common targets, and integration outcomes. Provide company examples, risks, and strategic rationale. Format as an investor-style briefing."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Investor & market intelligence",
+    "useCase": "Assess future trends in [your industry]",
+    "prompt": "I’m an executive at [company/industry]. Conduct deep research on 3–5 emerging trends in [industry/topic] over the next 3 years. Include industry-specific examples, expert citations, and potential implications for strategy and talent planning. Present as an executive summary with bullet points and links to sources."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Executive & organizational communications",
+    "useCase": "Draft a vision statement",
+    "prompt": "Help me draft a compelling vision statement for our [company/team/initiative]. Our focus areas are: [insert key goals, values, or direction]. Make it inspiring, concise, and easy to communicate across departments."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Executive & organizational communications",
+    "useCase": "Generate town hall talking points",
+    "prompt": "I need talking points for an upcoming company-wide town hall. The theme is [insert theme or announcement]. Make it engaging, clear, and forward-looking. Limit to 5 minutes of content."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Executive & organizational communications",
+    "useCase": "Refresh internal comms strategy",
+    "prompt": "Help me design a new internal communications plan for [company or team]. We’re trying to improve alignment, morale, and transparency. Suggest 3 guiding principles and a simple comms calendar."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Executive & organizational communications",
+    "useCase": "Plan a reorg comms sequence",
+    "prompt": "I’m planning communications for a reorg. Provide a step-by-step message plan by audience type (execs, managers, all staff). Include tone guidelines and delivery format per message."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Executive & organizational communications",
+    "useCase": "Draft a succession planning memo",
+    "prompt": "Help me draft a succession planning memo for our [leadership team/board]. Include reasoning, timing, and a transparent outline of next steps for internal comms."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Strategic planning & decision support",
+    "useCase": "Create a pricing strategy brief",
+    "prompt": "We’re revisiting our pricing strategy for [product/service]. Based on [insert context: goals, customer segments, competitive positioning], suggest 2–3 pricing models and pros/cons of each."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Strategic planning & decision support",
+    "useCase": "Prioritize growth levers",
+    "prompt": "Given our goals [insert business goals], identify 3 high-potential growth levers and estimate effort vs. impact. Include a table with short descriptions and trade-offs."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Strategic planning & decision support",
+    "useCase": "Analyze market entry risks",
+    "prompt": "We are considering entering [new market/region]. Based on current economic, legal, and competitive factors, summarize key risks and mitigation strategies in bullet format."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Strategic planning & decision support",
+    "useCase": "Reframe strategic trade-offs",
+    "prompt": "We’re choosing between [Option A] and [Option B] for our next big investment. Compare trade-offs across cost, time, team capacity, and customer impact. Recommend based on goal fit."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Strategic planning & decision support",
+    "useCase": "Design a 3-year strategy outline",
+    "prompt": "Based on these business priorities [insert high-level goals], help me develop a high-level 3-year strategy. Include major focus areas, risks, and milestones per year."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Analytical performance & data insights",
+    "useCase": "Identify top and bottom performing segments",
+    "prompt": "This is a dataset of performance across [regions/products/customers]. Identify which segments are over- and under-performing relative to the average. Show the metrics driving this and recommend 2 actions based on the findings."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Analytical performance & data insights",
+    "useCase": "Analyze quarterly business metrics",
+    "prompt": "I’m reviewing performance data for Q[insert quarter]. Analyze this dataset [upload CSV] for key trends in revenue, churn, and customer acquisition. Highlight 3 insights I should share with the board and suggest follow-up questions I should ask."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Analytical performance & data insights",
+    "useCase": "Analyze customer journey drop-off",
+    "prompt": "I uploaded a funnel dataset showing customer journey stages. Analyze conversion rates between each stage and identify the largest drop-offs. Suggest 2–3 hypotheses and next steps to test or investigate."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Analytical performance & data insights",
+    "useCase": "Forecast next quarter based on historical trends",
+    "prompt": "Based on this historical data [upload], build a simple forecast for [KPI, e.g. revenue] over the next quarter. Use a basic time-series model and explain any assumptions made. Present as a short briefing I can share with my leadership team."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Analytical performance & data insights",
+    "useCase": "Prioritize strategic investments",
+    "prompt": "I uploaded a dataset of ongoing or proposed initiatives with cost, impact score, and estimated time to ROI. Help me prioritize these initiatives by building a simple scoring model and plotting effort vs. impact. Summarize the top 3 recommendations."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Executive visualization & framework design",
+    "useCase": "Build a competitive landscape grid",
+    "prompt": "Based on the following list of competitors and their differentiators [paste], create a 2x2 matrix plotting them by [x axis] and [y axis]. Label each quadrant and include our position."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Executive visualization & framework design",
+    "useCase": "Design a 2x2 market positioning matrix",
+    "prompt": "Create a 2x2 matrix plotting companies in [industry] by [X-axis: e.g. pricing] and [Y-axis: e.g. innovation]. Label each quadrant, add 6–8 companies, and highlight where we fit. Keep it suitable for a board presentation."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Executive visualization & framework design",
+    "useCase": "Show transformation timeline",
+    "prompt": "Create a visual timeline showing a company transformation journey from [year 1] to [year 3]. Include key milestones: strategy shifts, team growth, market expansion. Style: simple, bold, professional."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Executive visualization & framework design",
+    "useCase": "Visualize strategic vision or flywheel",
+    "prompt": "Create a high-level strategic flywheel or vision diagram for a company focused on [industry or goal]. Show how inputs (e.g. customers, data, feedback) loop into outputs (e.g. growth, innovation). Keep it clean, modern, and executive-ready."
+  },
+  {
+    "pack": "ChatGPT for executives",
+    "heading": "Executive visualization & framework design",
+    "useCase": "Illustrate a future product Vision",
+    "prompt": "Create a conceptual image of a future product vision for [industry/product]. Highlight features that reflect innovation and customer benefit. Style should be forward-looking, abstract but clear."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial benchmarking & market analysis",
+    "useCase": "Benchmark financial performance",
+    "prompt": "Benchmark our financial performance against companies in the [insert industry] sector. Use public data to compare gross margin, net profit, and CAC. Present results in a table with source links."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial benchmarking & market analysis",
+    "useCase": "Benchmark expense ratios vs. peers",
+    "prompt": "I'm a finance lead at [insert company or industry]. Research current SG&A and R&D expense ratios for 5 comparable companies in the [insert sector, e.g., SaaS, manufacturing, healthcare]. Provide a table with metrics, source links, and a short analysis of how we compare."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial benchmarking & market analysis",
+    "useCase": "Competitive fundraising analysis",
+    "prompt": "I'm a CFO preparing for our next fundraising round. Research recent funding rounds (past 12 months) in [insert industry]. Summarize deal sizes, valuations, lead investors, and positioning. Format as a briefing memo with source citations and clear bullet-point insights."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial benchmarking & market analysis",
+    "useCase": "Compare global tax regulations",
+    "prompt": "I manage global finance compliance. Research and compare corporate tax rates and reporting requirements in [insert countries]. Focus on tax incentives, reporting thresholds, and penalties. Deliver a comparison chart with links to official sources."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial benchmarking & market analysis",
+    "useCase": "ESG finance strategy benchmark",
+    "prompt": "I'm updating our ESG financial strategy. Research how leading companies in [insert industry] integrate ESG into financial planning and disclosures. Summarize 3–5 examples with their KPIs, reporting cadence, and financial impact. Include references."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial planning & forecasting",
+    "useCase": "Forecast revenue trends",
+    "prompt": "Forecast next quarter’s revenue based on the past 6 quarters of data. Use the trends from our [insert dataset or industry] to explain your reasoning. Present the forecast in a table and write a short executive summary."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial planning & forecasting",
+    "useCase": "Draft budget assumptions for planning",
+    "prompt": "Help me draft budget assumptions for our next annual plan. Context: [insert department/region/product info]. Output should include key assumptions, rationale, and any dependencies."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial planning & forecasting",
+    "useCase": "Model cash flow scenarios",
+    "prompt": "Model 3 cash flow scenarios based on these variables: [insert inputs such as revenue range, delays, or costs]. Output as a table with assumptions, key drivers, and estimated cash impact."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial planning & forecasting",
+    "useCase": "Conduct ROI analysis for tooling",
+    "prompt": "Conduct an ROI analysis for a new [insert software or tool] we’re considering. Context: [insert usage or pricing data]. Output should include payback period, assumptions, and a short risk assessment."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial planning & forecasting",
+    "useCase": "Compare pricing strategies",
+    "prompt": "Compare 3 potential pricing strategies for our [insert product or service]. Use prior pricing data from [insert past year] for context. Output should be a side-by-side comparison table with pros, cons, and estimated impact."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial communication & reporting",
+    "useCase": "Prepare board meeting talking points",
+    "prompt": "Draft financial talking points for an upcoming board meeting. Use our [insert Q2 results or P&L summary] as input. Write the talking points in bullet format, focusing on topline metrics and risk/upsides."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial communication & reporting",
+    "useCase": "Write investor update summary",
+    "prompt": "Write a summary for our next investor update. Use highlights from [insert performance report or fundraising update]. Format the output as a concise executive email suitable for external stakeholders."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial communication & reporting",
+    "useCase": "Draft QBR financial slide content",
+    "prompt": "Draft the financial performance section for our next QBR deck. Use these inputs: [insert Q2 revenue, margin trends, notable cost changes]. Output as slide bullets with 1–2 takeaway lines."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial communication & reporting",
+    "useCase": "Translate variance analysis",
+    "prompt": "Translate this variance analysis into a manager-friendly summary. Source: [insert analysis]. Write in plain language with a brief explanation of why each variance occurred."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial communication & reporting",
+    "useCase": "Summarize audit findings",
+    "prompt": "Summarize key findings from our internal audit. Use this document: [insert findings]. Output should be a summary for executives, with 3 themes and recommended next steps."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Operational finance & process improvement",
+    "useCase": "Analyze cost reduction opportunities",
+    "prompt": "Identify cost reduction opportunities from our recent budget report. Use the breakdown from [insert cost center or department] to evaluate. Provide a table with opportunities, projected savings, and any potential risks."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Operational finance & process improvement",
+    "useCase": "Evaluate M&A target fit",
+    "prompt": "Evaluate the financial and strategic fit of an M&A target. Use this context: [insert company profile or key metrics]. Output should be a table of pros/cons and a 3-paragraph summary of risk/reward."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Operational finance & process improvement",
+    "useCase": "Identify accounting process gaps",
+    "prompt": "Review our current accounting close checklist and suggest improvements. Use this documentation: [insert SOP or task list]. Output should highlight bottlenecks and recommend process updates."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Operational finance & process improvement",
+    "useCase": "Review vendor payments for consolidation",
+    "prompt": "Analyze vendor payments in this data [upload file]. Identify top 10 vendors by spend, spot any duplication (e.g., similar vendor names), and recommend vendors to consolidate. Output a table and short cost-reduction summary."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Operational finance & process improvement",
+    "useCase": "Procurement strategy cost levers",
+    "prompt": "I'm leading a finance initiative to cut procurement costs. Research strategies used by Fortune 500 companies to reduce procurement spend without harming supplier relationships. Present 3–5 tactics with cost impact examples and cited sources."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial dashboards & visual storytelling",
+    "useCase": "Visualize revenue growth funnel",
+    "prompt": "Create an image of a revenue growth funnel with labeled stages: Acquisition → Activation → Revenue → Retention → Expansion. Use a clean, modern style suitable for an executive finance presentation. Include icons for each stage."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial dashboards & visual storytelling",
+    "useCase": "Illustrate budget planning workflow",
+    "prompt": "Create a horizontal process flow diagram showing a budget planning cycle: Forecasting → Review → Stakeholder Input → Approval → Tracking → Adjustment. Use corporate-style visuals with subtle color and labels."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial dashboards & visual storytelling",
+    "useCase": "ESG finance impact visual",
+    "prompt": "Create a visual showing how ESG initiatives can impact finance metrics. Show links between sustainability investments and cost savings, risk mitigation, and investor interest. Use a modern, green-themed design with arrows."
+  },
+  {
+    "pack": "ChatGPT for finance",
+    "heading": "Financial dashboards & visual storytelling",
+    "useCase": "Executive dashboard concept",
+    "prompt": "Generate a conceptual image of a finance executive dashboard showing high-level KPIs: Revenue, Gross Margin, Burn Rate, Runway, and Budget vs. Actual. Use a clean layout with panels and placeholder numbers."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Campaign planning & strategy",
+    "useCase": "Visualize campaign timeline",
+    "prompt": "Build a timeline for our upcoming multi-channel campaign. Key dates and milestones are: [insert info]. Output as a horizontal timeline with phases, owners, and deadlines."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Campaign planning & strategy",
+    "useCase": "Brainstorm campaign ideas",
+    "prompt": "Brainstorm 5 creative campaign ideas for our upcoming [event/launch]. The audience is [insert target], and our goal is [insert goal]. Include a theme, tagline, and 1-2 core tactics per idea."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Campaign planning & strategy",
+    "useCase": "Draft a creative brief",
+    "prompt": "Create a creative brief for our next paid media campaign. Here's the goal, audience, and offer: [insert info]. Include sections for objective, audience insights, tone, assets needed, and KPIs."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Campaign planning & strategy",
+    "useCase": "Build a messaging framework",
+    "prompt": "Build a messaging framework for a new product. The product details are: [insert info]. Output a table with 3 pillars: key benefits, proof points, and emotional triggers."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Campaign planning & strategy",
+    "useCase": "Build a customer journey map",
+    "prompt": "Create a customer journey map for our [product/service]. Our typical customer is [insert profile]. Break it into stages, goals, touchpoints, and potential pain points per stage. Output as a table."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Competitive and market research",
+    "useCase": "Competitive content analysis",
+    "prompt": "Research how top 5 competitors structure their blog content strategy. Include tone, topics, frequency, SEO focus, and CTAs. Provide URLs, takeaways, and a table summarizing common and standout tactics."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Competitive and market research",
+    "useCase": "Research emerging trends in buyer behavior",
+    "prompt": "Research 2024 trends in how [type] buyers research and evaluate [industry] products. Include behavior shifts, content preferences, and channel usage. Cite sources and format as a short briefing with bullet-point insights."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Competitive and market research",
+    "useCase": "Research regional campaign benchmarks",
+    "prompt": "Research typical CTRs, CPCs, and conversion rates for digital campaigns targeting [location] in 2024. Focus on [ad channels]. Include source links and a table comparing each metric by country."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Competitive and market research",
+    "useCase": "Research industry event competitor presence",
+    "prompt": "Compile a summary of how our competitors are participating in [insert upcoming event]. Include booth activations, speaking sessions, sponsorships, and media coverage. Output as a table with links and analysis."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Competitive and market research",
+    "useCase": "Research AI tools for marketers",
+    "prompt": "Research the most recommended [tools] for marketers by function (e.g. copywriting, planning, analytics, design). Create a table with features, pricing, pros/cons, and primary use case. Include sources."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Content & creative development",
+    "useCase": "Draft a product launch email",
+    "prompt": "Write a launch email for our new product. Use the following info about the product and target audience: [insert details]. Make it engaging and persuasive, formatted as a marketing email ready for review."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Content & creative development",
+    "useCase": "Generate ad copy variations",
+    "prompt": "Create 5 ad copy variations for a [channel] campaign. Here’s the campaign theme and audience info: [insert context]. Each version should test a different hook or tone."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Content & creative development",
+    "useCase": "Create a social post series",
+    "prompt": "Draft a 3-post social media series promoting [event, product, or milestone]. Use this background for context: [paste details]. Each post should include copy and a suggested visual description."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Content & creative development",
+    "useCase": "Create a customer spotlight post",
+    "prompt": "Write a customer spotlight post based on this success story: [paste key details]. Make it conversational, authentic, and aligned to our brand voice. Output as a LinkedIn post draft."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Content & creative development",
+    "useCase": "Create an explainer video script",
+    "prompt": "Draft a script for a 60-second explainer video about [product/topic]. Here’s what it should cover: [insert info]. Make it punchy and clear, with suggested visuals or animations."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Data analysis & optimization",
+    "useCase": "Identify top-performing marketing channels",
+    "prompt": "Analyze this marketing performance spreadsheet and identify which channels had the highest ROI. The file includes data from Q1–Q2 campaigns across email, social, paid search, and events. Summarize top 3 channels and create a chart showing ROI by channel."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Data analysis & optimization",
+    "useCase": "Uncover customer churn patterns",
+    "prompt": "Review this customer churn dataset and identify common characteristics of churned customers. Use columns like tenure, product usage, and support tickets to group insights. Output a short summary with a chart or table showing top risk factors."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Data analysis & optimization",
+    "useCase": "Summarize survey results",
+    "prompt": "Summarize insights from this post-campaign customer feedback survey. The file includes satisfaction ratings and open-ended responses. Provide a 3-bullet executive summary and a chart of top satisfaction drivers."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Data analysis & optimization",
+    "useCase": "Forecast next quarter’s lead volume",
+    "prompt": "Use this historical lead volume data from the past 6 quarters to project expected lead volume for the next quarter. Highlight any trends, seasonal patterns, and output a simple forecast chart."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Data analysis & optimization",
+    "useCase": "Optimize campaign budget allocation",
+    "prompt": "Based on this spreadsheet of previous campaign spend and returns, recommend a revised budget allocation for next quarter. Focus on maximizing ROI while reducing spend on underperforming channels. Output as a table with new % allocations."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Visual & brand communication",
+    "useCase": "Develop a brand style guide outline",
+    "prompt": "Create an outline for a brand style guide for [company/product]. Include sections for typography, color palette, logo usage, tone of voice, imagery style, and do’s/don’ts."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Visual & brand communication",
+    "useCase": "Conceptualize visual storytelling",
+    "prompt": "Brainstorm 3 visual storytelling concepts for a brand campaign on [theme]. Include a concept name, visual style, and key narrative elements (e.g., story arc, mood, colors)."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Visual & brand communication",
+    "useCase": "Create visual campaign moodboard",
+    "prompt": "Create a moodboard with 4 visuals for our [campaign or brand update]. Theme is [describe theme], and the tone should be [describe tone]. Use photoreal or illustrated style."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Visual & brand communication",
+    "useCase": "Evaluate brand consistency",
+    "prompt": "Review the following marketing assets [insert links/files] and evaluate brand consistency in terms of tone, visuals, and messaging. Provide 3 strengths and 3 gaps with recommendations."
+  },
+  {
+    "pack": "ChatGPT for marketing",
+    "heading": "Visual & brand communication",
+    "useCase": "Refresh brand identity concepts",
+    "prompt": "Suggest 3 creative directions to refresh our brand identity. Include possible color palettes, typography styles, visual motifs, and tone updates that align with [audience/market shift]."
+  }
+]

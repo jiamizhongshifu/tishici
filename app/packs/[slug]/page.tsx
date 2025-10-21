@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getPromptPack, promptPacks } from '../../../lib/promptPacks';
+import { getPromptPack, getPromptPacks } from '../../../lib/promptPacks';
 import CopyButton from '../../../components/CopyButton';
 import { getDictionary } from '../../../lib/i18n';
 import { importPackPrompt } from '../../actions';
@@ -10,12 +10,14 @@ type Props = {
 };
 
 export function generateStaticParams() {
+  // 使用英文版本生成静态路径(slug 是语言无关的)
+  const promptPacks = getPromptPacks('en');
   return promptPacks.map((pack) => ({ slug: pack.slug }));
 }
 
 export default async function PromptPackPage({ params }: Props) {
   const dict = await getDictionary();
-  const pack = getPromptPack(params.slug);
+  const pack = getPromptPack(params.slug, dict.locale);
   if (!pack) {
     notFound();
   }

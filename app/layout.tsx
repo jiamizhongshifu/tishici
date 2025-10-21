@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Header from '../components/Header';
 import ToastContainer from '../components/ToastContainer';
+import ExtensionErrorSuppressor from '../components/ExtensionErrorSuppressor';
 import { getDictionary } from '../lib/i18n';
 
 export const metadata: Metadata = {
