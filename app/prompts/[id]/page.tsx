@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import CopyButton from '../../../components/CopyButton';
 import DeletePromptButton from '../../../components/DeletePromptButton';
-import EvalRunner from '../../../components/EvalRunner';
 import OpenInChatGPTButton from '../../../components/OpenInChatGPTButton';
+import LintRefreshButton from '../../../components/LintRefreshButton';
+import AutoLintRefresh from '../../../components/AutoLintRefresh';
 import { createRSCClient } from '../../../lib/supabase/server';
 import { getDictionary } from '../../../lib/i18n';
-import type { PromptLintSnapshot, PromptEvalScore } from '../../../lib/types/prompt';
+import type { PromptLintSnapshot } from '../../../lib/types/prompt';
 
 type PageProps = {
   params: { id: string };
@@ -34,7 +35,6 @@ type PromptWithRelations = {
   category_id: string | null;
   created_at: string;
   lint_issues: PromptLintSnapshot | null;
-  eval_score: PromptEvalScore | null;
   categories: {
     name: string | null;
   } | null | Array<{ name: string | null }>;
@@ -59,7 +59,6 @@ export default async function PromptDetailPage({ params }: PageProps) {
     category_id,
     created_at,
     lint_issues,
-    eval_score,
     categories:category_id (name)
   `;
 
@@ -87,7 +86,6 @@ export default async function PromptDetailPage({ params }: PageProps) {
     : dict.promptForm.uncategorized;
 
   const lintSnapshot = promptRow.lint_issues;
-  const evalScore = promptRow.eval_score;
   const lintIssues = lintSnapshot?.issues ?? [];
   const issueCounts = lintIssues.reduce(
     (acc, issue) => {
@@ -163,103 +161,115 @@ export default async function PromptDetailPage({ params }: PageProps) {
         <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{promptRow.content}</pre>
       </div>
 
-      {lintSnapshot ? (
-        <div className="card col" style={{ gap: 12 }}>
-          <div className="row" style={{ justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-            <h3 style={{ margin: 0 }}>{dict.promptForm.lintPanelTitle}</h3>
+      <div className="card col" style={{ gap: 12 }}>
+        <div className="row" style={{ justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+          <h3 style={{ margin: 0 }}>{dict.promptForm.lintPanelTitle}</h3>
+          <div className="row" style={{ gap: 8, alignItems: 'center' }}>
             {lintGeneratedAtText ? (
               <span className="muted" style={{ fontSize: 12 }}>
                 {dict.promptForm.lintUpdatedAt.replace('{time}', lintGeneratedAtText)}
               </span>
             ) : null}
+            <LintRefreshButton
+              promptId={promptRow.id}
+              content={promptRow.content}
+              locale={dict.locale}
+              refreshLabel={dict.promptForm.lintRetryButton}
+              refreshingLabel={dict.promptForm.lintLoading}
+            />
           </div>
+        </div>
 
-          <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
-            {severityOrder.map(({ key, severity }) => (
-              <div
-                key={severity}
-                className="row"
-                style={{
-                  gap: 6,
-                  alignItems: 'center',
-                  padding: '6px 10px',
-                  borderRadius: 6,
-                  border: `1px solid ${severityColors[severity]}33`,
-                  background: `${severityColors[severity]}20`,
-                  color: severityColors[severity],
-                  fontSize: 12,
-                  fontWeight: 600,
-                }}
-              >
-                <span>{dict.promptForm.lintSeverityLabels[severity]}</span>
-                <span>{lintSummary ? lintSummary[key] : 0}</span>
-              </div>
-            ))}
-          </div>
+        {lintSnapshot ? (
+          <>
+            <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
+              {severityOrder.map(({ key, severity }) => (
+                <div
+                  key={severity}
+                  className="row"
+                  style={{
+                    gap: 6,
+                    alignItems: 'center',
+                    padding: '6px 10px',
+                    borderRadius: 6,
+                    border: `1px solid ${severityColors[severity]}33`,
+                    background: `${severityColors[severity]}20`,
+                    color: severityColors[severity],
+                    fontSize: 12,
+                    fontWeight: 600,
+                  }}
+                >
+                  <span>{dict.promptForm.lintSeverityLabels[severity]}</span>
+                  <span>{lintSummary ? lintSummary[key] : 0}</span>
+                </div>
+              ))}
+            </div>
 
-          {lintIssues.length === 0 ? (
-            <span className="muted" style={{ fontSize: 13 }}>
-              {dict.promptForm.lintEmptyState}
-            </span>
-          ) : (
-            <div className="col" style={{ gap: 8 }}>
-              <strong style={{ fontSize: 13 }}>{dict.promptForm.lintIssueListLabel}</strong>
+            {lintIssues.length === 0 ? (
+              <span className="muted" style={{ fontSize: 13 }}>
+                {dict.promptForm.lintEmptyState}
+              </span>
+            ) : (
               <div className="col" style={{ gap: 8 }}>
-                {lintIssues.map((issue, index) => {
-                  const severity = issue.severity;
-                  const color = severityColors[severity];
-                  return (
-                    <div
-                      key={`${issue.code}-${index}`}
-                      className="col"
-                      style={{
-                        gap: 6,
-                        border: `1px solid ${color}33`,
-                        borderRadius: 8,
-                        padding: 12,
-                        background: '#101629',
-                      }}
-                    >
-                      <div className="row" style={{ gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
-                        <span
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: 6,
-                            fontSize: 12,
-                          fontWeight: 600,
-                          color,
+                <strong style={{ fontSize: 13 }}>{dict.promptForm.lintIssueListLabel}</strong>
+                <div className="col" style={{ gap: 8 }}>
+                  {lintIssues.map((issue, index) => {
+                    const severity = issue.severity;
+                    const color = severityColors[severity];
+                    return (
+                      <div
+                        key={`${issue.code}-${index}`}
+                        className="col"
+                        style={{
+                          gap: 6,
+                          border: `1px solid ${color}33`,
+                          borderRadius: 8,
+                          padding: 12,
+                          background: '#101629',
                         }}
                       >
-                          {dict.promptForm.lintSeverityLabels[severity]}
-                        </span>
-                        <span className="muted" style={{ fontSize: 12 }}>
-                          {issue.code}
-                        </span>
+                        <div className="row" style={{ gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+                          <span
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: 6,
+                              fontSize: 12,
+                            fontWeight: 600,
+                            color,
+                          }}
+                        >
+                            {dict.promptForm.lintSeverityLabels[severity]}
+                          </span>
+                          <span className="muted" style={{ fontSize: 12 }}>
+                            {issue.code}
+                          </span>
+                        </div>
+                        <span style={{ fontSize: 13 }}>{issue.message}</span>
+                        {issue.fix_hint ? (
+                          <span className="muted" style={{ fontSize: 12 }}>
+                            {dict.promptForm.lintFixHintLabel}：{issue.fix_hint}
+                          </span>
+                        ) : null}
                       </div>
-                      <span style={{ fontSize: 13 }}>{issue.message}</span>
-                      {issue.fix_hint ? (
-                        <span className="muted" style={{ fontSize: 12 }}>
-                          {dict.promptForm.lintFixHintLabel}：{issue.fix_hint}
-                        </span>
-                      ) : null}
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-      ) : null}
+            )}
+          </>
+        ) : (
+          <span className="muted" style={{ fontSize: 13 }}>
+            {dict.promptForm.lintNoResultHint}
+          </span>
+        )}
+      </div>
 
-      <EvalRunner
+      <AutoLintRefresh
         promptId={promptRow.id}
-        title={promptRow.title}
         content={promptRow.content}
         locale={dict.locale}
-        dict={dict.eval}
-        copyDict={dict.copy}
-        initialScore={evalScore}
+        hasLintSnapshot={!!lintSnapshot}
       />
     </div>
   );

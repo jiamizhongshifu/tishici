@@ -72,6 +72,7 @@ export type Dictionary = {
     lintUpdatedAt: string;
     lintRetryButton: string;
     lintEmptyState: string;
+    lintNoResultHint: string;
     lintErrorState: string;
     lintSummaryLabel: string;
     lintIssueListLabel: string;
@@ -354,6 +355,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       lintUpdatedAt: '上次检查：{time}',
       lintRetryButton: '重新检查',
       lintEmptyState: '暂未发现问题，继续保持！',
+      lintNoResultHint: '暂无体检结果，点击"重新检查"开始体检',
       lintErrorState: '检查失败，请稍后重试。',
       lintSummaryLabel: '问题概览',
       lintIssueListLabel: '问题列表',
@@ -609,6 +611,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       lintUpdatedAt: 'Last checked: {time}',
       lintRetryButton: 'Retry lint',
       lintEmptyState: 'Looks great! No issues detected.',
+      lintNoResultHint: 'No lint results yet. Click "Retry lint" to start checking.',
       lintErrorState: 'Lint failed. Please try again.',
       lintSummaryLabel: 'Issue overview',
       lintIssueListLabel: 'Issue details',
